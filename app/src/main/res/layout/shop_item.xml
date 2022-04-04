@@ -6,6 +6,10 @@
         <variable
             name="product"
             type="com.example.shoppingpay.models.Product" />
+        
+        <variable
+            name="shopInterface"
+            type="com.example.shoppingpay.adapters.ShopListAdapter.ShopInterface" />
 
     </data>
 
@@ -15,7 +19,9 @@
         android:id="@+id/layout_item"
         android:layout_marginTop="10dp"
         app:cardCornerRadius="20dp"
-        android:padding="10dp">
+        android:padding="10dp"
+        android:background="?attr/selectableItemBackground"
+        android:onClick="@{() -> shopInterface.onItemClick(product)}">
 
         <RelativeLayout
 
