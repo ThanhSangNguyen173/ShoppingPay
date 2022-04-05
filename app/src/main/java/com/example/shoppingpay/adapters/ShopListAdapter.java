@@ -34,7 +34,7 @@ public class ShopListAdapter extends ListAdapter<Product, ShopListAdapter.ShopVi
     public void onBindViewHolder(@NonNull ShopViewHolder holder, int position) {
         Product product = getItem(position);
         holder.shopItemBinding.setProduct(product);
-
+        holder.shopItemBinding.executePendingBindings();
     }
 
     class ShopViewHolder extends RecyclerView.ViewHolder{

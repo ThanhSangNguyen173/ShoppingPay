@@ -2,6 +2,8 @@ package com.example.shoppingpay.views;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
@@ -11,10 +13,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.shoppingpay.R;
+import com.example.shoppingpay.models.CartItem;
+import com.example.shoppingpay.viewmodels.ShopViewModel;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     NavController navController;
+    ShopViewModel shopViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +30,13 @@ public class MainActivity extends AppCompatActivity {
 
         navController = Navigation.findNavController(MainActivity.this,R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(MainActivity.this,navController);
+        shopViewModel = new ViewModelProvider(this).get(ShopViewModel.class);
+        shopViewModel.getCart().observe(this, new Observer<List<CartItem>>() {
+            @Override
+            public void onChanged(List<CartItem> cartItems) {
+
+            }
+        });
     }
 
     @Override

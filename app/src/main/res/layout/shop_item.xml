@@ -17,9 +17,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/layout_item"
-        android:layout_marginTop="10dp"
-        app:cardCornerRadius="20dp"
-        android:padding="10dp"
+        android:layout_margin="5dp"
+        app:cardCornerRadius="10dp"
+        android:padding="5dp"
         android:background="?attr/selectableItemBackground"
         android:onClick="@{() -> shopInterface.onItemClick(product)}">
 
@@ -39,7 +39,7 @@
 
             <LinearLayout
                 android:id="@+id/layout"
-                android:layout_width="150dp"
+                android:layout_width="190dp"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="10dp"
@@ -53,8 +53,8 @@
                     android:layout_marginBottom="3dp"
                     android:text="@{product.name}"
                     android:textAllCaps="true"
-                    android:textColor="@color/black"
-                    android:textSize="22sp"
+                    android:textColor="@color/PRIMARY_TEXT"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -79,14 +79,16 @@
 
             <Button
                 android:id="@+id/btn_add_to_cart"
-                style="@style/Widget.MaterialComponents.Button.TextButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:enabled="@{product.available}"
-                android:layout_marginStart="10dp"
                 android:layout_toEndOf="@+id/layout"
-                android:text="add to cart" />
+                android:backgroundTint="@color/DARK_PRIMARY_COLOR"
+                android:enabled="@{product.available}"
+                android:text="add"
+                android:textColor="@color/TEXT_ICONS"
+                android:onClick="@{()->shopInterface.addItem(product)}"
+                android:textSize="12dp" />
 
 
         </RelativeLayout>

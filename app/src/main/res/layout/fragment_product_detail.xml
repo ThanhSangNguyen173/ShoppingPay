@@ -41,6 +41,8 @@
                 android:id="@+id/productNameTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textAllCaps="true"
+                android:textStyle="bold"
                 android:text="@{shopViewModel.product.name}"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6" />
 
@@ -65,7 +67,7 @@
                 android:layout_height="wrap_content"
                 android:text="@{shopViewModel.product.available ? `Available` : `Sold out`}"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
-                android:textColor="@{shopViewModel.product.available ? @color/black : @color/teal_700}" />
+                android:textColor="@{shopViewModel.product.available ? @color/PRIMARY_TEXT : @color/SECONDARY_TEXT}" />
 
             <Space
                 android:layout_width="match_parent"
@@ -85,7 +87,7 @@
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="4dp" />
+                android:layout_height="10dp" />
 
             <Button
                 android:layout_gravity="center"
@@ -96,6 +98,7 @@
                 android:enabled="@{shopViewModel.product.available}"
                 android:text="Add to cart"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+                android:onClick="@{()->shopViewModel.addItemToCart(shopViewModel.product)}"
                 />
         </LinearLayout>
 
