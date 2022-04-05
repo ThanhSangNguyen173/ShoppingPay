@@ -30,7 +30,7 @@ public class MainShoppingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_shopping_main);
 
         navController = Navigation.findNavController(MainShoppingActivity.this,R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(MainShoppingActivity.this,navController);
