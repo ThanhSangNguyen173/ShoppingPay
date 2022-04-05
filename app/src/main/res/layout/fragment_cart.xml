@@ -30,13 +30,14 @@
             android:text="Total:1.000.000VNĐ"
             android:textStyle="bold"
             android:textAllCaps="true"
-            android:textSize="20dp"
+            android:textSize="22dp"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"/>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/placeOrderButton"
             android:layout_gravity="end"
+            android:layout_margin="8dp"
             android:text="Place Order"/>
     </LinearLayout>
 

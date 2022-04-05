@@ -52,7 +52,7 @@
 
         <Spinner
             android:id="@+id/quantitySpinner"
-            android:layout_width="80dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
@@ -88,7 +88,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
-            android:text="@{String.valueOf(Integer.parseInt(cartItem.product.price) * cartItem.quantity)+`VNĐ`}" />
+            android:text="@{String.valueOf(Double.parseDouble(cartItem.product.price) * cartItem.quantity)+`$`}" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
