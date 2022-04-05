@@ -1,10 +1,12 @@
-package com.example.shoppingpay;
+package com.example.shoppingpay.tagcastscan;
 
 import android.Manifest;
 import android.app.Application;
 import android.content.pm.PackageManager;
 
 import androidx.core.content.ContextCompat;
+
+import com.example.shoppingpay.R;
 
 import java.util.ArrayList;
 import java.util.List;

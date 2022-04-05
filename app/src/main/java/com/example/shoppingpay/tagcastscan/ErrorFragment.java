@@ -1,4 +1,4 @@
-package com.example.shoppingpay.views;
+package com.example.shoppingpay.tagcastscan;
 
 
 import android.app.Activity;
@@ -13,7 +13,6 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.shoppingpay.MainTagCastActivity;
 import com.example.shoppingpay.R;
 
 public class ErrorFragment extends DialogFragment {

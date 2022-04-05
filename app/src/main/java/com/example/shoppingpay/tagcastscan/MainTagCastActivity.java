@@ -1,9 +1,16 @@
-package com.example.shoppingpay;
+package com.example.shoppingpay.tagcastscan;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Point;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -11,7 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentManager;
 
-import com.example.shoppingpay.views.ErrorFragment;
+import com.example.shoppingpay.R;
 
 import java.util.List;
 import java.util.Map;
@@ -30,6 +37,7 @@ public class MainTagCastActivity extends AppCompatActivity implements ActivityCo
     private String serial;
     private Map<String,String> map;
     public int mErrorDialogType = ErrorFragment.TYPE_NO;
+    Button btn_scan;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -37,7 +45,6 @@ public class MainTagCastActivity extends AppCompatActivity implements ActivityCo
         final Context context = getApplicationContext();
 
         tgcAdapter = TGCAdapter.getInstance(context);
-
         final TGCScanListener mTGCScanListener = new TGCScanListener() {
             @Override
             public void changeState(TGCState tgcState) {
@@ -144,8 +151,9 @@ public class MainTagCastActivity extends AppCompatActivity implements ActivityCo
                 }
             }
         };
-
         tgcAdapter.setTGCScanListener(mTGCScanListener);
+        setContentView(R.layout.activity_tagcast_main);
+
     }
     @Override
     protected void onPause() {
@@ -178,7 +186,6 @@ public class MainTagCastActivity extends AppCompatActivity implements ActivityCo
             return false;
         }
     }
-
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -193,9 +200,7 @@ public class MainTagCastActivity extends AppCompatActivity implements ActivityCo
                 }
             }
             if (isGranted) {
-                // Thu thập dữ liệu quản lý TAGCAST
                 tgcAdapter.prepare();
-                // Bắt đầu quét
                 tgcAdapter.setScanInterval(10000);
                 tgcAdapter.startScan();
             } else {

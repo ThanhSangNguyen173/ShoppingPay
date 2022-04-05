@@ -5,15 +5,12 @@
       <map>
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/ShoppingPay/app/src/main/res/drawable/badge_shape.xml" value="0.1255" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/ShoppingPay/app/src/main/res/layout/activity_main.xml" value="0.16666666666666666" />
-        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/ShoppingPay/app/src/main/res/layout/activity_shopping_main.xml" value="0.1796875" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/ShoppingPay/app/src/main/res/layout/activity_tagcast_main.xml" value="0.1796875" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/ShoppingPay/app/src/main/res/layout/cart_action_layout.xml" value="0.4466666666666667" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/ShoppingPay/app/src/main/res/layout/cart_item.xml" value="0.1796875" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/ShoppingPay/app/src/main/res/layout/fragment_cart.xml" value="0.1796875" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/ShoppingPay/app/src/main/res/layout/fragment_order.xml" value="0.22" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/ShoppingPay/app/src/main/res/layout/fragment_product_detail.xml" value="0.1" />
-        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/ShoppingPay/app/src/main/res/layout/fragment_scan.xml" value="0.1796875" />
-        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/ShoppingPay/app/src/main/res/layout/fragment_scan_fail.xml" value="0.1796875" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/ShoppingPay/app/src/main/res/layout/fragment_shop.xml" value="0.1796875" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/ShoppingPay/app/src/main/res/layout/shop_item.xml" value="0.22" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/ShoppingPay/app/src/main/res/menu/main_menu.xml" value="0.1796875" />
