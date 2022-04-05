@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="product"
+            type="com.example.shoppingpay.models.Product" />
+        
+        <variable
+            name="shopInterface"
+            type="com.example.shoppingpay.adapters.ShopListAdapter.ShopInterface" />
+
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/layout_item"
+        android:layout_margin="5dp"
+        app:cardCornerRadius="10dp"
+        android:padding="5dp"
+        android:background="?attr/selectableItemBackground"
+        android:onClick="@{() -> shopInterface.onItemClick(product)}">
+
+        <RelativeLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+
+            <ImageView
+                android:id="@+id/img_item"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_centerVertical="true"
+                android:productImage="@{product.imgUrl}"
+                android:scaleType="centerCrop" />
+
+            <LinearLayout
+                android:id="@+id/layout"
+                android:layout_width="190dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@+id/img_item"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txt_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
+                    android:text="@{product.name}"
+                    android:textAllCaps="true"
+                    android:textColor="@color/PRIMARY_TEXT"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txt_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:text="@{Double.parseDouble(product.price)+ `$`}"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/txt_available"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{product.available ? `Available`:`Sold out`}"
+                    android:textSize="15sp"
+                    android:textStyle="italic"
+
+                    />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_add_to_cart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/layout"
+                android:backgroundTint="@color/DARK_PRIMARY_COLOR"
+                android:enabled="@{product.available}"
+                android:text="add"
+                android:textColor="@color/TEXT_ICONS"
+                android:onClick="@{()->shopInterface.addItem(product)}"
+                android:textSize="12dp" />
+
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>
