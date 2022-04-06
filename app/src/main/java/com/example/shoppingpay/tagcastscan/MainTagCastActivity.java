@@ -1,14 +1,20 @@
 package com.example.shoppingpay.tagcastscan;
 
+import static com.example.shoppingpay.R.drawable.scanfail;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Point;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -33,11 +39,13 @@ import jp.tagcast.helper.TGCAdapter;
 public class MainTagCastActivity extends AppCompatActivity implements ActivityCompat.OnRequestPermissionsResultCallback {
 
     public TGCAdapter tgcAdapter;
+//    public boolean isScanning;
     private boolean flgBeacon = false;
     private String serial;
     private Map<String,String> map;
     public int mErrorDialogType = ErrorFragment.TYPE_NO;
-    Button btn_scan;
+    ImageButton btn_scan;
+    ProgressBar bar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -45,6 +53,7 @@ public class MainTagCastActivity extends AppCompatActivity implements ActivityCo
         final Context context = getApplicationContext();
 
         tgcAdapter = TGCAdapter.getInstance(context);
+//        isScanning = tgcAdapter.isScanning();
         final TGCScanListener mTGCScanListener = new TGCScanListener() {
             @Override
             public void changeState(TGCState tgcState) {
@@ -57,6 +66,7 @@ public class MainTagCastActivity extends AppCompatActivity implements ActivityCo
                     flgBeacon = true;
                     map = tagCast.getDetails();
                     serial = map.get("serial_id");
+                    Log.d("here", map.toString());
                 }
             }
 
@@ -153,8 +163,44 @@ public class MainTagCastActivity extends AppCompatActivity implements ActivityCo
         };
         tgcAdapter.setTGCScanListener(mTGCScanListener);
         setContentView(R.layout.activity_tagcast_main);
+        btn_scan = findViewById(R.id.btn_scan);
+        bar = findViewById(R.id.progressBar);
+        btn_scan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                btn_scan.setEnabled(false);
+                bar.setVisibility(View.VISIBLE);
+                tgcAdapter.setScanInterval(10000);
+                tgcAdapter.startScan();
+
+                int tensec= 10 * 1000;
+                new CountDownTimer(tensec, 1000) {
+
+                    public void onTick(long millisUntilFinished) {
+                        long finishedSeconds = tensec- millisUntilFinished+2000;
+                        int total = (int) ((finishedSeconds / (float)tensec) * 100.0);
+                        bar.setProgress(total);
+                    }
+
+                    public void onFinish() {
+                        if(flgBeacon){
+                            Toast.makeText(MainTagCastActivity.this, "hihi", Toast.LENGTH_SHORT).show();
+//                    Intent intent = new Intent(MainTagCastActivity.this,AcceptScreen.class);
+//                    Bundle bundle = new Bundle();
+//                    bundle.putString("seri",serial);
+//                    intent.putExtras(bundle);
+//                    startActivity(intent);
+                        }else{
+                            btn_scan.setBackground(getDrawable(scanfail));
+                            btn_scan.setEnabled(true);
+                        }
+                    }
+                }.start();
+            }
+        });
 
     }
+
     @Override
     protected void onPause() {
         super.onPause();
@@ -164,12 +210,12 @@ public class MainTagCastActivity extends AppCompatActivity implements ActivityCo
     protected void onResume() {
         super.onResume();
         if (checkPermission()) {
-            tgcAdapter.setScanInterval(10000);
-            tgcAdapter.startScan();
+            tgcAdapter.prepare();
         }
     }
+
     /**
-     * Yêu cầu sự cho phép
+     * Permission Request
      */
     private boolean checkPermission() {
         List<String> permissions = ((AppInfo) getApplication()).checkPermission();
