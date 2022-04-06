@@ -192,13 +192,10 @@ public class MainTagCastActivity extends AppCompatActivity implements ActivityCo
                         if(flgBeacon){
                             Toast.makeText(context, "Scan Succesfully!", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(context, MainShoppingActivity.class);
-                    startActivity(intent);
-
-                    Intent intent1 = new Intent(context, MainPaymentActivity.class);
                     Bundle bundle = new Bundle();
                     bundle.putString("seri",serial);
-                    intent1.putExtras(bundle);
-
+                    intent.putExtras(bundle);
+                    startActivity(intent);
                         }else{
                             btn_scan.setBackground(getDrawable(scanfail));
                             btn_scan.setEnabled(true);

@@ -27,6 +27,7 @@ public class MainShoppingActivity extends AppCompatActivity {
     ShopViewModel shopViewModel;
     private int cartQuantity = 0;
     TextView cartBadgeTextView;
+    private String serial;
 
 
 
@@ -34,6 +35,11 @@ public class MainShoppingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping_main);
+
+        Bundle bundle = getIntent().getExtras();
+        serial = bundle.getString("seri");
+
+
         navController = Navigation.findNavController(MainShoppingActivity.this,R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(MainShoppingActivity.this,navController);
         shopViewModel = new ViewModelProvider(this).get(ShopViewModel.class);
@@ -48,6 +54,10 @@ public class MainShoppingActivity extends AppCompatActivity {
                  invalidateOptionsMenu();
             }
         });
+    }
+
+    public String getSerial(){
+        return serial;
     }
 
     @Override
