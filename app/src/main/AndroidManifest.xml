@@ -6,7 +6,7 @@
         android:name="android.hardware.bluetooth_le"
         android:required="true" />
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
@@ -24,13 +24,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ShoppingPay">
-
-        <meta-data
-            android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-6266845852869933~2922721780"/>
-
-        <activity android:name=".views.MainShoppingActivity"
-            android:exported="false"/>
+        <activity
+            android:name=".tagcastscan.MainPaymentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.MainShoppingActivity"
+            android:exported="false" />
         <activity
             android:name=".tagcastscan.MainTagCastActivity"
             android:exported="true">
@@ -40,6 +39,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-6266845852869933~2922721780" />
     </application>
 
 </manifest>

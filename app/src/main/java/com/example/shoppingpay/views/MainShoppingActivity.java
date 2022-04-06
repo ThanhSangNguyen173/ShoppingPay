@@ -8,6 +8,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -27,11 +28,12 @@ public class MainShoppingActivity extends AppCompatActivity {
     private int cartQuantity = 0;
     TextView cartBadgeTextView;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping_main);
-
         navController = Navigation.findNavController(MainShoppingActivity.this,R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(MainShoppingActivity.this,navController);
         shopViewModel = new ViewModelProvider(this).get(ShopViewModel.class);

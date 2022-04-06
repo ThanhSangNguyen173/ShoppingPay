@@ -39,7 +39,7 @@
 
             <LinearLayout
                 android:id="@+id/layout"
-                android:layout_width="190dp"
+                android:layout_width="160dp"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="10dp"
@@ -54,7 +54,7 @@
                     android:text="@{product.name}"
                     android:textAllCaps="true"
                     android:textColor="@color/PRIMARY_TEXT"
-                    android:textSize="20sp"
+                    android:textSize="17sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -63,14 +63,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="2dp"
                     android:text="@{Double.parseDouble(product.price)+ `$`}"
-                    android:textSize="17sp" />
+                    android:textSize="15sp" />
 
                 <TextView
                     android:id="@+id/txt_available"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@{product.available ? `Available`:`Sold out`}"
-                    android:textSize="15sp"
+                    android:textSize="10sp"
                     android:textStyle="italic"
 
                     />
@@ -85,9 +85,9 @@
                 android:layout_toEndOf="@+id/layout"
                 android:backgroundTint="@color/DARK_PRIMARY_COLOR"
                 android:enabled="@{product.available}"
+                android:onClick="@{()->shopInterface.addItem(product)}"
                 android:text="add"
                 android:textColor="@color/TEXT_ICONS"
-                android:onClick="@{()->shopInterface.addItem(product)}"
                 android:textSize="12dp" />
 
 

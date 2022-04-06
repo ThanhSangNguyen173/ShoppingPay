@@ -8,12 +8,12 @@
 
     <ImageButton
         android:layout_marginTop="300dp"
-        android:id="@+id/btn_scan"
+        android:id="@+id/btn_scan2"
         android:layout_width="550px"
         android:layout_height="550px"
         android:background="@drawable/scan"/>
     <ImageView
-        android:id="@+id/img_checkin_load"
+        android:id="@+id/img_checkin_load2"
         android:layout_marginTop="50dp"
         android:layout_width="250px"
         android:layout_height="60px"
@@ -21,7 +21,7 @@
         android:src="@drawable/checkinload"/>
 
     <ProgressBar
-        android:id="@+id/progressBar"
+        android:id="@+id/progressBar2"
         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
         android:layout_width="310dp"
         android:layout_height="wrap_content"

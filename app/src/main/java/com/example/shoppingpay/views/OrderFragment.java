@@ -1,5 +1,7 @@
 package com.example.shoppingpay.views;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,6 +17,7 @@ import android.view.ViewGroup;
 
 import com.example.shoppingpay.R;
 import com.example.shoppingpay.databinding.FragmentOrderBinding;
+import com.example.shoppingpay.tagcastscan.MainPaymentActivity;
 import com.example.shoppingpay.viewmodels.ShopViewModel;
 
 public class OrderFragment extends Fragment {
@@ -23,10 +26,10 @@ public class OrderFragment extends Fragment {
     FragmentOrderBinding fragmentOrderBinding;
     ShopViewModel shopViewModel;
 
+
     public OrderFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -39,14 +42,21 @@ public class OrderFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         navController = Navigation.findNavController(view);
+        Context context = getActivity().getApplicationContext();
         shopViewModel = new ViewModelProvider(requireActivity()).get(ShopViewModel.class);
         fragmentOrderBinding.continueShoppingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 shopViewModel.resetCart();
                 navController.navigate(R.id.action_orderFragment_to_shopFragment);
+            }
+        });
+        fragmentOrderBinding.paymentTagCast.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, MainPaymentActivity.class);
+                startActivity(intent);
             }
         });
     }

@@ -5,17 +5,16 @@ import static com.example.shoppingpay.R.drawable.scanfail;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Point;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -25,6 +24,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentManager;
 
 import com.example.shoppingpay.R;
+import com.example.shoppingpay.views.MainShoppingActivity;
 
 import java.util.List;
 import java.util.Map;
@@ -39,13 +39,13 @@ import jp.tagcast.helper.TGCAdapter;
 public class MainTagCastActivity extends AppCompatActivity implements ActivityCompat.OnRequestPermissionsResultCallback {
 
     public TGCAdapter tgcAdapter;
-//    public boolean isScanning;
     private boolean flgBeacon = false;
     private String serial;
     private Map<String,String> map;
     public int mErrorDialogType = ErrorFragment.TYPE_NO;
     ImageButton btn_scan;
     ProgressBar bar;
+    ImageView img_checkin_load;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -53,7 +53,7 @@ public class MainTagCastActivity extends AppCompatActivity implements ActivityCo
         final Context context = getApplicationContext();
 
         tgcAdapter = TGCAdapter.getInstance(context);
-//        isScanning = tgcAdapter.isScanning();
+        tgcAdapter.prepare();
         final TGCScanListener mTGCScanListener = new TGCScanListener() {
             @Override
             public void changeState(TGCState tgcState) {
@@ -165,6 +165,8 @@ public class MainTagCastActivity extends AppCompatActivity implements ActivityCo
         setContentView(R.layout.activity_tagcast_main);
         btn_scan = findViewById(R.id.btn_scan);
         bar = findViewById(R.id.progressBar);
+        img_checkin_load = findViewById(R.id.img_checkin_load);
+        Animation alpha = AnimationUtils.loadAnimation(this,R.anim.alpha);
         btn_scan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -172,6 +174,8 @@ public class MainTagCastActivity extends AppCompatActivity implements ActivityCo
                 bar.setVisibility(View.VISIBLE);
                 tgcAdapter.setScanInterval(10000);
                 tgcAdapter.startScan();
+                img_checkin_load.startAnimation(alpha);
+                img_checkin_load.setVisibility(View.VISIBLE);
 
                 int tensec= 10 * 1000;
                 new CountDownTimer(tensec, 1000) {
@@ -183,16 +187,22 @@ public class MainTagCastActivity extends AppCompatActivity implements ActivityCo
                     }
 
                     public void onFinish() {
+                        img_checkin_load.setVisibility(View.INVISIBLE);
+                        bar.setVisibility(View.INVISIBLE);
                         if(flgBeacon){
-                            Toast.makeText(MainTagCastActivity.this, "hihi", Toast.LENGTH_SHORT).show();
-//                    Intent intent = new Intent(MainTagCastActivity.this,AcceptScreen.class);
-//                    Bundle bundle = new Bundle();
-//                    bundle.putString("seri",serial);
-//                    intent.putExtras(bundle);
-//                    startActivity(intent);
+                            Toast.makeText(context, "Scan Succesfully!", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(context, MainShoppingActivity.class);
+                    startActivity(intent);
+
+                    Intent intent1 = new Intent(context, MainPaymentActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("seri",serial);
+                    intent1.putExtras(bundle);
+
                         }else{
                             btn_scan.setBackground(getDrawable(scanfail));
                             btn_scan.setEnabled(true);
+                            Toast.makeText(context, "Scan fail, please try again!", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }.start();
