@@ -37,7 +37,10 @@
             android:name=".views.MainShoppingActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginRegister.LoginRegisterActivity"
+            android:name=".loginregister.LoginRegisterActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".loginregister.IntroPreLogin"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
