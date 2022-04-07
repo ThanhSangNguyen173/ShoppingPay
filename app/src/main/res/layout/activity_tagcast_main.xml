@@ -7,18 +7,19 @@
     android:background="@drawable/bgscan">
 
     <ImageButton
-        android:layout_marginTop="300dp"
+        android:layout_marginTop="290dp"
         android:id="@+id/btn_scan"
         android:layout_width="550px"
         android:layout_height="550px"
         android:background="@drawable/scan"/>
+
     <ImageView
         android:id="@+id/img_checkin_load"
-        android:layout_marginTop="50dp"
-        android:layout_width="250px"
+        android:layout_width="110dp"
         android:layout_height="60px"
-        android:visibility="invisible"
-        android:src="@drawable/checkinload"/>
+        android:layout_marginTop="50dp"
+        android:src="@drawable/checkinload"
+        android:visibility="invisible" />
 
     <ProgressBar
         android:id="@+id/progressBar"
