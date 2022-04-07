@@ -19,6 +19,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.example.shoppingpay.R;
 import java.util.List;
@@ -33,6 +34,7 @@ import jp.tagcast.helper.TGCAdapter;
 public class MainPaymentActivity extends AppCompatActivity implements ActivityCompat.OnRequestPermissionsResultCallback {
 
     ImageButton btn_scan;
+    TextView txt_payment_status;
     ProgressBar bar;
     ImageView img_checkin_load;
     public TGCAdapter tgcAdapter;
@@ -164,6 +166,7 @@ public class MainPaymentActivity extends AppCompatActivity implements ActivityCo
         img_checkin_load = findViewById(R.id.img_checkin_load2);
         Animation alpha = AnimationUtils.loadAnimation(this,R.anim.alpha);
         btn_scan = findViewById(R.id.btn_scan2);
+        txt_payment_status = findViewById(R.id.txt_payment_status);
         btn_scan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -173,6 +176,9 @@ public class MainPaymentActivity extends AppCompatActivity implements ActivityCo
                 tgcAdapter.startScan();
                 img_checkin_load.startAnimation(alpha);
                 img_checkin_load.setVisibility(View.VISIBLE);
+                txt_payment_status.setVisibility(View.VISIBLE);
+                txt_payment_status.setText("Infomation check...");
+                txt_payment_status.startAnimation(alpha);
 
                 int tensec= 10 * 1000;
                 new CountDownTimer(tensec, 1000) {
@@ -188,14 +194,18 @@ public class MainPaymentActivity extends AppCompatActivity implements ActivityCo
                         bar.setVisibility(View.INVISIBLE);
                         if(flgBeacon){
                             if(serial2.equals(serial)){
-                                Toast.makeText(context, "Thanh toán thành công", Toast.LENGTH_SHORT).show();
+                                Intent payment = new Intent(context,PaymentAcceptAnimation.class);
+                                startActivity(payment);
                             }else{
-                                Toast.makeText(context, "Vui lòng kiểm tra lại vị trí bàn thanh toán", Toast.LENGTH_SHORT).show();
+                                btn_scan.setEnabled(true);
+                                txt_payment_status.setVisibility(View.VISIBLE);
+                                txt_payment_status.setText("Vui lòng kiểm tra vị trí bàn thanh toán và thử lại");
                             }
                         }else{
                             btn_scan.setBackground(getDrawable(scanfail));
                             btn_scan.setEnabled(true);
-                            Toast.makeText(context, "Scan fail, please try again!", Toast.LENGTH_SHORT).show();
+                            txt_payment_status.setVisibility(View.VISIBLE);
+                            txt_payment_status.setText("Scan fail, please try again!");
                         }
                     }
                 }.start();

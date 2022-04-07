@@ -25,6 +25,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ShoppingPay">
         <activity
+            android:name=".tagcastscan.PaymentAcceptAnimation"
+            android:exported="false" />
+        <activity
             android:name=".tagcastscan.MainPaymentActivity"
             android:exported="false" />
         <activity
