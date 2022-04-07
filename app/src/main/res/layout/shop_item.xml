@@ -62,6 +62,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="2dp"
+                    android:textColor="@color/PRIMARY_TEXT"
                     android:text="@{Double.parseDouble(product.price)+ `$`}"
                     android:textSize="15sp" />
 
@@ -70,6 +71,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@{product.available ? `Available`:`Sold out`}"
+                    android:textColor="@{product.available ? @color/PRIMARY_TEXT : @color/RED}"
                     android:textSize="10sp"
                     android:textStyle="italic"
 

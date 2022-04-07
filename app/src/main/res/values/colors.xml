@@ -8,4 +8,5 @@
     <color name="PRIMARY_TEXT">#212121</color>
     <color name="SECONDARY_TEXT">#757575</color>
     <color name="DIVIDER_COLOR">#BDBDBD</color>
+    <color name="RED">#D10000</color>
 </resources>
