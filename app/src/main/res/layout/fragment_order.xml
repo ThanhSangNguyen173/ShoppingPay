@@ -23,6 +23,12 @@
         android:id="@+id/continueShoppingButton"
         android:text="continue shopping"
         style="@style/Widget.MaterialComponents.Button.TextButton"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/paymentTagCast"
+        android:text="Payment use TAGCAST"
+        style="@style/Widget.MaterialComponents.Button.TextButton"/>
 
 
 </LinearLayout>

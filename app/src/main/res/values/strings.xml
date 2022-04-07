@@ -2,7 +2,33 @@
     <string name="app_name">ShoppingPay</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    
+
+
+    <string name="tagcast_api_key">6d491b81f6bece8169fd15bbd8721b9b</string>
+    <string name="cancel">Hủy bỏ</string>
+    <string name="ok">OK</string>
+    <string name="retry">Thử lại</string>
+    <string name="unknownErrorTitle">Lỗi hệ thống</string>
+    <string name="unknownErrorMessage">Đã xảy ra lỗi không giải thích được.Vui lòng khởi động lại ứng dụng hoặc thử quét lại.</string>
+    <string name="databaseErrorTitle">Lỗi cơ sở dữ liệu</string>
+    <string name="databaseErrorMessage">Không lưu được dữ liệu.Vui lòng kiểm tra dung lượng trống của thiết bị đầu cuối và thử lại.</string>
+    <string name="networkErrorTitle">Lỗi mạng</string>
+    <string name="networkErrorMessage">Giao tiếp không thành công.Kiểm tra trạng thái mạng và thử lại.</string>
+    <string name="bluetoothErrorTitle">Bluetooth lỗi</string>
+    <string name="bluetoothErrorMessage">Bluetooth chưa được bật.Vui lòng kiểm tra các thiết lập Bluetooth của bạn và thử lại.</string>
+    <string name="masterDataNotExistsErrorTitle">Lỗi dữ liệu</string>
+    <string name="masterDataNotExistsErrorMessage">Giao tiếp với đám mây TAGCAST không thành công.Vui lòng liên hệ với chúng tôi vì nó có thể đang được bảo trì.</string>
+    <string name="debugDataInvalidErrorTitle">Gỡ lỗi dữ liệu</string>
+    <string name="debugDataInvalidErrorMessage">Không tìm thấy tệp cho dữ liệu gỡ lỗi.Đảm bảo rằng bạn có tệp res/values tagcast.xml</string>
+    <string name="apiKeyNotRegisteredErrorTitle">Lỗi xác thực</string>
+    <string name="apiKeyNotRegisteredErrorMessage">Xác thực với đám mây TAGCAST không thành công.Vui lòng kiểm tra với nhà phân phối ứng dụng.</string>
+    <string name="permissionDeniedErrorTitle">Lỗi Permission</string>
+    <string name="permissionDeniedErrorMessage">Thiếu Permission bắt buộc. Vui lòng kiểm tra với nhà phân phối ứng dụng</string>
+    <string name="failedUpdateErrorMessage">Giao tiếp với đám mây TAGCAST không thành công. Kiểm tra trạng thái liên lạc và thử cập nhật lại.</string>
+    <string name="localeAccessErrorTitle">Lỗi thông tin vị trí</string>
+    <string name="localeAccessErrorMessage">Cài đặt thông tin vị trí đang TẮT. Kiểm tra cài đặt thông tin vị trí và thử lại.</string>
+
+
     <string-array name="quantity_string_array">
         <item>1</item>
         <item>2</item>
