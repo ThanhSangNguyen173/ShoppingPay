@@ -1,4 +1,4 @@
-package com.example.shoppingpay.LoginRegister;
+package com.example.shoppingpay.loginregister;
 
 import android.app.Dialog;
 import android.content.DialogInterface;

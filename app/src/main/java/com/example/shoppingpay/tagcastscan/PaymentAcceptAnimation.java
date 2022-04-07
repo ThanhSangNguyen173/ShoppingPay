@@ -30,7 +30,7 @@ public class PaymentAcceptAnimation extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                txt_status.setText("thank you for your purchase");
+                txt_status.setVisibility(View.INVISIBLE);
                 img_thanks.setVisibility(View.VISIBLE);
             }
         },5000);
