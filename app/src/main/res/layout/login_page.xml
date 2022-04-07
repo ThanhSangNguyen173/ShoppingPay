@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/LIGHT_PRIMARY_COLOR"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <ImageView
+        android:layout_marginTop="80dp"
+        android:layout_width="match_parent"
+        android:src="@drawable/logoboxyz"
+        android:layout_height="150dp" />
+
+    <EditText
+        android:layout_marginTop="20dp"
+        android:id="@+id/tk"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="ID/Tài khoản" />
+
+    <EditText
+        android:id="@+id/mk"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Password/Mật khẩu"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Đăng Nhập"
+        android:layout_marginTop="10dp"
+        android:textColor="#EFEFEF"/>
+
+    <Button
+        android:id="@+id/dky"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="đăng ký"
+        android:layout_marginTop="10dp"
+        android:textColor="#EFEFEF"/>
+    <Button
+        android:id="@+id/btnthoat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#00FFFFFF"
+        android:text="Thoát"
+        android:layout_marginTop="130dp"
+        android:textColor="#000000"/>
+</LinearLayout>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/LIGHT_PRIMARY_COLOR"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="member registration"
+        android:textAllCaps="true"
+        android:textColor="@color/DARK_PRIMARY_COLOR"
+        android:textSize="30dp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/editTextHo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="First name/Họ" />
+
+        <EditText
+            android:id="@+id/editTextTen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="Name/Tên" />
+    </LinearLayout>
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <RadioButton
+            android:id="@+id/nam"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="NAM"
+            android:buttonTint="@color/DARK_PRIMARY_COLOR"
+            android:textStyle="bold"
+            android:textColor="@color/DARK_PRIMARY_COLOR"/>
+
+        <RadioButton
+            android:id="@+id/nu"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="NỮ"
+            android:buttonTint="@color/DARK_PRIMARY_COLOR"
+            android:textColor="@color/DARK_PRIMARY_COLOR"
+            android:textStyle="bold"/>
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/editTextDOB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="DOB/Ngày sinh: dd/mm/yyyy"
+        android:inputType="date" />
+
+    <EditText
+        android:id="@+id/editTextID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="ID/Tài khoản"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/editTextPass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Password/Mật khẩu"
+        android:inputType="textPassword" />
+
+    <EditText
+        android:id="@+id/editTextCoPass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Confirm password/Xác nhận mật khẩu"
+        android:inputType="textPassword" />
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="italic"
+        android:textSize="16dp"
+        android:buttonTint="@color/DARK_PRIMARY_COLOR"
+        android:checked="false"
+        android:text="Tôi đồng ý với tất cả các điều khoản của BOXYZVN Software Co.,Ltd" />
+
+    <Button
+        android:id="@+id/dky2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:enabled="false"
+        android:text="đăng ký"
+        />
+    <Button
+        android:id="@+id/huydk"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:enabled="true"
+        android:text="hủy"
+        />
+
+</LinearLayout>

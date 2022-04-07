@@ -28,17 +28,19 @@
             android:name=".tagcastscan.PaymentAcceptAnimation"
             android:exported="false" />
         <activity
+            android:name=".tagcastscan.MainTagCastActivity"
+            android:exported="false" />
+        <activity
             android:name=".tagcastscan.MainPaymentActivity"
             android:exported="false" />
         <activity
             android:name=".views.MainShoppingActivity"
             android:exported="false" />
         <activity
-            android:name=".tagcastscan.MainTagCastActivity"
+            android:name=".LoginRegister.LoginRegisterActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

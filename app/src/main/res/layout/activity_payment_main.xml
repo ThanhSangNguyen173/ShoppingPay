@@ -28,10 +28,10 @@
     <ImageView
         android:id="@+id/img_checkin_load2"
         android:layout_marginTop="50dp"
-        android:layout_width="250px"
+        android:layout_width="110dp"
         android:layout_height="60px"
         android:visibility="invisible"
-        android:src="@drawable/checkinload"/>
+        android:src="@drawable/checkinloadblack"/>
 
     <ProgressBar
         android:id="@+id/progressBar2"
