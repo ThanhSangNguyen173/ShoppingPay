@@ -25,7 +25,7 @@ public class OrderFragment extends Fragment {
     NavController navController;
     FragmentOrderBinding fragmentOrderBinding;
     ShopViewModel shopViewModel;
-    String serial;
+    String serial, tablenumber;
 
 
     public OrderFragment() {
@@ -45,6 +45,7 @@ public class OrderFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         MainShoppingActivity activity = (MainShoppingActivity) getActivity();
         serial = activity.getSerial();
+        tablenumber = activity.getTableNumer();
         navController = Navigation.findNavController(view);
         Context context = getActivity().getApplicationContext();
         shopViewModel = new ViewModelProvider(requireActivity()).get(ShopViewModel.class);
@@ -61,6 +62,7 @@ public class OrderFragment extends Fragment {
                 Intent intent = new Intent(context, MainPaymentActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("seri",serial);
+                bundle.putString("table",tablenumber);
                 intent.putExtras(bundle);
                 startActivity(intent);
             }

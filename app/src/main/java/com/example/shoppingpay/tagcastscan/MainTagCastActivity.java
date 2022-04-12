@@ -41,7 +41,7 @@ public class MainTagCastActivity extends AppCompatActivity implements ActivityCo
 
     public TGCAdapter tgcAdapter;
     private boolean flgBeacon = false;
-    private String serial, pickserial;
+    private String serial, pickserial, tablenumber;
     private Map<String,String> map;
     public int mErrorDialogType = ErrorFragment.TYPE_NO;
     ImageButton btn_scan;
@@ -56,6 +56,7 @@ public class MainTagCastActivity extends AppCompatActivity implements ActivityCo
 
         Bundle bundle = getIntent().getExtras();
         pickserial = bundle.getString("seri");
+        tablenumber = bundle.getString("table");
 
         tgcAdapter = TGCAdapter.getInstance(context);
         tgcAdapter.prepare();
@@ -200,6 +201,7 @@ public class MainTagCastActivity extends AppCompatActivity implements ActivityCo
                             Intent intent = new Intent(context, MainShoppingActivity.class);
                             Bundle bundle = new Bundle();
                             bundle.putString("seri",serial);
+                            bundle.putString("table",tablenumber);
                             intent.putExtras(bundle);
                             startActivity(intent);
                             }else {
