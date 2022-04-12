@@ -22,7 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 public class ChooseTableActivity extends AppCompatActivity {
 
     DatabaseReference mData;
-    String pickserial;
+    String pickserial, tablenumber;
 
     TabHost tabHost;
     ImageButton imgbtn1,imgbtn2,imgbtn3,imgbtn4,imgbtn5,imgbtn6,imgbtn21,imgbtn22,imgbtn23,imgbtn24;
@@ -89,42 +89,62 @@ public class ChooseTableActivity extends AppCompatActivity {
         switch (v.getId()){
             case R.id.btn_table1:
                 mData.child("PickTable").setValue("1");
+                tablenumber = "table1";
+                imgbtn1.setEnabled(false);
                 GetDataTable();
                 break;
             case R.id.btn_table2:
                 mData.child("PickTable").setValue("2");
+                tablenumber = "table2";
+                imgbtn2.setEnabled(false);
                 GetDataTable();
                 break;
             case R.id.btn_table3:
                 mData.child("PickTable").setValue("JPN-PPER-0292-8289-7478");
+                tablenumber = "table3";
+                imgbtn3.setEnabled(false);
                 GetDataTable();
                 break;
             case R.id.btn_table4:
                 mData.child("PickTable").setValue("4");
+                tablenumber = "table4";
+                imgbtn4.setEnabled(false);
                 GetDataTable();
                 break;
             case R.id.btn_table5:
                 mData.child("PickTable").setValue("5");
+                tablenumber = "table5";
+                imgbtn5.setEnabled(false);
                 GetDataTable();
                 break;
             case R.id.btn_table6:
                 mData.child("PickTable").setValue("6");
+                tablenumber = "table6";
+                imgbtn6.setEnabled(false);
                 GetDataTable();
                 break;
             case R.id.btn_table21:
                 mData.child("PickTable").setValue("21");
+                tablenumber = "table21";
+                imgbtn21.setEnabled(false);
                 GetDataTable();
                 break;
             case R.id.btn_table22:
                 mData.child("PickTable").setValue("22");
+                tablenumber = "table22";
+                imgbtn22.setEnabled(false);
                 GetDataTable();
                 break;
             case R.id.btn_table23:
                 mData.child("PickTable").setValue("JPN-PPER-0292-8289-7478");
+                tablenumber = "table23";
+                imgbtn23.setEnabled(false);
                 GetDataTable();
                 break;
             case R.id.btn_table24:
                 mData.child("PickTable").setValue("24");
+                tablenumber = "table24";
+                imgbtn24.setEnabled(false);
                 GetDataTable();
                 break;
         }
@@ -138,6 +158,7 @@ public class ChooseTableActivity extends AppCompatActivity {
                 Intent intent = new Intent(ChooseTableActivity.this, MainTagCastActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("seri",pickserial);
+                bundle.putString("table",tablenumber);
                 intent.putExtras(bundle);
                 startActivity(intent);
             }

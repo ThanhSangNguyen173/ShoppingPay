@@ -40,7 +40,7 @@ public class MainPaymentActivity extends AppCompatActivity implements ActivityCo
     ImageView img_checkin_load;
     public TGCAdapter tgcAdapter;
     private boolean flgBeacon = false;
-    private String serial,serial2;
+    private String serial,serial2, tablenumber;
     private Map<String,String> map;
     public int mErrorDialogType = ErrorFragment.TYPE_NO;
 
@@ -56,6 +56,7 @@ public class MainPaymentActivity extends AppCompatActivity implements ActivityCo
         tgcAdapter.prepare();
         Bundle bundle = getIntent().getExtras();
         serial = bundle.getString("seri");
+        tablenumber = bundle.getString("table");
 
         final TGCScanListener mTGCScanListener = new TGCScanListener() {
             @Override
@@ -198,6 +199,9 @@ public class MainPaymentActivity extends AppCompatActivity implements ActivityCo
                         if(flgBeacon){
                             if(serial2.equals(serial)){
                                 Intent payment = new Intent(context,PaymentAcceptAnimation.class);
+                                Bundle bundle = new Bundle();
+                                bundle.putString("table",tablenumber);
+                                payment.putExtras(bundle);
                                 startActivity(payment);
                             }else{
                                 btn_scan.setEnabled(true);
