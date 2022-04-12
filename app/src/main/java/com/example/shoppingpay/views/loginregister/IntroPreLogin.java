@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.shoppingpay.R;
+import com.example.shoppingpay.views.choosetable.ChooseTableActivity;
 
 public class IntroPreLogin extends AppCompatActivity {
     Animation zoom;

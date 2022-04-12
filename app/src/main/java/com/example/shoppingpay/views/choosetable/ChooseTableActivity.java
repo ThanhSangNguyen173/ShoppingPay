@@ -43,12 +43,12 @@ public class ChooseTableActivity extends AppCompatActivity {
 
         spec1 = tabHost.newTabSpec("t1");
         spec1.setContent(R.id.tab1);
-        spec1.setIndicator("Tầng 1");
+        spec1.setIndicator("Floor 1");
         tabHost.addTab(spec1);
 
         spec2 = tabHost.newTabSpec("t2");
         spec2.setContent(R.id.tab2);
-        spec2.setIndicator("Tầng 2");
+        spec2.setIndicator("Floor 2");
         tabHost.addTab(spec2);
     }
 
