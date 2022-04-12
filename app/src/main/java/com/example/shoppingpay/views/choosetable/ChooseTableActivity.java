@@ -77,6 +77,12 @@ public class ChooseTableActivity extends AppCompatActivity {
         imgbtn22 = findViewById(R.id.btn_table22);
         imgbtn23 = findViewById(R.id.btn_table23);
         imgbtn24 = findViewById(R.id.btn_table24);
+
+        imgbtn2.setEnabled(false);
+        imgbtn4.setEnabled(false);
+        imgbtn5.setEnabled(false);
+        imgbtn6.setEnabled(false);
+        imgbtn22.setEnabled(false);
     }
 
     public void onClick(View v) {
