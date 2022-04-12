@@ -2,6 +2,7 @@ package com.example.shoppingpay.tagcastscan;
 
 import static com.example.shoppingpay.R.drawable.scanfail;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentManager;
@@ -46,7 +47,9 @@ public class MainPaymentActivity extends AppCompatActivity implements ActivityCo
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        super.getSupportActionBar().hide();
         setContentView(R.layout.activity_payment_main);
+
         final Context context = getApplicationContext();
 
         tgcAdapter = TGCAdapter.getInstance(context);
