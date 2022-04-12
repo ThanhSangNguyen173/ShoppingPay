@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "729585496586",
+    "project_id": "shoppingpay-9e52e",
+    "storage_bucket": "shoppingpay-9e52e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:729585496586:android:d5c2d9e4d633ee0bda25f3",
+        "android_client_info": {
+          "package_name": "com.example.shoppingpay"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "729585496586-65pkeqjp9eqrlh1a3q30b47c40jkjdgb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmxDcBa2M-NyV8OY99W2ASyoDdQLhGVVM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "729585496586-65pkeqjp9eqrlh1a3q30b47c40jkjdgb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

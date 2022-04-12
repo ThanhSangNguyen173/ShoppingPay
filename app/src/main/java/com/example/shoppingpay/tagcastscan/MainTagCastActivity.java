@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentManager;
@@ -40,7 +41,7 @@ public class MainTagCastActivity extends AppCompatActivity implements ActivityCo
 
     public TGCAdapter tgcAdapter;
     private boolean flgBeacon = false;
-    private String serial;
+    private String serial, pickserial;
     private Map<String,String> map;
     public int mErrorDialogType = ErrorFragment.TYPE_NO;
     ImageButton btn_scan;
@@ -50,7 +51,11 @@ public class MainTagCastActivity extends AppCompatActivity implements ActivityCo
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        super.getSupportActionBar().hide();
         final Context context = getApplicationContext();
+
+        Bundle bundle = getIntent().getExtras();
+        pickserial = bundle.getString("seri");
 
         tgcAdapter = TGCAdapter.getInstance(context);
         tgcAdapter.prepare();
@@ -190,12 +195,17 @@ public class MainTagCastActivity extends AppCompatActivity implements ActivityCo
                         img_checkin_load.setVisibility(View.INVISIBLE);
                         bar.setVisibility(View.INVISIBLE);
                         if(flgBeacon){
+                            if(pickserial.equals(serial)){
                             Toast.makeText(context, "Scan Succesfully!", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(context, MainShoppingActivity.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putString("seri",serial);
-                    intent.putExtras(bundle);
-                    startActivity(intent);
+                            Intent intent = new Intent(context, MainShoppingActivity.class);
+                            Bundle bundle = new Bundle();
+                            bundle.putString("seri",serial);
+                            intent.putExtras(bundle);
+                            startActivity(intent);
+                            }else {
+                                Toast.makeText(context, "Vui lòng nhận đúng bàn đã chọn", Toast.LENGTH_SHORT).show();
+                                btn_scan.setEnabled(true);
+                            }
                         }else{
                             btn_scan.setBackground(getDrawable(scanfail));
                             btn_scan.setEnabled(true);

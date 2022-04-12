@@ -1,4 +1,4 @@
-package com.example.shoppingpay.loginregister;
+package com.example.shoppingpay.views.loginregister;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -17,7 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.shoppingpay.R;
 import com.example.shoppingpay.tagcastscan.MainTagCastActivity;
-import com.example.shoppingpay.tagcastscan.PaymentAcceptAnimation;
+import com.example.shoppingpay.views.choosetable.ChooseTableActivity;
 
 public class LoginRegisterActivity extends AppCompatActivity {
 
@@ -34,7 +34,9 @@ public class LoginRegisterActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        super.getSupportActionBar().hide();
         setContentView(R.layout.login_page);
+
 
         bt1 = findViewById(R.id.login);
         bt2 = findViewById(R.id.dky);
@@ -50,12 +52,12 @@ public class LoginRegisterActivity extends AppCompatActivity {
                 String str2 = mk.getText().toString().trim();
                 if (!str1.isEmpty() || !str2.isEmpty()) {
                     if(str1.equals(taikhoan) && str2.equals(matkhau)){
-                        Intent intent1 = new Intent(LoginRegisterActivity.this, MainTagCastActivity.class);
+                        Intent intent1 = new Intent(LoginRegisterActivity.this, ChooseTableActivity.class);
                         startActivity(intent1);
                         overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_left);
                         Toast.makeText(LoginRegisterActivity.this, "Welcome back, " + str1, Toast.LENGTH_SHORT).show();
                     }else if(str1.equals("1") && str2.equals("1")){
-                        Intent intent2 = new Intent(LoginRegisterActivity.this, MainTagCastActivity.class);
+                        Intent intent2 = new Intent(LoginRegisterActivity.this, ChooseTableActivity.class);
                         startActivity(intent2);
                         overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_left);
                         Toast.makeText(LoginRegisterActivity.this, "Welcome back, Sang đẹp trai ", Toast.LENGTH_SHORT).show();

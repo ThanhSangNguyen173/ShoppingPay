@@ -1,4 +1,4 @@
-package com.example.shoppingpay.loginregister;
+package com.example.shoppingpay.views.loginregister;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.shoppingpay.R;
+import com.example.shoppingpay.views.choosetable.ChooseTableActivity;
 
 public class IntroPreLogin extends AppCompatActivity {
     Animation zoom;
@@ -20,7 +21,9 @@ public class IntroPreLogin extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        super.getSupportActionBar().hide();
         setContentView(R.layout.activity_intro);
+
         img_intro = findViewById(R.id.img_intro);
         zoom = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.zoom);
         img_intro = findViewById(R.id.img_intro);
@@ -36,7 +39,6 @@ public class IntroPreLogin extends AppCompatActivity {
                 finish();
             }
         }, 4000);
-
 
     }
 }

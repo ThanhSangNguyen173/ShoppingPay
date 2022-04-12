@@ -25,6 +25,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ShoppingPay">
         <activity
+            android:name=".views.choosetable.ChooseTableActivity"
+            android:exported="false" />
+        <activity
             android:name=".tagcastscan.PaymentAcceptAnimation"
             android:exported="false" />
         <activity
@@ -37,10 +40,10 @@
             android:name=".views.MainShoppingActivity"
             android:exported="false" />
         <activity
-            android:name=".loginregister.LoginRegisterActivity"
+            android:name=".views.loginregister.LoginRegisterActivity"
             android:exported="false"/>
         <activity
-            android:name=".loginregister.IntroPreLogin"
+            android:name=".views.loginregister.IntroPreLogin"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
