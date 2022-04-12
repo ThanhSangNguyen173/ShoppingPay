@@ -36,6 +36,7 @@ public class ChooseTableActivity extends AppCompatActivity {
         mData = FirebaseDatabase.getInstance().getReference();
 
         anhxa();
+        clickListener();
 
         tabHost.setup();
         TabHost.TabSpec spec1,spec2;
@@ -45,12 +46,13 @@ public class ChooseTableActivity extends AppCompatActivity {
         spec1.setIndicator("Tầng 1");
         tabHost.addTab(spec1);
 
-        spec2 = tabHost.newTabSpec("t1");
+        spec2 = tabHost.newTabSpec("t2");
         spec2.setContent(R.id.tab2);
         spec2.setIndicator("Tầng 2");
         tabHost.addTab(spec2);
+    }
 
-
+    private void clickListener() {
         imgbtn1.setOnClickListener(this::onClick);
         imgbtn2.setOnClickListener(this::onClick);
         imgbtn3.setOnClickListener(this::onClick);
@@ -82,52 +84,42 @@ public class ChooseTableActivity extends AppCompatActivity {
             case R.id.btn_table1:
                 mData.child("PickTable").setValue("1");
                 GetDataTable();
-                IntentToScan();
                 break;
             case R.id.btn_table2:
                 mData.child("PickTable").setValue("2");
                 GetDataTable();
-                IntentToScan();
                 break;
             case R.id.btn_table3:
                 mData.child("PickTable").setValue("JPN-PPER-0292-8289-7478");
                 GetDataTable();
-                IntentToScan();
                 break;
             case R.id.btn_table4:
                 mData.child("PickTable").setValue("4");
                 GetDataTable();
-                IntentToScan();
                 break;
             case R.id.btn_table5:
                 mData.child("PickTable").setValue("5");
                 GetDataTable();
-                IntentToScan();
                 break;
             case R.id.btn_table6:
                 mData.child("PickTable").setValue("6");
                 GetDataTable();
-                IntentToScan();
                 break;
             case R.id.btn_table21:
                 mData.child("PickTable").setValue("21");
                 GetDataTable();
-                IntentToScan();
                 break;
             case R.id.btn_table22:
                 mData.child("PickTable").setValue("22");
                 GetDataTable();
-                IntentToScan();
                 break;
             case R.id.btn_table23:
                 mData.child("PickTable").setValue("JPN-PPER-0292-8289-7478");
                 GetDataTable();
-                IntentToScan();
                 break;
             case R.id.btn_table24:
                 mData.child("PickTable").setValue("24");
                 GetDataTable();
-                IntentToScan();
                 break;
         }
     }
@@ -136,20 +128,17 @@ public class ChooseTableActivity extends AppCompatActivity {
         mData.child("PickTable").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                pickserial = snapshot.getValue(String.class);
+                pickserial = snapshot.getValue().toString();
+                Intent intent = new Intent(ChooseTableActivity.this, MainTagCastActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("seri",pickserial);
+                intent.putExtras(bundle);
+                startActivity(intent);
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Toast.makeText(ChooseTableActivity.this, "Lỗi dữ liệu, vui lòng thử lại!", Toast.LENGTH_SHORT).show();
             }
         });
-    }
-
-    private void IntentToScan() {
-        Intent intent = new Intent(ChooseTableActivity.this, MainTagCastActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putString("seri",pickserial);
-        intent.putExtras(bundle);
-        startActivity(intent);
     }
 }
