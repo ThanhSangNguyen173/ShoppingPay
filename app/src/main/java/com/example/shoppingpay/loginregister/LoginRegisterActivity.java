@@ -17,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.shoppingpay.R;
 import com.example.shoppingpay.tagcastscan.MainTagCastActivity;
+import com.example.shoppingpay.tagcastscan.PaymentAcceptAnimation;
 
 public class LoginRegisterActivity extends AppCompatActivity {
 
