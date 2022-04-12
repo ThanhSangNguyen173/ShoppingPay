@@ -1,4 +1,4 @@
-package com.example.shoppingpay.loginregister;
+package com.example.shoppingpay.views.loginregister;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,7 +7,6 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.shoppingpay.R;

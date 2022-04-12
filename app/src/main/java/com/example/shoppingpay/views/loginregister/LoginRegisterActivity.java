@@ -1,4 +1,4 @@
-package com.example.shoppingpay.loginregister;
+package com.example.shoppingpay.views.loginregister;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -12,13 +12,11 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.shoppingpay.R;
 import com.example.shoppingpay.tagcastscan.MainTagCastActivity;
-import com.example.shoppingpay.tagcastscan.PaymentAcceptAnimation;
 
 public class LoginRegisterActivity extends AppCompatActivity {
 
