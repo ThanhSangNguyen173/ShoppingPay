@@ -40,6 +40,25 @@ public class ChooseTableActivity extends AppCompatActivity {
         anhxa();
         clickListener();
 
+        btn_checktable.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                mData.child("TB1").setValue("t");
+                mData.child("TB2").setValue("t");
+                mData.child("TB3").setValue("t");
+                mData.child("TB4").setValue("t");
+                mData.child("TB5").setValue("t");
+                mData.child("TB6").setValue("t");
+                mData.child("TB21").setValue("t");
+                mData.child("TB22").setValue("t");
+                mData.child("TB23").setValue("t");
+                mData.child("TB24").setValue("t");
+                btn_checktable.setVisibility(View.GONE);
+                getTableStatus();
+                return false;
+            }
+        });
+
         tabHost.setup();
         TabHost.TabSpec spec1,spec2;
 
@@ -213,6 +232,7 @@ public class ChooseTableActivity extends AppCompatActivity {
         switch (v.getId()){
             case R.id.checktable:
                 getTableStatus();
+                btn_checktable.setVisibility(View.GONE);
                 break;
             case R.id.btn_table1:
                 mData.child("PickTable").setValue("1");
