@@ -237,61 +237,61 @@ public class ChooseTableActivity extends AppCompatActivity {
                 btn_checktable.setVisibility(View.GONE);
                 break;
             case R.id.btn_table1:
-                mData.child("PickTable").setValue("1");
+                pickserial = "1";
                 mData.child("TB1").setValue("f");
                 tablenumber = "table1";
                 GetDataTable();
                 break;
             case R.id.btn_table2:
-                mData.child("PickTable").setValue("JPN-PPER-0099-9636-8472");
+                pickserial ="JPN-PPER-0099-9636-8472";
                 mData.child("TB2").setValue("f");
                 tablenumber = "table2";
                 GetDataTable();
                 break;
             case R.id.btn_table3:
-                mData.child("PickTable").setValue("JPN-PPER-0292-8289-7478");
+                pickserial ="JPN-PPER-0292-8289-7478";
                 mData.child("TB3").setValue("f");
                 tablenumber = "table3";
                 GetDataTable();
                 break;
             case R.id.btn_table4:
-                mData.child("PickTable").setValue("4");
+                pickserial ="4";
                 mData.child("TB4").setValue("f");
                 tablenumber = "table4";
                 GetDataTable();
                 break;
             case R.id.btn_table5:
-                mData.child("PickTable").setValue("5");
+                pickserial ="5";
                 mData.child("TB5").setValue("f");
                 tablenumber = "table5";
                 GetDataTable();
                 break;
             case R.id.btn_table6:
-                mData.child("PickTable").setValue("6");
+                pickserial ="6";
                 mData.child("TB6").setValue("f");
                 tablenumber = "table6";
                 GetDataTable();
                 break;
             case R.id.btn_table21:
-                mData.child("PickTable").setValue("JPN-PPER-0099-9636-8472");
+                pickserial ="JPN-PPER-0099-9636-8472";
                 mData.child("TB21").setValue("f");
                 tablenumber = "table21";
                 GetDataTable();
                 break;
             case R.id.btn_table22:
-                mData.child("PickTable").setValue("22");
+                pickserial ="22";
                 mData.child("TB22").setValue("f");
                 tablenumber = "table22";
                 GetDataTable();
                 break;
             case R.id.btn_table23:
-                mData.child("PickTable").setValue("JPN-PPER-0292-8289-7478");
+                pickserial ="JPN-PPER-0292-8289-7478";
                 mData.child("TB23").setValue("f");
                 tablenumber = "table23";
                 GetDataTable();
                 break;
             case R.id.btn_table24:
-                mData.child("PickTable").setValue("24");
+                pickserial ="24";
                 mData.child("TB24").setValue("f");
                 tablenumber = "table24";
                 GetDataTable();
@@ -300,21 +300,11 @@ public class ChooseTableActivity extends AppCompatActivity {
     }
 
     private void GetDataTable() {
-        mData.child("PickTable").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                pickserial = snapshot.getValue().toString();
                 Intent intent = new Intent(ChooseTableActivity.this, MainTagCastActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("seri",pickserial);
                 bundle.putString("table",tablenumber);
                 intent.putExtras(bundle);
                 startActivity(intent);
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(ChooseTableActivity.this, "Lỗi dữ liệu, vui lòng thử lại!", Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 }
