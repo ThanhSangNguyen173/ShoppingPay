@@ -1,11 +1,13 @@
 package com.example.shoppingpay.views.choosetable;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TabHost;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -21,7 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class ChooseTableActivity extends AppCompatActivity {
-
+    TextView textView;
     DatabaseReference mData;
     String pickserial, tablenumber;
     String tb1,tb2,tb3,tb4,tb5,tb6,tb21,tb22,tb23,tb24;
