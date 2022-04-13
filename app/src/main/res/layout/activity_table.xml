@@ -13,6 +13,7 @@
         android:id="@+id/tabhost_table"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:theme="@style/TabWidgetTheme"
         android:layout_weight="21">
 
         <LinearLayout
