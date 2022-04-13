@@ -3,6 +3,7 @@ package com.example.shoppingpay.views.choosetable;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TabHost;
 import android.widget.Toast;
@@ -23,8 +24,9 @@ public class ChooseTableActivity extends AppCompatActivity {
 
     DatabaseReference mData;
     String pickserial, tablenumber;
-
+    String tb1,tb2,tb3,tb4,tb5,tb6,tb21,tb22,tb23,tb24;
     TabHost tabHost;
+    Button btn_checktable;
     ImageButton imgbtn1,imgbtn2,imgbtn3,imgbtn4,imgbtn5,imgbtn6,imgbtn21,imgbtn22,imgbtn23,imgbtn24;
 
 
@@ -52,6 +54,121 @@ public class ChooseTableActivity extends AppCompatActivity {
         tabHost.addTab(spec2);
     }
 
+    private void getTableStatus() {
+        mData.child("TB1").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                tb1 = snapshot.getValue().toString();
+                if(tb1.equals("f")){imgbtn1.setEnabled(false);}else imgbtn1.setEnabled(true);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(ChooseTableActivity.this, "Lỗi dữ liệu, vui lòng thử lại!", Toast.LENGTH_SHORT).show();
+            }
+        });
+        mData.child("TB2").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                tb2 = snapshot.getValue().toString();
+                if(tb2.equals("f")){imgbtn2.setEnabled(false);}else imgbtn2.setEnabled(true);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(ChooseTableActivity.this, "Lỗi dữ liệu, vui lòng thử lại!", Toast.LENGTH_SHORT).show();
+            }
+        });
+        mData.child("TB3").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                tb3 = snapshot.getValue().toString();
+                if(tb3.equals("f")){imgbtn3.setEnabled(false);}else imgbtn3.setEnabled(true);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(ChooseTableActivity.this, "Lỗi dữ liệu, vui lòng thử lại!", Toast.LENGTH_SHORT).show();
+            }
+        });
+        mData.child("TB4").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                tb4 = snapshot.getValue().toString();
+                if(tb4.equals("f")){imgbtn4.setEnabled(false);}else imgbtn4.setEnabled(true);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(ChooseTableActivity.this, "Lỗi dữ liệu, vui lòng thử lại!", Toast.LENGTH_SHORT).show();
+            }
+        });
+        mData.child("TB5").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                tb5 = snapshot.getValue().toString();
+                if(tb5.equals("f")){imgbtn5.setEnabled(false);}else imgbtn5.setEnabled(true);
+
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(ChooseTableActivity.this, "Lỗi dữ liệu, vui lòng thử lại!", Toast.LENGTH_SHORT).show();
+            }
+        });
+        mData.child("TB6").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                tb6 = snapshot.getValue().toString();
+                if(tb6.equals("f")){imgbtn6.setEnabled(false);}else imgbtn6.setEnabled(true);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(ChooseTableActivity.this, "Lỗi dữ liệu, vui lòng thử lại!", Toast.LENGTH_SHORT).show();
+            }
+        });
+        mData.child("TB21").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                tb21 = snapshot.getValue().toString();
+                if(tb21.equals("f")){imgbtn21.setEnabled(false);}else imgbtn21.setEnabled(true);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(ChooseTableActivity.this, "Lỗi dữ liệu, vui lòng thử lại!", Toast.LENGTH_SHORT).show();
+            }
+        });
+        mData.child("TB22").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                tb22 = snapshot.getValue().toString();
+                if(tb22.equals("f")){imgbtn22.setEnabled(false);}else imgbtn22.setEnabled(true);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(ChooseTableActivity.this, "Lỗi dữ liệu, vui lòng thử lại!", Toast.LENGTH_SHORT).show();
+            }
+        });
+        mData.child("TB23").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                tb23 = snapshot.getValue().toString();
+                if(tb23.equals("f")){imgbtn23.setEnabled(false);}else imgbtn23.setEnabled(true);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(ChooseTableActivity.this, "Lỗi dữ liệu, vui lòng thử lại!", Toast.LENGTH_SHORT).show();
+            }
+        });
+        mData.child("TB24").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                tb24 = snapshot.getValue().toString();
+                if(tb24.equals("f")){imgbtn24.setEnabled(false);}else imgbtn24.setEnabled(true);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(ChooseTableActivity.this, "Lỗi dữ liệu, vui lòng thử lại!", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
     private void clickListener() {
         imgbtn1.setOnClickListener(this::onClick);
         imgbtn2.setOnClickListener(this::onClick);
@@ -63,9 +180,11 @@ public class ChooseTableActivity extends AppCompatActivity {
         imgbtn22.setOnClickListener(this::onClick);
         imgbtn23.setOnClickListener(this::onClick);
         imgbtn24.setOnClickListener(this::onClick);
+        btn_checktable.setOnClickListener(this::onClick);
     }
 
     private void anhxa() {
+        btn_checktable = findViewById(R.id.checktable);
         tabHost = findViewById(R.id.tabhost_table);
         imgbtn1 = findViewById(R.id.btn_table1);
         imgbtn2 = findViewById(R.id.btn_table2);
@@ -78,73 +197,81 @@ public class ChooseTableActivity extends AppCompatActivity {
         imgbtn23 = findViewById(R.id.btn_table23);
         imgbtn24 = findViewById(R.id.btn_table24);
 
+        imgbtn1.setEnabled(false);
         imgbtn2.setEnabled(false);
+        imgbtn3.setEnabled(false);
         imgbtn4.setEnabled(false);
         imgbtn5.setEnabled(false);
         imgbtn6.setEnabled(false);
+        imgbtn21.setEnabled(false);
         imgbtn22.setEnabled(false);
+        imgbtn23.setEnabled(false);
+        imgbtn24.setEnabled(false);
     }
 
     public void onClick(View v) {
         switch (v.getId()){
+            case R.id.checktable:
+                getTableStatus();
+                break;
             case R.id.btn_table1:
                 mData.child("PickTable").setValue("1");
+                mData.child("TB1").setValue("f");
                 tablenumber = "table1";
-                imgbtn1.setEnabled(false);
                 GetDataTable();
                 break;
             case R.id.btn_table2:
-                mData.child("PickTable").setValue("2");
+                mData.child("PickTable").setValue("JPN-PPER-0099-9636-8472");
+                mData.child("TB2").setValue("f");
                 tablenumber = "table2";
-                imgbtn2.setEnabled(false);
                 GetDataTable();
                 break;
             case R.id.btn_table3:
                 mData.child("PickTable").setValue("JPN-PPER-0292-8289-7478");
+                mData.child("TB3").setValue("f");
                 tablenumber = "table3";
-                imgbtn3.setEnabled(false);
                 GetDataTable();
                 break;
             case R.id.btn_table4:
                 mData.child("PickTable").setValue("4");
+                mData.child("TB4").setValue("f");
                 tablenumber = "table4";
-                imgbtn4.setEnabled(false);
                 GetDataTable();
                 break;
             case R.id.btn_table5:
                 mData.child("PickTable").setValue("5");
+                mData.child("TB5").setValue("f");
                 tablenumber = "table5";
-                imgbtn5.setEnabled(false);
                 GetDataTable();
                 break;
             case R.id.btn_table6:
                 mData.child("PickTable").setValue("6");
+                mData.child("TB6").setValue("f");
                 tablenumber = "table6";
-                imgbtn6.setEnabled(false);
                 GetDataTable();
                 break;
             case R.id.btn_table21:
-                mData.child("PickTable").setValue("21");
+                mData.child("PickTable").setValue("JPN-PPER-0099-9636-8472");
+                mData.child("TB21").setValue("f");
                 tablenumber = "table21";
-                imgbtn21.setEnabled(false);
                 GetDataTable();
                 break;
             case R.id.btn_table22:
                 mData.child("PickTable").setValue("22");
+                mData.child("TB22").setValue("f");
                 tablenumber = "table22";
-                imgbtn22.setEnabled(false);
                 GetDataTable();
                 break;
             case R.id.btn_table23:
                 mData.child("PickTable").setValue("JPN-PPER-0292-8289-7478");
+                mData.child("TB23").setValue("f");
                 tablenumber = "table23";
-                imgbtn23.setEnabled(false);
                 GetDataTable();
                 break;
             case R.id.btn_table24:
                 mData.child("PickTable").setValue("24");
+                mData.child("TB24").setValue("f");
                 tablenumber = "table24";
-                imgbtn24.setEnabled(false);
                 GetDataTable();
                 break;
         }
