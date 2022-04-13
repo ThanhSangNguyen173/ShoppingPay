@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.choosetable.ChooseTableActivity"
+    android:orientation="vertical"
+    android:background="@color/LIGHT_PRIMARY_COLOR"
+    android:weightSum="22">
+
+    <TabHost
+        android:id="@+id/tabhost_table"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/TabWidgetTheme"
+        android:layout_weight="21">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TabWidget
+                android:id="@android:id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/PRIMARY_COLOR"
+                />
+
+            <FrameLayout
+                android:id="@android:id/tabcontent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:id="@+id/tab1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <include layout="@layout/layout_floor1"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/tab2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <include layout="@layout/layout_floor2"/>
+
+                </LinearLayout>
+
+            </FrameLayout>
+        </LinearLayout>
+    </TabHost>
+    <Button
+        android:id="@+id/checktable"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Check table available..."
+        android:background="@color/PRIMARY_COLOR"
+        android:layout_weight="1"/>
+</LinearLayout>

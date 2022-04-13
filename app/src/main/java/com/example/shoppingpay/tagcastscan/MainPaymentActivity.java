@@ -2,6 +2,7 @@ package com.example.shoppingpay.tagcastscan;
 
 import static com.example.shoppingpay.R.drawable.scanfail;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentManager;
@@ -39,20 +40,23 @@ public class MainPaymentActivity extends AppCompatActivity implements ActivityCo
     ImageView img_checkin_load;
     public TGCAdapter tgcAdapter;
     private boolean flgBeacon = false;
-    private String serial,serial2;
+    private String serial,serial2, tablenumber;
     private Map<String,String> map;
     public int mErrorDialogType = ErrorFragment.TYPE_NO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        super.getSupportActionBar().hide();
         setContentView(R.layout.activity_payment_main);
+
         final Context context = getApplicationContext();
 
         tgcAdapter = TGCAdapter.getInstance(context);
         tgcAdapter.prepare();
         Bundle bundle = getIntent().getExtras();
         serial = bundle.getString("seri");
+        tablenumber = bundle.getString("table");
 
         final TGCScanListener mTGCScanListener = new TGCScanListener() {
             @Override
@@ -195,6 +199,9 @@ public class MainPaymentActivity extends AppCompatActivity implements ActivityCo
                         if(flgBeacon){
                             if(serial2.equals(serial)){
                                 Intent payment = new Intent(context,PaymentAcceptAnimation.class);
+                                Bundle bundle = new Bundle();
+                                bundle.putString("table",tablenumber);
+                                payment.putExtras(bundle);
                                 startActivity(payment);
                             }else{
                                 btn_scan.setEnabled(true);
