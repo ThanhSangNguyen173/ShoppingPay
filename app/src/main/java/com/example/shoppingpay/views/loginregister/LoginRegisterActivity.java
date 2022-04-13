@@ -55,12 +55,12 @@ public class LoginRegisterActivity extends AppCompatActivity {
                         Intent intent1 = new Intent(LoginRegisterActivity.this, ChooseTableActivity.class);
                         startActivity(intent1);
                         overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_left);
-                        Toast.makeText(LoginRegisterActivity.this, "Welcome back, " + str1, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginRegisterActivity.this, "Vui lòng chọn CHECK AVAILABLE TABLE để hiển thị bàn đang sẵn sàng", Toast.LENGTH_SHORT).show();
                     }else if(str1.equals("1") && str2.equals("1")){
                         Intent intent2 = new Intent(LoginRegisterActivity.this, ChooseTableActivity.class);
                         startActivity(intent2);
                         overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_left);
-                        Toast.makeText(LoginRegisterActivity.this, "Welcome back, Sang đẹp trai ", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginRegisterActivity.this, "Vui lòng chọn CHECK AVAILABLE TABLE để hiển thị bàn đang sẵn sàng", Toast.LENGTH_SHORT).show();
                     }else {
                         Toast.makeText(LoginRegisterActivity.this, "Vui lòng kiểm tra lại ID/Password!", Toast.LENGTH_SHORT).show();
                     }

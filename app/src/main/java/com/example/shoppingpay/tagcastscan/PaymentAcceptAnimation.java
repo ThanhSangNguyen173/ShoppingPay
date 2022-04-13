@@ -13,9 +13,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.shoppingpay.R;
 import com.example.shoppingpay.views.choosetable.ChooseTableActivity;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class PaymentAcceptAnimation extends AppCompatActivity {
     TextView animation, txt_status;
+    DatabaseReference mData;
     LottieAnimationView lottie;
     ImageView img_thanks;
     String tablenumber;
@@ -26,31 +29,43 @@ public class PaymentAcceptAnimation extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         super.getSupportActionBar().hide();
         setContentView(R.layout.payment_accept);
+
+        mData = FirebaseDatabase.getInstance().getReference();
         Bundle bundle = getIntent().getExtras();
         tablenumber = bundle.getString("table");
 
         anhxa();
 
         switch (tablenumber){
-            case "ban1": imgbtn1.setEnabled(true);
+            case "table1":
+                mData.child("TB1").setValue("t");
                 break;
-            case "ban2": imgbtn2.setEnabled(true);
+            case "table2":
+                mData.child("TB2").setValue("t");
                 break;
-            case "ban3": imgbtn3.setEnabled(true);
+            case "table3":
+                mData.child("TB3").setValue("t");
                 break;
-            case "ban4": imgbtn4.setEnabled(true);
+            case "table4":
+                mData.child("TB4").setValue("t");
                 break;
-            case "ban5": imgbtn5.setEnabled(true);
+            case "table5":
+                mData.child("TB5").setValue("t");
                 break;
-            case "ban6": imgbtn6.setEnabled(true);
+            case "table6":
+                mData.child("TB6").setValue("t");
                 break;
-            case "ban21": imgbtn21.setEnabled(true);
+            case "table21":
+                mData.child("TB21").setValue("t");
                 break;
-            case "ban22": imgbtn22.setEnabled(true);
+            case "table22":
+                mData.child("TB22").setValue("t");
                 break;
-            case "ban23": imgbtn23.setEnabled(true);
+            case "table23":
+                mData.child("TB23").setValue("t");
                 break;
-            case "ban24": imgbtn24.setEnabled(true);
+            case "table24":
+                mData.child("TB24").setValue("t");
                 break;
         }
 
