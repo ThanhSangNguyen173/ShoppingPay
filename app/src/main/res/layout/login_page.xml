@@ -40,7 +40,7 @@
             android:layout_marginTop="20dp"
             android:text="Member of BoxyzVN"
             android:textColor="@color/DARK_PRIMARY_COLOR"
-            android:textSize="35sp"
+            android:textSize="30sp"
             android:textStyle="italic|bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.494"
@@ -127,8 +127,8 @@
 
     <ImageView
         android:id="@+id/imgLogo_login"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:src="@drawable/logo_login"
         app:layout_constraintVertical_bias=".3"
         app:layout_constraintBottom_toTopOf="@+id/constraintlayout"
@@ -142,7 +142,7 @@
         android:text="Wellcome"
         android:textColor="#ffff"
         android:textStyle="bold"
-        android:textSize="25sp"
+        android:textSize="35sp"
         app:layout_constraintVertical_bias=".2"
         app:layout_constraintBottom_toTopOf="@id/constraintlayout"
         app:layout_constraintEnd_toEndOf="parent"
