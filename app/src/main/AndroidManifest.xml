@@ -25,6 +25,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ShoppingPay">
         <activity
+            android:name=".views.OwnerActivity"
+            android:exported="false" />
+        <activity
             android:name=".views.choosetable.ChooseTableActivity"
             android:exported="false" />
         <activity
@@ -41,15 +44,16 @@
             android:exported="false" />
         <activity
             android:name=".views.loginregister.LoginRegisterActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".views.DashboardActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".views.loginregister.IntroPreLogin"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
