@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TabHost;
@@ -41,6 +43,9 @@ public class ChooseTableActivity extends AppCompatActivity {
 
         anhxa();
         clickListener();
+
+        Animation alpha2 = AnimationUtils.loadAnimation(this,R.anim.alpha2);
+        btn_checktable.startAnimation(alpha2);
 
         tabHost.setup();
         TabHost.TabSpec spec1,spec2;
@@ -207,6 +212,7 @@ public class ChooseTableActivity extends AppCompatActivity {
             case R.id.checktable:
                 getTableStatus();
                 tabHost.setVisibility(View.VISIBLE);
+                btn_checktable.clearAnimation();
                 btn_checktable.setVisibility(View.GONE);
                 break;
             case R.id.btn_table1:
