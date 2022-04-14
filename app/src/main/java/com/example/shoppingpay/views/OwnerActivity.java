@@ -21,6 +21,7 @@ public class OwnerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        super.getSupportActionBar().hide();
         setContentView(R.layout.activity_owner);
         mData = FirebaseDatabase.getInstance().getReference();
         edt_key = findViewById(R.id.edt_key);
