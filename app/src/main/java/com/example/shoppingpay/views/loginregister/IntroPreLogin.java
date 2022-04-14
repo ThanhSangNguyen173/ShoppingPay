@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.shoppingpay.R;
+import com.example.shoppingpay.views.DashboardActivity;
 import com.example.shoppingpay.views.choosetable.ChooseTableActivity;
 
 public class IntroPreLogin extends AppCompatActivity {
@@ -32,7 +33,7 @@ public class IntroPreLogin extends AppCompatActivity {
         h.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intro = new Intent(getApplicationContext(),LoginRegisterActivity.class);
+                Intent intro = new Intent(getApplicationContext(), DashboardActivity.class);
                 startActivity(intro);
                 overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
                 finish();
