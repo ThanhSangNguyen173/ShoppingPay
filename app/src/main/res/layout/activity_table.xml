@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".views.choosetable.ChooseTableActivity"
     android:orientation="vertical"
-    android:background="@color/LIGHT_PRIMARY_COLOR"
+    android:background="@drawable/bgtable"
     android:weightSum="22">
 
     <TabHost

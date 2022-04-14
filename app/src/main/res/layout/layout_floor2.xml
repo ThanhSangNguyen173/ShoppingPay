@@ -57,12 +57,7 @@
                 android:text="Table 2"
                 android:textStyle="bold" />
         </LinearLayout>
-
-
-
-
     </LinearLayout>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -116,10 +111,5 @@
                 android:gravity="center"
                 android:textStyle="bold" />
         </LinearLayout>
-
-
-
     </LinearLayout>
-
-
 </LinearLayout>

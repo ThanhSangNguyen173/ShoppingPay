@@ -218,22 +218,14 @@ public class ChooseTableActivity extends AppCompatActivity {
         imgbtn23 = findViewById(R.id.btn_table23);
         imgbtn24 = findViewById(R.id.btn_table24);
 
-        imgbtn1.setEnabled(false);
-        imgbtn2.setEnabled(false);
-        imgbtn3.setEnabled(false);
-        imgbtn4.setEnabled(false);
-        imgbtn5.setEnabled(false);
-        imgbtn6.setEnabled(false);
-        imgbtn21.setEnabled(false);
-        imgbtn22.setEnabled(false);
-        imgbtn23.setEnabled(false);
-        imgbtn24.setEnabled(false);
+        tabHost.setVisibility(View.INVISIBLE);
     }
 
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.checktable:
                 getTableStatus();
+                tabHost.setVisibility(View.VISIBLE);
                 btn_checktable.setVisibility(View.GONE);
                 break;
             case R.id.btn_table1:
