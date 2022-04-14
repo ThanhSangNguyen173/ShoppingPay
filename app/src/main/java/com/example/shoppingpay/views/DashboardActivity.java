@@ -1,6 +1,7 @@
 package com.example.shoppingpay.views;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -52,13 +53,15 @@ public class DashboardActivity extends AppCompatActivity {
             break;
             case R.id.cv_location:
                 Toast.makeText(this, "Hihi bị lừa.", Toast.LENGTH_SHORT).show();
-                break;
+            break;
             case R.id.cv_support:
-                Toast.makeText(this, "Hihi bị lừa.", Toast.LENGTH_SHORT).show();
-                break;
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://boxyzvn.com/"));
+                startActivity(browserIntent);
+            break;
             case R.id.cv_contact:
-                Toast.makeText(this, "Hihi bị lừa.", Toast.LENGTH_SHORT).show();
-                break;
+                Intent intentcall = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + "0913902365"));
+                startActivity(intentcall);
+            break;
         }
     }
 
