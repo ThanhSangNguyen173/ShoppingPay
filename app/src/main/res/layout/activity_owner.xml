@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.OwnerActivity"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:background="@color/DARK_PRIMARY_COLOR">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ENTER THE OWNER KEY"
+        android:textColor="@color/TEXT_ICONS"
+        android:textStyle="bold"
+        android:textSize="30dp"/>
+    <EditText
+        android:layout_marginTop="20dp"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:inputType="numberPassword"
+        android:id="@+id/edt_key"/>
+    <Button
+        android:id="@+id/btn_reset"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/TEXT_ICONS"
+        android:textColor="@color/DARK_PRIMARY_COLOR"
+        android:text="reset table" />
+
+</LinearLayout>

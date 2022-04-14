@@ -2,18 +2,15 @@ package com.example.shoppingpay.tagcastscan;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.shoppingpay.R;
 import com.example.shoppingpay.views.choosetable.ChooseTableActivity;
-import com.example.shoppingpay.views.loginregister.LoginRegisterActivity;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -83,7 +80,7 @@ public class PaymentAcceptAnimation extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Toast.makeText(PaymentAcceptAnimation.this, "Vui lòng chọn CHECK AVAILABLE TABLE để hiển thị bàn đang sẵn sàng", Toast.LENGTH_SHORT).show();
+                Toast.makeText(PaymentAcceptAnimation.this, "Thank you, see you soon.", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(PaymentAcceptAnimation.this, ChooseTableActivity.class);
                 startActivity(intent);
             }

@@ -42,25 +42,6 @@ public class ChooseTableActivity extends AppCompatActivity {
         anhxa();
         clickListener();
 
-        btn_checktable.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View view) {
-                mData.child("TB1").setValue("t");
-                mData.child("TB2").setValue("t");
-                mData.child("TB3").setValue("t");
-                mData.child("TB4").setValue("t");
-                mData.child("TB5").setValue("t");
-                mData.child("TB6").setValue("t");
-                mData.child("TB21").setValue("t");
-                mData.child("TB22").setValue("t");
-                mData.child("TB23").setValue("t");
-                mData.child("TB24").setValue("t");
-                btn_checktable.setVisibility(View.GONE);
-                getTableStatus();
-                return false;
-            }
-        });
-
         tabHost.setup();
         TabHost.TabSpec spec1,spec2;
 
@@ -218,22 +199,14 @@ public class ChooseTableActivity extends AppCompatActivity {
         imgbtn23 = findViewById(R.id.btn_table23);
         imgbtn24 = findViewById(R.id.btn_table24);
 
-        imgbtn1.setEnabled(false);
-        imgbtn2.setEnabled(false);
-        imgbtn3.setEnabled(false);
-        imgbtn4.setEnabled(false);
-        imgbtn5.setEnabled(false);
-        imgbtn6.setEnabled(false);
-        imgbtn21.setEnabled(false);
-        imgbtn22.setEnabled(false);
-        imgbtn23.setEnabled(false);
-        imgbtn24.setEnabled(false);
+        tabHost.setVisibility(View.INVISIBLE);
     }
 
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.checktable:
                 getTableStatus();
+                tabHost.setVisibility(View.VISIBLE);
                 btn_checktable.setVisibility(View.GONE);
                 break;
             case R.id.btn_table1:
