@@ -83,7 +83,7 @@ public class PaymentAcceptAnimation extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Toast.makeText(PaymentAcceptAnimation.this, "Vui lòng chọn CHECK AVAILABLE TABLE để hiển thị bàn đang sẵn sàng", Toast.LENGTH_SHORT).show();
+                Toast.makeText(PaymentAcceptAnimation.this, "Thank you, see you soon.", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(PaymentAcceptAnimation.this, ChooseTableActivity.class);
                 startActivity(intent);
             }
