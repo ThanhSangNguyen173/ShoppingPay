@@ -43,6 +43,9 @@
             android:name=".views.loginregister.LoginRegisterActivity"
             android:exported="false"/>
         <activity
+            android:name=".views.DashboardActivity"
+            android:exported="false"/>
+        <activity
             android:name=".views.loginregister.IntroPreLogin"
             android:exported="true">
             <intent-filter>
