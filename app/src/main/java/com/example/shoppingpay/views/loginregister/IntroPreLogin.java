@@ -41,7 +41,7 @@ public class IntroPreLogin extends AppCompatActivity {
         h.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intro = new Intent(getApplicationContext(), DashboardActivity.class);
+                Intent intro = new Intent(getApplicationContext(), advertisementActivity.class);
                 startActivity(intro);
                 overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
                 finish();
