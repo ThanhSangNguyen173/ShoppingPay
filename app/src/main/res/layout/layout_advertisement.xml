@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="571dp" />
+        app:layout_constraintGuide_percent="0.57" />
 
     <TextView
         android:id="@+id/intro_title"
@@ -47,7 +47,7 @@
     <ImageView
         android:id="@+id/intro_img"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="32dp"
