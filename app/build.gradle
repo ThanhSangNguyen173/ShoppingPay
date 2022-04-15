@@ -1,7 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'realm-android'
-
+    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
 }
 
 android {
@@ -67,6 +67,9 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics'
 
     implementation platform('com.google.firebase:firebase-bom:29.3.0')
+
+    implementation 'com.google.android.gms:play-services-maps:18.0.2'
+
 }
 
 apply plugin: 'com.google.gms.google-services'
