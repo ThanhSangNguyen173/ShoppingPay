@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -54,7 +53,8 @@ public class DashboardActivity extends AppCompatActivity {
                 startActivity(intent3);
             break;
             case R.id.cv_location:
-                Toast.makeText(this, "Hihi bị lừa.", Toast.LENGTH_SHORT).show();
+                Intent intent4 = new Intent(DashboardActivity.this, LocationActivity.class);
+                startActivity(intent4);
             break;
             case R.id.cv_support:
                 AlertDialog.Builder builder2 = new AlertDialog.Builder(DashboardActivity.this, android.R.style.Theme_DeviceDefault_Light_Dialog);

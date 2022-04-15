@@ -25,7 +25,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class ChooseTableActivity extends AppCompatActivity {
-    TextView textView;
     DatabaseReference mData;
     String pickserial, tablenumber;
     String tb1,tb2,tb3,tb4,tb5,tb6,tb21,tb22,tb23,tb24;
