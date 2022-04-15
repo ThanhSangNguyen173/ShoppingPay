@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.shoppingpay.R;
 import com.example.shoppingpay.views.DashboardActivity;
+import com.example.shoppingpay.views.advertisementActivity;
 import com.example.shoppingpay.views.choosetable.ChooseTableActivity;
 
 public class IntroPreLogin extends AppCompatActivity {
