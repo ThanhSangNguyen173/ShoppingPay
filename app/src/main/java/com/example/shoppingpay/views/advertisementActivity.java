@@ -22,10 +22,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class advertisementActivity extends AppCompatActivity {
-    Button btnnext;
+    Button btnnext,btnstart;
     private ViewPager screenPager;
     private IntroViewAdapter introViewAdapter;
     TabLayout tabIndicator;
+    int a = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,13 +35,7 @@ public class advertisementActivity extends AppCompatActivity {
         super.getSupportActionBar().hide();
         setContentView(R.layout.activity_advertisement);
         btnnext = findViewById(R.id.btn_next);
-        btnnext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(advertisementActivity.this,DashboardActivity.class);
-                startActivity(intent);
-            }
-        });
+        btnstart = findViewById(R.id.btn_start);
         tabIndicator = findViewById(R.id.tab_indicator);
         List<ScreenAdvertisement> mList = new ArrayList<>();
         mList.add(new ScreenAdvertisement("Fresh Food","Fresh food is food which has not been preserved and has not spoiled yet. For vegetables and fruits, this means that they have been recently harvested and treated properly postharvest; for meat, it has recently been slaughtered and butchered; for fish, it has been recently caught or harvested and kept cold.",R.drawable.img1));
@@ -49,5 +45,56 @@ public class advertisementActivity extends AppCompatActivity {
         introViewAdapter = new IntroViewAdapter(this,mList);
         screenPager.setAdapter(introViewAdapter);
         tabIndicator.setupWithViewPager(screenPager);
+
+        btnnext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                a = screenPager.getCurrentItem();
+                if(a < mList.size()){
+                    a++;
+                    screenPager.setCurrentItem(a);
+
+                }
+                if (a == mList.size()-1){
+                    loadLastScreen();
+                }
+
+            }
+        });
+        btnstart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(advertisementActivity.this, DashboardActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        tabIndicator.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                if(tab.getPosition() == mList.size()-1){
+                    loadLastScreen();
+                }
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+    }
+
+
+    private void loadLastScreen() {
+
+        btnnext.setVisibility(View.INVISIBLE);
+        btnstart.setVisibility(View.VISIBLE);
+        tabIndicator.setVisibility(View.INVISIBLE);
     }
 }
