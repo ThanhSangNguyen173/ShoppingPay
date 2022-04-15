@@ -59,7 +59,7 @@
         android:id="@+id/checktable"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Check table available..."
+        android:text="Check available table..."
         android:background="@color/PRIMARY_COLOR"
         android:layout_weight="1"/>
 </LinearLayout>

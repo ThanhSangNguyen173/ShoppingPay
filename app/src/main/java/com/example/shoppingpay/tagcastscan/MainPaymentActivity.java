@@ -1,5 +1,7 @@
 package com.example.shoppingpay.tagcastscan;
 
+import static com.example.shoppingpay.R.drawable.loading_scan;
+import static com.example.shoppingpay.R.drawable.scan;
 import static com.example.shoppingpay.R.drawable.scanfail;
 
 import androidx.appcompat.app.ActionBar;
@@ -175,6 +177,7 @@ public class MainPaymentActivity extends AppCompatActivity implements ActivityCo
             @Override
             public void onClick(View view) {
                 btn_scan.setEnabled(false);
+                btn_scan.setBackground(getDrawable(loading_scan));
                 bar.setVisibility(View.VISIBLE);
                 tgcAdapter.setScanInterval(10000);
                 tgcAdapter.startScan();
@@ -205,6 +208,7 @@ public class MainPaymentActivity extends AppCompatActivity implements ActivityCo
                                 startActivity(payment);
                             }else{
                                 btn_scan.setEnabled(true);
+                                btn_scan.setBackground(getDrawable(scan));
                                 txt_payment_status.setVisibility(View.VISIBLE);
                                 txt_payment_status.setText("Vui lòng kiểm tra vị trí bàn thanh toán và thử lại");
                             }
