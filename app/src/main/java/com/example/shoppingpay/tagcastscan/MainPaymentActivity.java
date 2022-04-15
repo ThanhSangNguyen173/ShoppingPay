@@ -227,7 +227,7 @@ public class MainPaymentActivity extends AppCompatActivity implements ActivityCo
     @Override
     protected void onPause() {
         super.onPause();
-        tgcAdapter.stopScan();
+        tgcAdapter.prepare();
     }
     @Override
     protected void onResume() {
