@@ -25,7 +25,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ShoppingPay">
         <activity
-            android:name=".views.LocationActivity"
+            android:name=".advertisementActivity"
             android:exported="false" />
         <activity
             android:name=".views.OwnerActivity"

@@ -52,5 +52,4 @@
         app:layout_constraintTop_toBottomOf="@+id/textlogin"/>
 
 
-
 </androidx.constraintlayout.widget.ConstraintLayout>
