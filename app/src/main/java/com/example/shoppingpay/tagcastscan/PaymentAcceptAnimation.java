@@ -10,6 +10,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.shoppingpay.R;
+import com.example.shoppingpay.views.RateUsActivity;
 import com.example.shoppingpay.views.choosetable.ChooseTableActivity;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -80,8 +81,8 @@ public class PaymentAcceptAnimation extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Toast.makeText(PaymentAcceptAnimation.this, "Thank you, see you soon.", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(PaymentAcceptAnimation.this, ChooseTableActivity.class);
+                Toast.makeText(PaymentAcceptAnimation.this, "Thank you, hope to see your feedback.", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(PaymentAcceptAnimation.this, RateUsActivity.class);
                 startActivity(intent);
             }
         },5000);
