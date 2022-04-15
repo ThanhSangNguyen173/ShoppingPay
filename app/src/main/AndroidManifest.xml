@@ -25,6 +25,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ShoppingPay">
         <activity
+            android:name=".views.LocationActivity"
+            android:exported="false" />
+        <activity
             android:name=".views.OwnerActivity"
             android:exported="false" />
         <activity
@@ -61,6 +64,9 @@
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-6266845852869933~2922721780" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCHGUVrdEQPlBdNdE5EtxfveD_0-aHZQ3c" />
     </application>
 
 </manifest>
