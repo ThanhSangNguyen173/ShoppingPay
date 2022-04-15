@@ -25,6 +25,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ShoppingPay">
         <activity
+            android:name=".views.RateUsActivity"
+            android:exported="false" />
+        <activity
             android:name=".views.OwnerActivity"
             android:exported="false" />
         <activity
@@ -48,9 +51,9 @@
         <activity
             android:name=".views.DashboardActivity"
             android:exported="false" />
-        <activity android:name=".views.advertisementActivity"
-            android:exported="false">
-        </activity>
+        <activity
+            android:name=".views.advertisementActivity"
+            android:exported="false"></activity>
         <activity
             android:name=".views.loginregister.IntroPreLogin"
             android:exported="true">

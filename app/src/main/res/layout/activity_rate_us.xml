@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/LIGHT_PRIMARY_COLOR"
+    tools:context=".views.RateUsActivity">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@color/DARK_PRIMARY_COLOR"/>
+    <ImageView
+        android:id="@+id/rate_status"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="-55dp"
+        android:layout_gravity="center"
+        android:background="@drawable/db_member"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RATE THE SERVICE"
+        android:textStyle="bold"
+        android:textColor="@color/DARK_PRIMARY_COLOR"
+        android:textSize="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"/>
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="If you enjoy with your food, please give us the feedback. Thank you so much and see you again."
+        android:textStyle="italic"
+        android:textColor="@color/DARK_PRIMARY_COLOR"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"/>
+    <androidx.appcompat.widget.AppCompatRatingBar
+        android:id="@+id/rating_bar"
+        android:theme="@style/MyRatingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"/>
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="100dp"/>
+    <Button
+        android:id="@+id/btn_rate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RATE NOW"
+        android:layout_gravity="center"/>
+    <Button
+        android:id="@+id/btn_later"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Maybe layter"
+        android:textColor="@color/DARK_PRIMARY_COLOR"
+        android:background="#00FFFFFF"
+        android:layout_gravity="center"/>
+
+
+</LinearLayout>

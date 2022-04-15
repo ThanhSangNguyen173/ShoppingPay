@@ -18,4 +18,8 @@
         <item name="android:textColorPrimary">@color/LIGHT_PRIMARY_COLOR</item>
         <item name="android:textColorSecondary">#000000</item>
     </style>
+    
+    <style name="MyRatingBar" parent="Widget.AppCompat.RatingBar">
+        <item name="android:colorControlActivated">@color/DARK_PRIMARY_COLOR</item>
+    </style>
 </resources>
