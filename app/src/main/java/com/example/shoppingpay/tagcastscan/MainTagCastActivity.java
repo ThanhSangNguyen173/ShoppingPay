@@ -8,6 +8,7 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
@@ -15,6 +16,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -25,6 +27,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentManager;
 
 import com.example.shoppingpay.R;
+import com.example.shoppingpay.views.LoadingDialog;
 import com.example.shoppingpay.views.MainShoppingActivity;
 
 import java.util.List;
@@ -45,14 +48,14 @@ public class MainTagCastActivity extends AppCompatActivity implements ActivityCo
     private Map<String,String> map;
     public int mErrorDialogType = ErrorFragment.TYPE_NO;
     ImageButton btn_scan;
-    ProgressBar bar;
-    ImageView img_checkin_load;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         super.getSupportActionBar().hide();
         final Context context = getApplicationContext();
+
+        final LoadingDialog loadingDialog = new LoadingDialog(MainTagCastActivity.this);
 
         Bundle bundle = getIntent().getExtras();
         pickserial = bundle.getString("seri");
@@ -170,31 +173,17 @@ public class MainTagCastActivity extends AppCompatActivity implements ActivityCo
         tgcAdapter.setTGCScanListener(mTGCScanListener);
         setContentView(R.layout.activity_tagcast_main);
         btn_scan = findViewById(R.id.btn_scan);
-        bar = findViewById(R.id.progressBar);
-        img_checkin_load = findViewById(R.id.img_checkin_load);
-        Animation alpha = AnimationUtils.loadAnimation(this,R.anim.alpha);
         btn_scan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 btn_scan.setEnabled(false);
-                bar.setVisibility(View.VISIBLE);
-                tgcAdapter.setScanInterval(10000);
-                tgcAdapter.startScan();
-                img_checkin_load.startAnimation(alpha);
-                img_checkin_load.setVisibility(View.VISIBLE);
 
-                int tensec= 10 * 1000;
-                new CountDownTimer(tensec, 1000) {
-
-                    public void onTick(long millisUntilFinished) {
-                        long finishedSeconds = tensec- millisUntilFinished+2000;
-                        int total = (int) ((finishedSeconds / (float)tensec) * 100.0);
-                        bar.setProgress(total);
-                    }
-
-                    public void onFinish() {
-                        img_checkin_load.setVisibility(View.INVISIBLE);
-                        bar.setVisibility(View.INVISIBLE);
+                loadingDialog.startLoadingDialog();
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        loadingDialog.dismissDialog();
                         if(flgBeacon){
                             if(pickserial.equals(serial)){
                             Toast.makeText(context, "Scan Succesfully!", Toast.LENGTH_SHORT).show();
@@ -214,7 +203,7 @@ public class MainTagCastActivity extends AppCompatActivity implements ActivityCo
                             Toast.makeText(context, "Scan fail, please try again!", Toast.LENGTH_SHORT).show();
                         }
                     }
-                }.start();
+                },10000);
             }
         });
 
@@ -229,7 +218,8 @@ public class MainTagCastActivity extends AppCompatActivity implements ActivityCo
     protected void onResume() {
         super.onResume();
         if (checkPermission()) {
-            tgcAdapter.prepare();
+            tgcAdapter.setScanInterval(10000);
+            tgcAdapter.startScan();;
         }
     }
 
