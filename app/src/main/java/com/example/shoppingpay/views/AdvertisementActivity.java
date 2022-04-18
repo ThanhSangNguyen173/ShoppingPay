@@ -3,25 +3,21 @@ package com.example.shoppingpay.views;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import androidx.viewpager.widget.ViewPager;
-import androidx.viewpager2.widget.ViewPager2;
 
 
 import com.example.shoppingpay.adapters.IntroViewAdapter;
 import com.example.shoppingpay.R;
-import com.example.shoppingpay.adapters.ShopListAdapter;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class advertisementActivity extends AppCompatActivity {
+public class AdvertisementActivity extends AppCompatActivity {
     Button btnnext,btnstart;
     private ViewPager screenPager;
     private IntroViewAdapter introViewAdapter;
@@ -65,7 +61,7 @@ public class advertisementActivity extends AppCompatActivity {
         btnstart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(advertisementActivity.this, DashboardActivity.class);
+                Intent intent = new Intent(AdvertisementActivity.this, DashboardActivity.class);
                 startActivity(intent);
             }
         });

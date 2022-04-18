@@ -37,6 +37,9 @@
             android:name=".tagcastscan.PaymentAcceptAnimation"
             android:exported="false" />
         <activity
+            android:name=".views.LocationActivity"
+            android:exported="false" />
+        <activity
             android:name=".tagcastscan.MainTagCastActivity"
             android:exported="false" />
         <activity
@@ -52,7 +55,7 @@
             android:name=".views.DashboardActivity"
             android:exported="false" />
         <activity
-            android:name=".views.advertisementActivity"
+            android:name=".views.AdvertisementActivity"
             android:exported="false"></activity>
         <activity
             android:name=".views.loginregister.IntroPreLogin"

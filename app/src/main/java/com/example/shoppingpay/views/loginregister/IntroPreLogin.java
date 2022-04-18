@@ -3,17 +3,13 @@ package com.example.shoppingpay.views.loginregister;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.shoppingpay.R;
-import com.example.shoppingpay.views.DashboardActivity;
-import com.example.shoppingpay.views.advertisementActivity;
-import com.example.shoppingpay.views.choosetable.ChooseTableActivity;
+import com.example.shoppingpay.views.AdvertisementActivity;
 
 public class IntroPreLogin extends AppCompatActivity {
     ImageView logo,appName,splashImg;
@@ -41,7 +37,7 @@ public class IntroPreLogin extends AppCompatActivity {
         h.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intro = new Intent(getApplicationContext(), advertisementActivity.class);
+                Intent intro = new Intent(getApplicationContext(), AdvertisementActivity.class);
                 startActivity(intro);
                 overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
                 finish();
