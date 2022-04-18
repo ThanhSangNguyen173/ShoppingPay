@@ -37,6 +37,9 @@
             android:name=".tagcastscan.PaymentAcceptAnimation"
             android:exported="false" />
         <activity
+            android:name=".views.LocationActivity"
+            android:exported="false" />
+        <activity
             android:name=".tagcastscan.MainTagCastActivity"
             android:exported="false" />
         <activity
