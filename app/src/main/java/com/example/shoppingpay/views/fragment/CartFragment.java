@@ -1,4 +1,4 @@
-package com.example.shoppingpay.views;
+package com.example.shoppingpay.views.fragment;
 
 import android.os.Bundle;
 

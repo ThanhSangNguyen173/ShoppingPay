@@ -1,4 +1,4 @@
-package com.example.shoppingpay.views;
+package com.example.shoppingpay.views.fragment;
 
 import android.content.Context;
 import android.content.Intent;
@@ -19,6 +19,7 @@ import com.example.shoppingpay.R;
 import com.example.shoppingpay.databinding.FragmentOrderBinding;
 import com.example.shoppingpay.tagcastscan.MainPaymentActivity;
 import com.example.shoppingpay.viewmodels.ShopViewModel;
+import com.example.shoppingpay.views.activity.MainShoppingActivity;
 
 public class OrderFragment extends Fragment {
 

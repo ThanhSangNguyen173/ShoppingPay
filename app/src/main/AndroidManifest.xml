@@ -25,19 +25,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ShoppingPay">
         <activity
-            android:name=".views.RateUsActivity"
+            android:name=".views.activity.choosetable.UsingTableActivity"
             android:exported="false" />
         <activity
-            android:name=".views.OwnerActivity"
+            android:name=".views.activity.RateUsActivity"
             android:exported="false" />
         <activity
-            android:name=".views.choosetable.ChooseTableActivity"
+            android:name=".views.activity.OwnerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.activity.choosetable.ChooseTableActivity"
             android:exported="false" />
         <activity
             android:name=".tagcastscan.PaymentAcceptAnimation"
             android:exported="false" />
         <activity
-            android:name=".views.LocationActivity"
+            android:name=".views.activity.LocationActivity"
             android:exported="false" />
         <activity
             android:name=".tagcastscan.MainTagCastActivity"
@@ -46,19 +49,19 @@
             android:name=".tagcastscan.MainPaymentActivity"
             android:exported="false" />
         <activity
-            android:name=".views.MainShoppingActivity"
+            android:name=".views.activity.MainShoppingActivity"
             android:exported="false" />
         <activity
-            android:name=".views.loginregister.LoginRegisterActivity"
+            android:name=".views.activity.loginregister.LoginRegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".views.DashboardActivity"
+            android:name=".views.activity.DashboardActivity"
             android:exported="false" />
         <activity
-            android:name=".views.AdvertisementActivity"
-            android:exported="false"></activity>
+            android:name=".views.activity.AdvertisementActivity"
+            android:exported="false" />
         <activity
-            android:name=".views.loginregister.IntroPreLogin"
+            android:name=".views.activity.loginregister.IntroPreLogin"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

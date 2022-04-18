@@ -1,4 +1,4 @@
-package com.example.shoppingpay.views;
+package com.example.shoppingpay.views.fragment;
 
 import android.os.Bundle;
 
@@ -9,7 +9,6 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-import androidx.recyclerview.widget.DividerItemDecoration;
 
 import android.view.LayoutInflater;
 import android.view.View;

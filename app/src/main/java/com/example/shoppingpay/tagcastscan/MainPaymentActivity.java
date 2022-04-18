@@ -52,14 +52,86 @@ public class MainPaymentActivity extends AppCompatActivity implements ActivityCo
         super.getSupportActionBar().hide();
         setContentView(R.layout.activity_payment_main);
 
-        final Context context = getApplicationContext();
 
-        tgcAdapter = TGCAdapter.getInstance(context);
-        tgcAdapter.prepare();
         Bundle bundle = getIntent().getExtras();
         serial = bundle.getString("seri");
         tablenumber = bundle.getString("table");
 
+        TagCastScan();
+        anhxa();
+
+    }
+
+    private void anhxa() {
+        bar = findViewById(R.id.progressBar2);
+        img_checkin_load = findViewById(R.id.img_checkin_load2);
+        btn_scan = findViewById(R.id.btn_scan2);
+        txt_payment_status = findViewById(R.id.txt_payment_status);
+        btn_scan.setOnClickListener(this::OnClick);
+    }
+
+    private void OnClick(View view) {
+        switch (view.getId()){
+            case R.id.btn_scan2:scanTagCastPaper();
+        }
+    }
+
+    /**
+     * ScanTagCast
+     */
+    private void scanTagCastPaper() {
+        final Context context = getApplicationContext();
+        Animation alpha = AnimationUtils.loadAnimation(context,R.anim.alpha);
+        btn_scan.setEnabled(false);
+        btn_scan.setBackground(getDrawable(loading_scan));
+        bar.setVisibility(View.VISIBLE);
+        tgcAdapter.setScanInterval(10000);
+        tgcAdapter.startScan();
+        img_checkin_load.startAnimation(alpha);
+        img_checkin_load.setVisibility(View.VISIBLE);
+        txt_payment_status.setVisibility(View.VISIBLE);
+        txt_payment_status.setText("Infomation check...");
+        txt_payment_status.startAnimation(alpha);
+
+        int tensec= 10 * 1000;
+        new CountDownTimer(tensec, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                long finishedSeconds = tensec- millisUntilFinished+2000;
+                int total = (int) ((finishedSeconds / (float)tensec) * 100.0);
+                bar.setProgress(total);
+            }
+
+            public void onFinish() {
+                img_checkin_load.setVisibility(View.INVISIBLE);
+                bar.setVisibility(View.INVISIBLE);
+                if(flgBeacon){
+                    if(serial2.equals(serial)){
+                        Intent payment = new Intent(context,PaymentAcceptAnimation.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putString("table",tablenumber);
+                        payment.putExtras(bundle);
+                        startActivity(payment);
+                    }else{
+                        btn_scan.setEnabled(true);
+                        btn_scan.setBackground(getDrawable(scan));
+                        txt_payment_status.setVisibility(View.VISIBLE);
+                        txt_payment_status.setText("Vui lòng kiểm tra vị trí bàn thanh toán và thử lại");
+                    }
+                }else{
+                    btn_scan.setBackground(getDrawable(scanfail));
+                    btn_scan.setEnabled(true);
+                    txt_payment_status.setVisibility(View.VISIBLE);
+                    txt_payment_status.setText("Scan fail, please try again!");
+                }
+            }
+        }.start();
+    }
+
+    private void TagCastScan() {
+        final Context context = getApplicationContext();
+        tgcAdapter = TGCAdapter.getInstance(context);
+        tgcAdapter.prepare();
         final TGCScanListener mTGCScanListener = new TGCScanListener() {
             @Override
             public void changeState(TGCState tgcState) {
@@ -168,62 +240,8 @@ public class MainPaymentActivity extends AppCompatActivity implements ActivityCo
             }
         };
         tgcAdapter.setTGCScanListener(mTGCScanListener);
-        bar = findViewById(R.id.progressBar2);
-        img_checkin_load = findViewById(R.id.img_checkin_load2);
-        Animation alpha = AnimationUtils.loadAnimation(this,R.anim.alpha);
-        btn_scan = findViewById(R.id.btn_scan2);
-        txt_payment_status = findViewById(R.id.txt_payment_status);
-        btn_scan.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                btn_scan.setEnabled(false);
-                btn_scan.setBackground(getDrawable(loading_scan));
-                bar.setVisibility(View.VISIBLE);
-                tgcAdapter.setScanInterval(10000);
-                tgcAdapter.startScan();
-                img_checkin_load.startAnimation(alpha);
-                img_checkin_load.setVisibility(View.VISIBLE);
-                txt_payment_status.setVisibility(View.VISIBLE);
-                txt_payment_status.setText("Infomation check...");
-                txt_payment_status.startAnimation(alpha);
-
-                int tensec= 10 * 1000;
-                new CountDownTimer(tensec, 1000) {
-
-                    public void onTick(long millisUntilFinished) {
-                        long finishedSeconds = tensec- millisUntilFinished+2000;
-                        int total = (int) ((finishedSeconds / (float)tensec) * 100.0);
-                        bar.setProgress(total);
-                    }
-
-                    public void onFinish() {
-                        img_checkin_load.setVisibility(View.INVISIBLE);
-                        bar.setVisibility(View.INVISIBLE);
-                        if(flgBeacon){
-                            if(serial2.equals(serial)){
-                                Intent payment = new Intent(context,PaymentAcceptAnimation.class);
-                                Bundle bundle = new Bundle();
-                                bundle.putString("table",tablenumber);
-                                payment.putExtras(bundle);
-                                startActivity(payment);
-                            }else{
-                                btn_scan.setEnabled(true);
-                                btn_scan.setBackground(getDrawable(scan));
-                                txt_payment_status.setVisibility(View.VISIBLE);
-                                txt_payment_status.setText("Vui lòng kiểm tra vị trí bàn thanh toán và thử lại");
-                            }
-                        }else{
-                            btn_scan.setBackground(getDrawable(scanfail));
-                            btn_scan.setEnabled(true);
-                            txt_payment_status.setVisibility(View.VISIBLE);
-                            txt_payment_status.setText("Scan fail, please try again!");
-                        }
-                    }
-                }.start();
-            }
-        });
-
     }
+
     @Override
     protected void onPause() {
         super.onPause();

@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
 import com.example.shoppingpay.R;
-import com.example.shoppingpay.views.ScreenAdvertisement;
+import com.example.shoppingpay.views.activity.loginregister.ScreenAdvertisement;
 
 import java.util.List;
 

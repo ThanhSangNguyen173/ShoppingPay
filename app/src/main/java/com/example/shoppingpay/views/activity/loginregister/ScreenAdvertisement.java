@@ -1,4 +1,4 @@
-package com.example.shoppingpay.views;
+package com.example.shoppingpay.views.activity.loginregister;
 
 public class ScreenAdvertisement {
 

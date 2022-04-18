@@ -1,4 +1,4 @@
-package com.example.shoppingpay.views.loginregister;
+package com.example.shoppingpay.views.activity.loginregister;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.shoppingpay.R;
-import com.example.shoppingpay.views.AdvertisementActivity;
+import com.example.shoppingpay.views.activity.AdvertisementActivity;
 
 public class IntroPreLogin extends AppCompatActivity {
     ImageView logo,appName,splashImg;

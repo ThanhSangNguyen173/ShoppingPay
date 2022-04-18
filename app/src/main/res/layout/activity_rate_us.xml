@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/LIGHT_PRIMARY_COLOR"
-    tools:context=".views.RateUsActivity">
+    tools:context=".views.activity.RateUsActivity">
 
     <View
         android:layout_width="match_parent"
@@ -57,7 +57,7 @@
         android:id="@+id/btn_later"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Maybe layter"
+        android:text="Maybe later"
         android:textColor="@color/DARK_PRIMARY_COLOR"
         android:background="#00FFFFFF"
         android:layout_gravity="center"/>

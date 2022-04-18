@@ -1,4 +1,4 @@
-package com.example.shoppingpay.views;
+package com.example.shoppingpay.views.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,7 +8,6 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -91,7 +90,7 @@ public class MainShoppingActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        return NavigationUI.onNavDestinationSelected(item,navController) ||
+            return NavigationUI.onNavDestinationSelected(item,navController) ||
          super.onOptionsItemSelected(item);
     }
 }

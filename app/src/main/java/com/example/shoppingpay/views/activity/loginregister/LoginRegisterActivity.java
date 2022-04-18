@@ -1,4 +1,4 @@
-package com.example.shoppingpay.views.loginregister;
+package com.example.shoppingpay.views.activity.loginregister;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -16,8 +16,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.shoppingpay.R;
-import com.example.shoppingpay.tagcastscan.MainTagCastActivity;
-import com.example.shoppingpay.views.choosetable.ChooseTableActivity;
+import com.example.shoppingpay.views.activity.choosetable.ChooseTableActivity;
 
 public class LoginRegisterActivity extends AppCompatActivity {
 
