@@ -1,27 +1,20 @@
-package com.example.shoppingpay.views;
+package com.example.shoppingpay.views.fragment;
 
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.shoppingpay.R;
 import com.example.shoppingpay.adapters.ShopListAdapter;
 import com.example.shoppingpay.databinding.FragmentProductDetailBinding;
 import com.example.shoppingpay.models.Product;
 import com.example.shoppingpay.viewmodels.ShopViewModel;
-import com.google.android.material.snackbar.Snackbar;
-
-import java.util.List;
 
 public class ProductDetailFragment extends Fragment implements ShopListAdapter.ShopInterface {
 

@@ -1,4 +1,4 @@
-package com.example.shoppingpay.views;
+package com.example.shoppingpay.views.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +12,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.example.shoppingpay.adapters.IntroViewAdapter;
 import com.example.shoppingpay.R;
+import com.example.shoppingpay.views.activity.loginregister.ScreenAdvertisement;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;

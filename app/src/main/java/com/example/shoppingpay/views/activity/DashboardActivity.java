@@ -1,4 +1,4 @@
-package com.example.shoppingpay.views;
+package com.example.shoppingpay.views.activity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -12,8 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import com.example.shoppingpay.R;
-import com.example.shoppingpay.views.choosetable.ChooseTableActivity;
-import com.example.shoppingpay.views.loginregister.LoginRegisterActivity;
+import com.example.shoppingpay.views.activity.choosetable.ChooseTableActivity;
+import com.example.shoppingpay.views.activity.loginregister.LoginRegisterActivity;
 
 public class DashboardActivity extends AppCompatActivity {
 
