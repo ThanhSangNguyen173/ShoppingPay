@@ -1,4 +1,4 @@
-package com.example.shoppingpay.views;
+package com.example.shoppingpay.tagcastscan;
 
 import android.app.Activity;
 import android.app.AlertDialog;

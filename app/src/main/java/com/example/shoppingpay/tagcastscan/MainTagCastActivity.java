@@ -7,28 +7,20 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentManager;
 
 import com.example.shoppingpay.R;
-import com.example.shoppingpay.views.LoadingDialog;
-import com.example.shoppingpay.views.MainShoppingActivity;
+import com.example.shoppingpay.views.activity.choosetable.UsingTableActivity;
 
 import java.util.List;
 import java.util.Map;
@@ -53,14 +45,64 @@ public class MainTagCastActivity extends AppCompatActivity implements ActivityCo
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         super.getSupportActionBar().hide();
-        final Context context = getApplicationContext();
-
-        final LoadingDialog loadingDialog = new LoadingDialog(MainTagCastActivity.this);
+        setContentView(R.layout.activity_tagcast_main);
 
         Bundle bundle = getIntent().getExtras();
         pickserial = bundle.getString("seri");
         tablenumber = bundle.getString("table");
 
+        TagCastScan();
+        anhxa();
+    }
+
+    private void anhxa() {
+        btn_scan = findViewById(R.id.btn_scan);
+        btn_scan.setOnClickListener(this::OnClick);
+    }
+
+    private void OnClick(View view) {
+        switch (view.getId()){
+            case R.id.btn_scan: scanTagCastPaper();
+        }
+    }
+
+    /**
+     * ScanTagCast
+     */
+    private void scanTagCastPaper() {
+        final Context context = getApplicationContext();
+        final LoadingDialog loadingDialog = new LoadingDialog(MainTagCastActivity.this);
+        btn_scan.setEnabled(false);
+
+        loadingDialog.startLoadingDialog();
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                loadingDialog.dismissDialog();
+                if(flgBeacon){
+                    if(pickserial.equals(serial)){
+                        Intent intent = new Intent(context, UsingTableActivity.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putString("seri",serial);
+                        bundle.putString("table",tablenumber);
+                        intent.putExtras(bundle);
+                        startActivity(intent);
+                    }else {
+                        Toast.makeText(context, "Vui lòng nhận đúng bàn đã chọn", Toast.LENGTH_SHORT).show();
+                        btn_scan.setEnabled(true);
+                    }
+                }else{
+                    btn_scan.setBackground(getDrawable(scanfail));
+                    btn_scan.setEnabled(true);
+                    Toast.makeText(context, "Scan fail, please try again!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        },10000);
+    }
+
+    private void TagCastScan() {
+        final Context context = getApplicationContext();
         tgcAdapter = TGCAdapter.getInstance(context);
         tgcAdapter.prepare();
         final TGCScanListener mTGCScanListener = new TGCScanListener() {
@@ -171,42 +213,6 @@ public class MainTagCastActivity extends AppCompatActivity implements ActivityCo
             }
         };
         tgcAdapter.setTGCScanListener(mTGCScanListener);
-        setContentView(R.layout.activity_tagcast_main);
-        btn_scan = findViewById(R.id.btn_scan);
-        btn_scan.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                btn_scan.setEnabled(false);
-
-                loadingDialog.startLoadingDialog();
-                Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        loadingDialog.dismissDialog();
-                        if(flgBeacon){
-                            if(pickserial.equals(serial)){
-                            Toast.makeText(context, "Scan Succesfully!", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(context, MainShoppingActivity.class);
-                            Bundle bundle = new Bundle();
-                            bundle.putString("seri",serial);
-                            bundle.putString("table",tablenumber);
-                            intent.putExtras(bundle);
-                            startActivity(intent);
-                            }else {
-                                Toast.makeText(context, "Vui lòng nhận đúng bàn đã chọn", Toast.LENGTH_SHORT).show();
-                                btn_scan.setEnabled(true);
-                            }
-                        }else{
-                            btn_scan.setBackground(getDrawable(scanfail));
-                            btn_scan.setEnabled(true);
-                            Toast.makeText(context, "Scan fail, please try again!", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                },10000);
-            }
-        });
-
     }
 
     @Override

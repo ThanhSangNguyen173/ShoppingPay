@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.choosetable.ChooseTableActivity"
+    tools:context=".views.activity.choosetable.ChooseTableActivity"
     android:orientation="vertical"
     android:background="@drawable/bgtable"
     android:weightSum="22">
