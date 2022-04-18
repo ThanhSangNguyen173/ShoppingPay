@@ -39,8 +39,8 @@ public class ChooseTableActivity extends AppCompatActivity {
         mData = FirebaseDatabase.getInstance().getReference();
 
         anhxa();
-        clickListener();
         setTabHost();
+        clickListener();
         setAnimation();
     }
 

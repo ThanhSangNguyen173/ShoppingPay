@@ -51,8 +51,8 @@ public class MainTagCastActivity extends AppCompatActivity implements ActivityCo
         pickserial = bundle.getString("seri");
         tablenumber = bundle.getString("table");
 
-        TagCastScan();
         anhxa();
+        TagCastScan();
     }
 
     private void anhxa() {

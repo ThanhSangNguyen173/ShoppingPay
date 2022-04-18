@@ -22,13 +22,11 @@ public class LoginRegisterActivity extends AppCompatActivity {
 
     Button bt1, bt2,btnthoat;
     EditText tk, mk;
-    //khai bao moi
     Button dky2, huydk;
     EditText ho,ten,dob,pass,copass,id;
     CheckBox checkBox;
     RadioButton nam,nu;
     String taikhoan,matkhau;
-    //hết
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,104 +34,117 @@ public class LoginRegisterActivity extends AppCompatActivity {
         super.getSupportActionBar().hide();
         setContentView(R.layout.login_page);
 
+        anhxa();
+        controlbutton();
+    }
 
+    private void anhxa() {
         bt1 = findViewById(R.id.login);
         bt2 = findViewById(R.id.dky);
         tk = findViewById(R.id.tk);
         mk = findViewById(R.id.mk);
         btnthoat = findViewById(R.id.btnthoat);
-        controlbutton();
 
-        bt1.setOnClickListener(new View.OnClickListener() {
+        bt1.setOnClickListener(this::OnClick);
+        bt2.setOnClickListener(this::OnClick);
+    }
+
+    private void OnClick(View view) {
+        switch (view.getId()){
+            case R.id.login: clickLogin();
+            break;
+            case  R.id.dky:clickDky();
+            break;
+        }
+    }
+
+    /**
+     * Register
+     */
+    private void clickDky() {
+        Dialog dialog = new Dialog(LoginRegisterActivity.this);
+        dialog.setTitle("ĐĂNG KÝ TÀI KHOẢN");
+        dialog.setCancelable(false);
+        dialog.setContentView(R.layout.dky_page);
+        dky2 = dialog.findViewById(R.id.dky2);
+        ho = dialog.findViewById(R.id.editTextHo);
+        ten = dialog.findViewById(R.id.editTextTen);
+        dob = dialog.findViewById(R.id.editTextDOB);
+        pass = dialog.findViewById(R.id.editTextPass);
+        copass = dialog.findViewById(R.id.editTextCoPass);
+        checkBox = dialog.findViewById(R.id.checkBox);
+        nam = dialog.findViewById(R.id.nam);
+        nu = dialog.findViewById(R.id.nu);
+        id = dialog.findViewById(R.id.editTextID);
+        huydk = dialog.findViewById(R.id.huydk);
+
+        nam.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                dky2.setEnabled(true);
+            }
+        });
+        nu.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                dky2.setEnabled(true);
+            }
+        });
+
+        dky2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String str1 = tk.getText().toString().trim();
-                String str2 = mk.getText().toString().trim();
-                if (!str1.isEmpty() || !str2.isEmpty()) {
-                    if(str1.equals(taikhoan) && str2.equals(matkhau)){
-                        Intent intent1 = new Intent(LoginRegisterActivity.this, ChooseTableActivity.class);
-                        startActivity(intent1);
-                        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_left);
-                        Toast.makeText(LoginRegisterActivity.this, "Welcome back "+str1, Toast.LENGTH_SHORT).show();
-                    }else if(str1.equals("1") && str2.equals("1")){
-                        Intent intent2 = new Intent(LoginRegisterActivity.this, ChooseTableActivity.class);
-                        startActivity(intent2);
-                        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_left);
-                        Toast.makeText(LoginRegisterActivity.this, "Welcome back "+str1, Toast.LENGTH_SHORT).show();
-                    }else {
-                        Toast.makeText(LoginRegisterActivity.this, "Vui lòng kiểm tra lại ID/Password!", Toast.LENGTH_SHORT).show();
-                    }
+
+                String dk1 = ho.getText().toString().trim();
+                String dk2 = ten.getText().toString().trim();
+                String dk3 = dob.getText().toString().trim();
+                String dk4 = copass.getText().toString().trim();
+                Boolean b = !checkBox.isChecked();
+
+                taikhoan = id.getText().toString().trim();
+                matkhau = pass.getText().toString().trim();
+                if (dk1.isEmpty() || dk2.isEmpty() || dk3.isEmpty() || dk4.isEmpty() || taikhoan.isEmpty() ||matkhau.isEmpty() || b ) {
+                    Toast.makeText(LoginRegisterActivity.this, "Vui lòng nhập đầy đủ thông tin và đồng ý điều khoản sử dụng!", Toast.LENGTH_SHORT).show();
                 }else {
-                    Toast.makeText(LoginRegisterActivity.this, "Vui lòng nhập đầy đủ thông tin!", Toast.LENGTH_SHORT).show();
+                    tk.setText(taikhoan);
+                    mk.setText(matkhau);
+                    dialog.cancel();
+                    Toast.makeText(LoginRegisterActivity.this, "Đăng ký thành công!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
-
-        bt2.setOnClickListener(new View.OnClickListener() {
+        huydk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Dialog dialog = new Dialog(LoginRegisterActivity.this);
-                dialog.setTitle("ĐĂNG KÝ TÀI KHOẢN");
-                dialog.setCancelable(false);
-                dialog.setContentView(R.layout.dky_page);
-                dky2 = dialog.findViewById(R.id.dky2);
-                ho = dialog.findViewById(R.id.editTextHo);
-                ten = dialog.findViewById(R.id.editTextTen);
-                dob = dialog.findViewById(R.id.editTextDOB);
-                pass = dialog.findViewById(R.id.editTextPass);
-                copass = dialog.findViewById(R.id.editTextCoPass);
-                checkBox = dialog.findViewById(R.id.checkBox);
-                nam = dialog.findViewById(R.id.nam);
-                nu = dialog.findViewById(R.id.nu);
-                id = dialog.findViewById(R.id.editTextID);
-                huydk = dialog.findViewById(R.id.huydk);
-
-                nam.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                        dky2.setEnabled(true);
-                    }
-                });
-                nu.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                        dky2.setEnabled(true);
-                    }
-                });
-
-                dky2.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-
-                        String dk1 = ho.getText().toString().trim();
-                        String dk2 = ten.getText().toString().trim();
-                        String dk3 = dob.getText().toString().trim();
-                        String dk4 = copass.getText().toString().trim();
-                        Boolean b = !checkBox.isChecked();
-
-                        taikhoan = id.getText().toString().trim();
-                        matkhau = pass.getText().toString().trim();
-                        if (dk1.isEmpty() || dk2.isEmpty() || dk3.isEmpty() || dk4.isEmpty() || taikhoan.isEmpty() ||matkhau.isEmpty() || b ) {
-                            Toast.makeText(LoginRegisterActivity.this, "Vui lòng nhập đầy đủ thông tin và đồng ý điều khoản sử dụng!", Toast.LENGTH_SHORT).show();
-                        }else {
-                            tk.setText(taikhoan);
-                            mk.setText(matkhau);
-                            dialog.cancel();
-                            Toast.makeText(LoginRegisterActivity.this, "Đăng ký thành công!", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-                huydk.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        dialog.cancel();
-                    }
-                });
-                dialog.show();
-
-                //Hết
+                dialog.cancel();
             }
         });
+        dialog.show();
+    }
+
+    /**
+     * Login
+     */
+    private void clickLogin() {
+        String str1 = tk.getText().toString().trim();
+        String str2 = mk.getText().toString().trim();
+        if (!str1.isEmpty() || !str2.isEmpty()) {
+            if(str1.equals(taikhoan) && str2.equals(matkhau)){
+                Intent intent1 = new Intent(LoginRegisterActivity.this, ChooseTableActivity.class);
+                startActivity(intent1);
+                overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_left);
+                Toast.makeText(LoginRegisterActivity.this, "Welcome back "+str1, Toast.LENGTH_SHORT).show();
+            }else if(str1.equals("1") && str2.equals("1")){
+                Intent intent2 = new Intent(LoginRegisterActivity.this, ChooseTableActivity.class);
+                startActivity(intent2);
+                overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_left);
+                Toast.makeText(LoginRegisterActivity.this, "Welcome back "+str1, Toast.LENGTH_SHORT).show();
+            }else {
+                Toast.makeText(LoginRegisterActivity.this, "Vui lòng kiểm tra lại ID/Password!", Toast.LENGTH_SHORT).show();
+            }
+        }else {
+            Toast.makeText(LoginRegisterActivity.this, "Vui lòng nhập đầy đủ thông tin!", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void controlbutton() {
