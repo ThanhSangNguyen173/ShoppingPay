@@ -43,8 +43,9 @@ public class OwnerActivity extends AppCompatActivity {
                     mData.child("TB22").setValue("t");
                     mData.child("TB23").setValue("t");
                     mData.child("TB24").setValue("t");
+                    Toast.makeText(OwnerActivity.this, "Đã reset trạng thái của tất cả các bàn!", Toast.LENGTH_SHORT).show();
                 }else {
-                    Toast.makeText(OwnerActivity.this, "Không được đâu con trai.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(OwnerActivity.this, "Vui lòng nhập đúng keyword!", Toast.LENGTH_SHORT).show();
                 }
             }
         });

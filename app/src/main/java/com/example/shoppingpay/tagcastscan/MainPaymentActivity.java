@@ -3,6 +3,7 @@ package com.example.shoppingpay.tagcastscan;
 import static com.example.shoppingpay.R.drawable.loading_scan;
 import static com.example.shoppingpay.R.drawable.scan;
 import static com.example.shoppingpay.R.drawable.scanfail;
+import static com.example.shoppingpay.R.drawable.scanpayment;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -57,8 +58,8 @@ public class MainPaymentActivity extends AppCompatActivity implements ActivityCo
         serial = bundle.getString("seri");
         tablenumber = bundle.getString("table");
 
-        TagCastScan();
         anhxa();
+        TagCastScan();
 
     }
 
@@ -83,7 +84,7 @@ public class MainPaymentActivity extends AppCompatActivity implements ActivityCo
         final Context context = getApplicationContext();
         Animation alpha = AnimationUtils.loadAnimation(context,R.anim.alpha);
         btn_scan.setEnabled(false);
-        btn_scan.setBackground(getDrawable(loading_scan));
+        btn_scan.setBackground(getDrawable(scanpayment));
         bar.setVisibility(View.VISIBLE);
         tgcAdapter.setScanInterval(10000);
         tgcAdapter.startScan();
@@ -251,5 +252,11 @@ public class MainPaymentActivity extends AppCompatActivity implements ActivityCo
     protected void onResume() {
         super.onResume();
         tgcAdapter.prepare();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        tgcAdapter.stopScan();
     }
 }
