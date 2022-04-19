@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -182,17 +184,19 @@ public class MainTagCastActivity extends AppCompatActivity implements ActivityCo
                 loadingDialog.dismissDialog();
                 if(flgBeacon){
                     if(pickserial.equals(serial)){
+                        Animation alpha2 = AnimationUtils.loadAnimation(context,R.anim.alpha2);
                         btn_goToMenu.setVisibility(View.VISIBLE);
+                        btn_goToMenu.startAnimation(alpha2);
                         btn_scan.setEnabled(false);
-                        btn_scan.setText("Scan Sucesfully");
+                        btn_scan.setText("Scan Successfully ✓");
                         img_table.setBackground(getDrawable(R.drawable.using_table));
                     }else {
                         Toast.makeText(context, "Vui lòng nhận đúng bàn đã chọn", Toast.LENGTH_SHORT).show();
                         btn_scan.setEnabled(true);
-                        btn_scan.setText("Try scan agian");
+                        btn_scan.setText("Try scan again");
                     }
                 }else{
-                    btn_scan.setText("Try scan agian");
+                    btn_scan.setText("Try scan again");
                     btn_scan.setEnabled(true);
                     Toast.makeText(context, "Scan fail, please try again!", Toast.LENGTH_SHORT).show();
                 }

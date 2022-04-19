@@ -253,4 +253,10 @@ public class MainPaymentActivity extends AppCompatActivity implements ActivityCo
         super.onResume();
         tgcAdapter.prepare();
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        tgcAdapter.stopScan();
+    }
 }
