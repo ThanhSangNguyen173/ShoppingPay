@@ -22,6 +22,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentManager;
 
 import com.example.shoppingpay.R;
+import com.example.shoppingpay.application.AppInfo;
 import com.example.shoppingpay.views.activity.MainShoppingActivity;
 import com.example.shoppingpay.views.activity.choosetable.ChooseTableActivity;
 import com.google.firebase.database.DatabaseReference;
