@@ -25,9 +25,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ShoppingPay">
         <activity
-            android:name=".views.activity.choosetable.UsingTableActivity"
-            android:exported="false" />
-        <activity
             android:name=".views.activity.RateUsActivity"
             android:exported="false" />
         <activity
