@@ -6,6 +6,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
@@ -38,6 +39,8 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this,AppInfo.CHANNEL_ID)
                 .setContentTitle(strTitle)
+                .setVibrate(new long[] { 1000, 1000, 1000, 1000, 1000 })
+                .setSound(Uri.parse("uri://sadfasdfasdf.mp3"))
                 .setContentText(strMessage)
                 .setSmallIcon(R.mipmap.logointro)
                 .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.logointro))
