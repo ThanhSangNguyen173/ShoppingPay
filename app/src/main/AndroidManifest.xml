@@ -7,6 +7,7 @@
         android:required="true" />
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
@@ -17,13 +18,23 @@
     <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
 
     <application
-        android:name=".tagcastscan.AppInfo"
+        android:name=".application.AppInfo"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/logointro"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/logointro"
         android:supportsRtl="true"
         android:theme="@style/Theme.ShoppingPay">
+
+        <service
+            android:name=".application.MyFirebaseMessagingService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
         <activity
             android:name=".views.activity.RateUsActivity"
             android:exported="false" />
