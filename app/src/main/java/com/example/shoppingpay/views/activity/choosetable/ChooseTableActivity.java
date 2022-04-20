@@ -7,6 +7,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TabHost;
 import android.widget.Toast;
 
@@ -28,6 +29,7 @@ public class ChooseTableActivity extends AppCompatActivity {
     String tb1,tb2,tb3,tb4,tb5,tb6,tb21,tb22,tb23,tb24;
     TabHost tabHost;
     Button btn_checktable;
+    LinearLayout item_note_status;
     ImageButton imgbtn1,imgbtn2,imgbtn3,imgbtn4,imgbtn5,imgbtn6,imgbtn21,imgbtn22,imgbtn23,imgbtn24;
 
 
@@ -206,6 +208,7 @@ public class ChooseTableActivity extends AppCompatActivity {
         imgbtn22 = findViewById(R.id.btn_table22);
         imgbtn23 = findViewById(R.id.btn_table23);
         imgbtn24 = findViewById(R.id.btn_table24);
+        item_note_status = findViewById(R.id.item_note_status);
 
         tabHost.setVisibility(View.INVISIBLE);
     }
@@ -217,6 +220,7 @@ public class ChooseTableActivity extends AppCompatActivity {
                 tabHost.setVisibility(View.VISIBLE);
                 btn_checktable.clearAnimation();
                 btn_checktable.setVisibility(View.GONE);
+                item_note_status.setVisibility(View.VISIBLE);
                 break;
             case R.id.btn_table1:
                 pickserial = "1";
