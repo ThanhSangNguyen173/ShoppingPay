@@ -7,14 +7,16 @@
     tools:context=".views.activity.choosetable.ChooseTableActivity"
     android:orientation="vertical"
     android:background="@drawable/bgtable"
-    android:weightSum="22">
+    android:weightSum="22"
+    >
 
     <TabHost
         android:id="@+id/tabhost_table"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:theme="@style/TabWidgetTheme"
-        android:layout_weight="21">
+        android:layout_weight="21"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -51,15 +53,44 @@
                     <include layout="@layout/layout_floor2"/>
 
                 </LinearLayout>
-
             </FrameLayout>
         </LinearLayout>
     </TabHost>
-    <Button
-        android:id="@+id/checktable"
+    <LinearLayout
+        android:paddingBottom="5dp"
+        android:id="@+id/item_note_status"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="invisible">
+
+        <TextView
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Available"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:drawableTop="@drawable/icon_table_64"
+            />
+        <TextView
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Unavailable"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:drawableTop="@drawable/icon_using_table_64"
+            />
+    </LinearLayout>
+    <Button
+        android:layout_marginTop="-35dp"
+        android:id="@+id/checktable"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:visibility="invisible"
         android:text="Check available table..."
-        android:background="@color/PRIMARY_COLOR"
-        android:layout_weight="1"/>
+        android:background="@color/PRIMARY_COLOR" />
 </LinearLayout>
