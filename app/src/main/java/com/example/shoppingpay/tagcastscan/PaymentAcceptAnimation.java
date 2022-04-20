@@ -36,6 +36,10 @@ public class PaymentAcceptAnimation extends AppCompatActivity {
         setHandler();
     }
 
+    @Override
+    public void onBackPressed() {
+    }
+
     private void setHandler() {
         new Handler().postDelayed(new Runnable() {
             @Override
