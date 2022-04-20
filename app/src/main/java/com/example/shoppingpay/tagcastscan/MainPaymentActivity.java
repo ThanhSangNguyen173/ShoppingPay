@@ -45,7 +45,7 @@ public class MainPaymentActivity extends AppCompatActivity implements ActivityCo
     private boolean flgBeacon = false;
     private String serial,serial2, tablenumber;
     private Map<String,String> map;
-    public int mErrorDialogType = ErrorFragment.TYPE_NO;
+    public int mErrorDialogType = ErrorFragmentPayment.TYPE_NO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -169,57 +169,57 @@ public class MainPaymentActivity extends AppCompatActivity implements ActivityCo
                 String message = null;
                 switch (tgcErrorCode) {
                     case TGCErrorCodeUnknown:
-                        mErrorDialogType = ErrorFragment.TYPE_RETRY;
+                        mErrorDialogType = ErrorFragmentPayment.TYPE_RETRY;
                         title = getString(R.string.unknownErrorTitle);
                         message = getString(R.string.unknownErrorMessage);
                         break;
                     case TGCErrorCodeDatabase:
-                        mErrorDialogType = ErrorFragment.TYPE_RETRY;
+                        mErrorDialogType = ErrorFragmentPayment.TYPE_RETRY;
                         title = getString(R.string.databaseErrorTitle);
                         message = getString(R.string.databaseErrorMessage);
                         break;
                     case TGCErrorCodeNetwork:
-                        mErrorDialogType = ErrorFragment.TYPE_RETRY;
+                        mErrorDialogType = ErrorFragmentPayment.TYPE_RETRY;
                         title = getString(R.string.networkErrorTitle);
                         message = getString(R.string.networkErrorMessage);
                         break;
                     case TGCErrorCodeBluetooth:
-                        if (mErrorDialogType == ErrorFragment.TYPE_RETRY) {
+                        if (mErrorDialogType == ErrorFragmentPayment.TYPE_RETRY) {
                             return;
                         }
-                        mErrorDialogType = ErrorFragment.TYPE_RETRY;
+                        mErrorDialogType = ErrorFragmentPayment.TYPE_RETRY;
                         title = getString(R.string.bluetoothErrorTitle);
                         message = getString(R.string.bluetoothErrorMessage);
                         break;
                     case TGCErrorCodeDebugDataInvalid:
-                        mErrorDialogType = ErrorFragment.TYPE_OK;
+                        mErrorDialogType = ErrorFragmentPayment.TYPE_OK;
                         title = getString(R.string.databaseErrorTitle);
                         message = getString(R.string.databaseErrorMessage);
                         break;
                     case TGCErrorCodeAPIKeyNotRegistered:
-                        mErrorDialogType = ErrorFragment.TYPE_OK;
+                        mErrorDialogType = ErrorFragmentPayment.TYPE_OK;
                         title = getString(R.string.apiKeyNotRegisteredErrorTitle);
                         message = getString(R.string.apiKeyNotRegisteredErrorMessage);
                         break;
                     case TGCErrorCodeInvalidScanInterval:
-                        mErrorDialogType = ErrorFragment.TYPE_NO;
+                        mErrorDialogType = ErrorFragmentPayment.TYPE_NO;
                         break;
                     case TGCErrorCodePermissionDenied:
-                        mErrorDialogType = ErrorFragment.TYPE_OK;
+                        mErrorDialogType = ErrorFragmentPayment.TYPE_OK;
                         title = getString(R.string.permissionDeniedErrorTitle);
                         message = getString(R.string.permissionDeniedErrorMessage);
                         break;
                     case TGCErrorCodeMasterDataFailedUpdate:
-                        mErrorDialogType = ErrorFragment.TYPE_UPDATE;
+                        mErrorDialogType = ErrorFragmentPayment.TYPE_UPDATE;
                         title = getString(R.string.networkErrorTitle);
                         message = getString(R.string.failedUpdateErrorMessage);
                         break;
                     case TGCErrorCodeLocationAccess:
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                            if (mErrorDialogType == ErrorFragment.TYPE_RETRY) {
+                            if (mErrorDialogType == ErrorFragmentPayment.TYPE_RETRY) {
                                 return;
                             }
-                            mErrorDialogType = ErrorFragment.TYPE_RETRY;
+                            mErrorDialogType = ErrorFragmentPayment.TYPE_RETRY;
                             title = getString(R.string.localeAccessErrorTitle);
                             message = getString(R.string.localeAccessErrorMessage);
                         } else {
@@ -229,14 +229,14 @@ public class MainPaymentActivity extends AppCompatActivity implements ActivityCo
                     default:
                         break;
                 }
-                if (mErrorDialogType != ErrorFragment.TYPE_NO) {
-                    ErrorFragment errorDialog = new ErrorFragment();
+                if (mErrorDialogType != ErrorFragmentPayment.TYPE_NO) {
+                    ErrorFragmentPayment errorDialog = new ErrorFragmentPayment();
                     Bundle arguments = new Bundle();
-                    arguments.putString(ErrorFragment.KEY_TITLE, title);
-                    arguments.putString(ErrorFragment.KEY_MESSAGE, message);
-                    arguments.putInt(ErrorFragment.KEY_TYPE, mErrorDialogType);
+                    arguments.putString(ErrorFragmentPayment.KEY_TITLE, title);
+                    arguments.putString(ErrorFragmentPayment.KEY_MESSAGE, message);
+                    arguments.putInt(ErrorFragmentPayment.KEY_TYPE, mErrorDialogType);
                     errorDialog.setArguments(arguments);
-                    ErrorFragment.showDialogFragment(fragmentManager, ErrorFragment.class.getName(), errorDialog);
+                    ErrorFragmentPayment.showDialogFragment(fragmentManager, ErrorFragmentPayment.class.getName(), errorDialog);
                 }
             }
         };
