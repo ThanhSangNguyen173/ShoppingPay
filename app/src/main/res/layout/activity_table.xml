@@ -57,6 +57,7 @@
         </LinearLayout>
     </TabHost>
     <LinearLayout
+        android:layout_marginTop="-5dp"
         android:paddingBottom="5dp"
         android:id="@+id/item_note_status"
         android:layout_width="match_parent"
