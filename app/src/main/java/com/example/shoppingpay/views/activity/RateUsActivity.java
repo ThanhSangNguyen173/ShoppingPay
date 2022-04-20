@@ -33,6 +33,10 @@ public class RateUsActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+    }
+
     private void ratingstatus() {
         rating_bar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override

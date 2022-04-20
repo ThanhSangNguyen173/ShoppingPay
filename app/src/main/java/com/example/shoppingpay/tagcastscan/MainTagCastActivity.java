@@ -333,6 +333,10 @@ public class MainTagCastActivity extends AppCompatActivity implements ActivityCo
         }
     }
 
+    @Override
+    public void onBackPressed() {
+    }
+
     /**
      * Permission Request
      */
