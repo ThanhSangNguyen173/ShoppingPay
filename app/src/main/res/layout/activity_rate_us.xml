@@ -51,6 +51,7 @@
             android:textColor="@color/DARK_PRIMARY_COLOR" />
         <TextView
             android:id="@+id/txt_timein"
+            android:text="HH:mm:ss dd/MM/yyyy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/DARK_PRIMARY_COLOR" />
@@ -68,6 +69,7 @@
             />
         <TextView
             android:id="@+id/txt_timeout"
+            android:text="HH:mm:ss dd/MM/yyyy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/DARK_PRIMARY_COLOR" />
