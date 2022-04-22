@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.animation.ScaleAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -179,6 +180,15 @@ public class MainTagCastActivity extends AppCompatActivity implements ActivityCo
         }
     }
 
+    private void animateImage(ImageView img_table){
+
+        ScaleAnimation scaleAnimation = new ScaleAnimation(0,1f,0,1f, Animation.RELATIVE_TO_SELF,0.5f,Animation.RELATIVE_TO_SELF,0.5f);
+
+        scaleAnimation.setFillAfter(true);
+        scaleAnimation.setDuration(500);
+        img_table.startAnimation(scaleAnimation);
+    }
+
     /**
      * ScanTagCast
      */
@@ -207,6 +217,7 @@ public class MainTagCastActivity extends AppCompatActivity implements ActivityCo
                         btn_scan.setEnabled(false);
                         btn_scan.setText("Scan Successfully ✓");
                         img_table.setBackground(getDrawable(R.drawable.using_table));
+                        animateImage(img_table);
                     }else {
                         Toast.makeText(context, "Vui lòng nhận đúng bàn đã chọn", Toast.LENGTH_SHORT).show();
                         btn_scan.setEnabled(true);
