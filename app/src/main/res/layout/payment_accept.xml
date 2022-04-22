@@ -12,10 +12,10 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
         android:gravity="center"
-        android:text="PAYMENT SUCCESFULLY"
+        android:text="PAYMENT SUCCESSFULLY"
         android:textAllCaps="true"
         android:textColor="#5D4037"
-        android:textSize="30dp"
+        android:textSize="28dp"
         android:textStyle="bold" />
 
     <TextView
@@ -33,6 +33,7 @@
         android:textColor="#01408f"
         android:textSize="25sp"
         android:textStyle="bold" />
+
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lottie"
         android:layout_width="400dp"
