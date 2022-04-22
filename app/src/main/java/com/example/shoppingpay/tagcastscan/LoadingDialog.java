@@ -27,6 +27,7 @@ public class LoadingDialog {
         builder.setView(inflater.inflate(R.layout.custom_loading_dialog,null));
         builder.setCancelable(false);
         dialog = builder.create();
+        dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
         dialog.show();
     }
 
