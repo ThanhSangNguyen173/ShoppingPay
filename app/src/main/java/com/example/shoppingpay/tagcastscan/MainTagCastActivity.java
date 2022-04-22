@@ -28,6 +28,8 @@ import com.example.shoppingpay.views.activity.choosetable.ChooseTableActivity;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -42,7 +44,7 @@ public class MainTagCastActivity extends AppCompatActivity implements ActivityCo
 
     public TGCAdapter tgcAdapter;
     private boolean flgBeacon = false;
-    private String serial, pickserial, tablenumber;
+    private String serial, pickserial, tablenumber, timein;
     private Map<String,String> map;
     public int mErrorDialogType = ErrorFragment.TYPE_NO;
     DatabaseReference mData;
@@ -64,6 +66,12 @@ public class MainTagCastActivity extends AppCompatActivity implements ActivityCo
         anhxa();
         TagCastScan();
         tableNumber();
+    }
+
+    private void timeIn() {
+        SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");
+        Date date = new Date();
+        timein = formatter.format(date);
     }
 
     private void tableNumber() {
@@ -128,6 +136,7 @@ public class MainTagCastActivity extends AppCompatActivity implements ActivityCo
                 Bundle bundle = new Bundle();
                 bundle.putString("seri",serial);
                 bundle.putString("table",tablenumber);
+                bundle.putString("timein",timein);
                 intent.putExtras(bundle);
                 startActivity(intent);
                 break;
@@ -177,6 +186,9 @@ public class MainTagCastActivity extends AppCompatActivity implements ActivityCo
         final LoadingDialog loadingDialog = new LoadingDialog(MainTagCastActivity.this);
         btn_scan.setEnabled(false);
 
+        tgcAdapter.setScanInterval(10000);
+        tgcAdapter.startScan();;
+
         loadingDialog.startLoadingDialog();
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
@@ -185,6 +197,9 @@ public class MainTagCastActivity extends AppCompatActivity implements ActivityCo
                 loadingDialog.dismissDialog();
                 if(flgBeacon){
                     if(pickserial.equals(serial)){
+
+                        timeIn();
+
                         Animation alpha2 = AnimationUtils.loadAnimation(context,R.anim.alpha2);
                         btn_goToMenu.setVisibility(View.VISIBLE);
                         btn_goToMenu.startAnimation(alpha2);
@@ -328,8 +343,7 @@ public class MainTagCastActivity extends AppCompatActivity implements ActivityCo
     protected void onResume() {
         super.onResume();
         if (checkPermission()) {
-            tgcAdapter.setScanInterval(10000);
-            tgcAdapter.startScan();;
+            tgcAdapter.prepare();
         }
     }
 

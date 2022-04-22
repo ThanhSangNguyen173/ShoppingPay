@@ -11,6 +11,7 @@ import android.view.animation.ScaleAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.shoppingpay.R;
@@ -18,14 +19,20 @@ import com.example.shoppingpay.R;
 public class RateUsActivity extends AppCompatActivity {
 
     ImageView rate_status;
+    TextView txt_timein, txt_timeout;
     Button btn_rate,btn_later;
     AppCompatRatingBar rating_bar;
+    String timein, timeout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         super.getSupportActionBar().hide();
         setContentView(R.layout.activity_rate_us);
+
+        Bundle bundle = getIntent().getExtras();
+        timein = bundle.getString("timein");
+        timeout = bundle.getString("timein");
 
         anhxa();
         clicklistener();
@@ -95,5 +102,10 @@ public class RateUsActivity extends AppCompatActivity {
         btn_later = findViewById(R.id.btn_later);
         btn_rate = findViewById(R.id.btn_rate);
         rating_bar = findViewById(R.id.rating_bar);
+        txt_timein = findViewById(R.id.txt_timein);
+        txt_timeout = findViewById(R.id.txt_timeout);
+
+        txt_timein.setText(timein);
+        txt_timeout.setText(timeout);
     }
 }

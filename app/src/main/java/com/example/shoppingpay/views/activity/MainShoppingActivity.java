@@ -26,7 +26,7 @@ public class MainShoppingActivity extends AppCompatActivity {
     ShopViewModel shopViewModel;
     private int cartQuantity = 0;
     TextView cartBadgeTextView;
-    private String serial, tablenumber;
+    private String serial, tablenumber, timein;
 
 
 
@@ -38,6 +38,7 @@ public class MainShoppingActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         serial = bundle.getString("seri");
         tablenumber = bundle.getString("table");
+        timein = bundle.getString("timein");
 
 
         navController = Navigation.findNavController(MainShoppingActivity.this,R.id.nav_host_fragment);
@@ -56,6 +57,7 @@ public class MainShoppingActivity extends AppCompatActivity {
         });
     }
 
+    public String getTimeIn(){return timein;}
     public String getTableNumer(){
         return tablenumber;
     }
