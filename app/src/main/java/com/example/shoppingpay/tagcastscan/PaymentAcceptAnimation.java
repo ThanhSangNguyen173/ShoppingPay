@@ -18,7 +18,7 @@ public class PaymentAcceptAnimation extends AppCompatActivity {
     DatabaseReference mData;
     LottieAnimationView lottie;
     ImageView img_thanks;
-    String tablenumber;
+    String tablenumber, timein, timeout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +29,8 @@ public class PaymentAcceptAnimation extends AppCompatActivity {
         mData = FirebaseDatabase.getInstance().getReference();
         Bundle bundle = getIntent().getExtras();
         tablenumber = bundle.getString("table");
+        timein = bundle.getString("timein");
+        timeout = bundle.getString("timeout");
 
         setDataTable();
         anhxa();
@@ -46,6 +48,10 @@ public class PaymentAcceptAnimation extends AppCompatActivity {
             public void run() {
                 Toast.makeText(PaymentAcceptAnimation.this, "Thank you, hope to see your feedback.", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(PaymentAcceptAnimation.this, RateUsActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("timein",timein);
+                bundle.putString("timeout",timeout);
+                intent.putExtras(bundle);
                 startActivity(intent);
             }
         },5000);
