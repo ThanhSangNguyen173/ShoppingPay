@@ -32,7 +32,7 @@ public class RateUsActivity extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         timein = bundle.getString("timein");
-        timeout = bundle.getString("timein");
+        timeout = bundle.getString("timeout");
 
         anhxa();
         clicklistener();
