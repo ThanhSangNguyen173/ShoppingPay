@@ -17,7 +17,6 @@ public class PaymentAcceptAnimation extends AppCompatActivity {
     TextView animation, txt_status;
     DatabaseReference mData;
     LottieAnimationView lottie;
-    ImageView img_thanks;
     String tablenumber, timein, timeout;
 
     @Override
@@ -101,7 +100,6 @@ public class PaymentAcceptAnimation extends AppCompatActivity {
         animation = findViewById(R.id.appname);
         lottie = findViewById(R.id.lottie);
         txt_status = findViewById(R.id.txt_status);
-        img_thanks = findViewById(R.id.img_thanks);
     }
 
 }

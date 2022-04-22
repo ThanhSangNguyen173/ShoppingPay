@@ -1,16 +1,13 @@
 package com.example.shoppingpay.tagcastscan;
 
-import static com.example.shoppingpay.R.drawable.loading_scan;
 import static com.example.shoppingpay.R.drawable.scan;
 import static com.example.shoppingpay.R.drawable.scanfail;
 import static com.example.shoppingpay.R.drawable.scanpayment;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentManager;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -24,10 +21,10 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 import com.example.shoppingpay.R;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -142,7 +139,7 @@ public class MainPaymentActivity extends AppCompatActivity implements ActivityCo
 
     private void timeout() {
         SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");
-        Date date = new Date();
+        Date date = Calendar.getInstance().getTime();
         timeout = formatter.format(date);
     }
 

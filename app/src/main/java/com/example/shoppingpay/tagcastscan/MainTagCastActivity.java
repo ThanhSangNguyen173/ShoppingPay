@@ -29,6 +29,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -70,7 +71,7 @@ public class MainTagCastActivity extends AppCompatActivity implements ActivityCo
 
     private void timeIn() {
         SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");
-        Date date = new Date();
+        Date date = Calendar.getInstance().getTime();
         timein = formatter.format(date);
     }
 
@@ -349,6 +350,7 @@ public class MainTagCastActivity extends AppCompatActivity implements ActivityCo
 
     @Override
     public void onBackPressed() {
+        Toast.makeText(this, "Please finish check in or choose Change Table", Toast.LENGTH_SHORT).show();
     }
 
     /**
