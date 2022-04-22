@@ -26,6 +26,9 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.shoppingpay.R;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import jp.tagcast.bleservice.TGCErrorCode;
@@ -43,7 +46,7 @@ public class MainPaymentActivity extends AppCompatActivity implements ActivityCo
     ImageView img_checkin_load;
     public TGCAdapter tgcAdapter;
     private boolean flgBeacon = false;
-    private String serial,serial2, tablenumber;
+    private String serial,serial2, tablenumber, timeout, timein;
     private Map<String,String> map;
     public int mErrorDialogType = ErrorFragmentPayment.TYPE_NO;
 
@@ -57,6 +60,7 @@ public class MainPaymentActivity extends AppCompatActivity implements ActivityCo
         Bundle bundle = getIntent().getExtras();
         serial = bundle.getString("seri");
         tablenumber = bundle.getString("table");
+        timein = bundle.getString("timein");
 
         anhxa();
         TagCastScan();
@@ -82,12 +86,15 @@ public class MainPaymentActivity extends AppCompatActivity implements ActivityCo
      */
     private void scanTagCastPaper() {
         final Context context = getApplicationContext();
+
         Animation alpha = AnimationUtils.loadAnimation(context,R.anim.alpha);
         btn_scan.setEnabled(false);
         btn_scan.setBackground(getDrawable(scanpayment));
         bar.setVisibility(View.VISIBLE);
+
         tgcAdapter.setScanInterval(10000);
         tgcAdapter.startScan();
+
         img_checkin_load.startAnimation(alpha);
         img_checkin_load.setVisibility(View.VISIBLE);
         txt_payment_status.setVisibility(View.VISIBLE);
@@ -108,9 +115,13 @@ public class MainPaymentActivity extends AppCompatActivity implements ActivityCo
                 bar.setVisibility(View.INVISIBLE);
                 if(flgBeacon){
                     if(serial2.equals(serial)){
+                        timeout();
+
                         Intent payment = new Intent(context,PaymentAcceptAnimation.class);
                         Bundle bundle = new Bundle();
                         bundle.putString("table",tablenumber);
+                        bundle.putString("timeout",timeout);
+                        bundle.putString("timein",timein);
                         payment.putExtras(bundle);
                         startActivity(payment);
                     }else{
@@ -127,6 +138,12 @@ public class MainPaymentActivity extends AppCompatActivity implements ActivityCo
                 }
             }
         }.start();
+    }
+
+    private void timeout() {
+        SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");
+        Date date = new Date();
+        timeout = formatter.format(date);
     }
 
     private void TagCastScan() {
@@ -246,17 +263,11 @@ public class MainPaymentActivity extends AppCompatActivity implements ActivityCo
     @Override
     protected void onPause() {
         super.onPause();
-        tgcAdapter.prepare();
+        tgcAdapter.stopScan();
     }
     @Override
     protected void onResume() {
         super.onResume();
         tgcAdapter.prepare();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        tgcAdapter.stopScan();
     }
 }
