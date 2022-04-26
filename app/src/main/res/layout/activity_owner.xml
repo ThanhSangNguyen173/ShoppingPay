@@ -11,12 +11,21 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ENTER THE OWNER KEY"
+        android:text="Reset table for PO"
+        android:textAllCaps="true"
         android:textColor="@color/TEXT_ICONS"
         android:textStyle="bold"
         android:textSize="30dp"/>
     <EditText
+        android:hint="Insert table number"
         android:layout_marginTop="20dp"
+        android:layout_width="300dp"
+        android:maxLines="1"
+        android:inputType="text"
+        android:layout_height="wrap_content"
+        android:id="@+id/edt_tablenumber"/>
+    <EditText
+        android:hint="OWNER KEY"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:inputType="numberPassword"
