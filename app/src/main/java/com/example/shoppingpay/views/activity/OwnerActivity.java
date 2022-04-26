@@ -15,7 +15,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class OwnerActivity extends AppCompatActivity {
 
     DatabaseReference mData;
-    EditText edt_key;
+    EditText edt_key, edt_tablenumber;
     Button btn_reset;
 
     @Override
@@ -24,15 +24,61 @@ public class OwnerActivity extends AppCompatActivity {
         super.getSupportActionBar().hide();
         setContentView(R.layout.activity_owner);
         mData = FirebaseDatabase.getInstance().getReference();
+        anhxa();
+
+    }
+
+    private void anhxa() {
         edt_key = findViewById(R.id.edt_key);
+        edt_tablenumber = findViewById(R.id.edt_tablenumber);
         btn_reset = findViewById(R.id.btn_reset);
+        btn_reset.setOnClickListener(this::onClick);
+    }
 
-        btn_reset.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String key = edt_key.getText().toString();
+    private void onClick(View view) {
+        switch (view.getId()){
+            case R.id.btn_reset: resetTable();
+                break;
+        }
+    }
 
-                if (key.equals("173999")){
+    private void resetTable() {
+        String key = edt_key.getText().toString();
+        String tablenumber = edt_tablenumber.getText().toString();
+
+        if (key.equals("173999")){
+            switch (tablenumber){
+                case "1":
+                    mData.child("TB1").setValue("t");
+                    break;
+                case "2":
+                    mData.child("TB2").setValue("t");
+                    break;
+                case "3":
+                    mData.child("TB3").setValue("t");
+                    break;
+                case "4":
+                    mData.child("TB4").setValue("t");
+                    break;
+                case "5":
+                    mData.child("TB5").setValue("t");
+                    break;
+                case "6":
+                    mData.child("TB6").setValue("t");
+                    break;
+                case "21":
+                    mData.child("TB21").setValue("t");
+                    break;
+                case "22":
+                    mData.child("TB22").setValue("t");
+                    break;
+                case "23":
+                    mData.child("TB23").setValue("t");
+                    break;
+                case "24":
+                    mData.child("TB24").setValue("t");
+                    break;
+                case "all" :
                     mData.child("TB1").setValue("t");
                     mData.child("TB2").setValue("t");
                     mData.child("TB3").setValue("t");
@@ -43,11 +89,12 @@ public class OwnerActivity extends AppCompatActivity {
                     mData.child("TB22").setValue("t");
                     mData.child("TB23").setValue("t");
                     mData.child("TB24").setValue("t");
-                    Toast.makeText(OwnerActivity.this, "Đã reset trạng thái của tất cả các bàn!", Toast.LENGTH_SHORT).show();
-                }else {
-                    Toast.makeText(OwnerActivity.this, "Vui lòng nhập đúng keyword!", Toast.LENGTH_SHORT).show();
-                }
+                    break;
             }
-        });
+            Toast.makeText(this, "Reset thành công!", Toast.LENGTH_SHORT).show();
+            edt_tablenumber.setText("");
+        }else {
+            Toast.makeText(OwnerActivity.this, "Vui lòng nhập đúng keyword!", Toast.LENGTH_SHORT).show();
+        }
     }
 }
