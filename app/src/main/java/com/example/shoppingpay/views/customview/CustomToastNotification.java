@@ -19,8 +19,7 @@ public class CustomToastNotification extends LinearLayout {
 
     private Context mContext;
     private CustomToastNotificationBinding mBinding;
-    private String mMessage;
-    private String mTitle;
+    private String mMessage, mTitle;
 
     public CustomToastNotification(Context context) {
         super(context);
@@ -47,7 +46,7 @@ public class CustomToastNotification extends LinearLayout {
         mContext = context;
         mBinding = DataBindingUtil
                 .inflate(LayoutInflater.from(mContext), R.layout.custom_toast_notification, this, true);
-        mBinding.setViewModel(this);
+        mBinding.setToast(this);
     }
 
     public String getTitle() {

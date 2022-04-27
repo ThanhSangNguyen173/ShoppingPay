@@ -5,7 +5,7 @@
     <data>
 
         <variable
-            name="viewModel"
+            name="Toast"
             type="com.example.shoppingpay.views.customview.CustomToastNotification"/>
     </data>
     <androidx.cardview.widget.CardView
@@ -54,7 +54,7 @@
                 android:layout_marginTop="2dp"
                 android:textColor="@color/TEXT_ICONS"
                 android:textStyle="italic"
-                android:text="@{viewModel.message}"
+                android:text="@{Toast.message}"
                 android:textSize="17dp"/>
         </LinearLayout>
     </LinearLayout>
