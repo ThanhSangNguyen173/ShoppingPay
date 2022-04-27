@@ -13,5 +13,5 @@ dependencyResolutionManagement {
 
     }
 }
-rootProject.name = "ShoppingPay"
+rootProject.name = "BoxyzVN"
 include ':app'
