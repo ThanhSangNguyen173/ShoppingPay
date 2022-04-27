@@ -7,6 +7,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -26,6 +27,8 @@ import com.example.shoppingpay.R;
 import com.example.shoppingpay.application.AppInfo;
 import com.example.shoppingpay.views.activity.MainShoppingActivity;
 import com.example.shoppingpay.views.activity.choosetable.ChooseTableActivity;
+import com.example.shoppingpay.views.customview.CustomToastNotification;
+import com.example.shoppingpay.views.customview.CustomLoadingDialog;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -189,12 +192,31 @@ public class MainTagCastActivity extends AppCompatActivity implements ActivityCo
         img_table.startAnimation(scaleAnimation);
     }
 
+    public void showToast(int i) {
+        CustomToastNotification customToastNotification = new CustomToastNotification(this);
+        switch (i) {
+            case 0:
+                customToastNotification.setMessage("Vui lòng nhận đúng bàn đã chọn");
+                break;
+            case 1:
+                customToastNotification.setMessage("Scan fail, please try again!");
+                break;
+            case 2:
+                customToastNotification.setMessage("Please finish check in or choose Change Table");
+                break;
+        }
+        Toast toast = Toast.makeText(this, "", Toast.LENGTH_LONG);
+        toast.setGravity(Gravity.TOP | Gravity.FILL_HORIZONTAL, 0, 0);
+        toast.setView(customToastNotification);
+        toast.show();
+    }
+
     /**
      * ScanTagCast
      */
     private void scanTagCastPaper() {
         final Context context = getApplicationContext();
-        final LoadingDialog loadingDialog = new LoadingDialog(MainTagCastActivity.this);
+        final CustomLoadingDialog loadingDialog = new CustomLoadingDialog(MainTagCastActivity.this);
         btn_scan.setEnabled(false);
 
         tgcAdapter.setScanInterval(10000);
@@ -219,14 +241,14 @@ public class MainTagCastActivity extends AppCompatActivity implements ActivityCo
                         img_table.setBackground(getDrawable(R.drawable.using_table));
                         animateImage(img_table);
                     }else {
-                        Toast.makeText(context, "Vui lòng nhận đúng bàn đã chọn", Toast.LENGTH_SHORT).show();
+                        showToast(0);
                         btn_scan.setEnabled(true);
                         btn_scan.setText("Try scan again");
                     }
                 }else{
                     btn_scan.setText("Try scan again");
                     btn_scan.setEnabled(true);
-                    Toast.makeText(context, "Scan fail, please try again!", Toast.LENGTH_SHORT).show();
+                    showToast(1);
                 }
             }
         },10000);
@@ -361,7 +383,7 @@ public class MainTagCastActivity extends AppCompatActivity implements ActivityCo
 
     @Override
     public void onBackPressed() {
-        Toast.makeText(this, "Please finish check in or choose Change Table", Toast.LENGTH_SHORT).show();
+        showToast(2);
     }
 
     /**
