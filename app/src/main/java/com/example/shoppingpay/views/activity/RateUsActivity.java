@@ -5,6 +5,7 @@ import androidx.appcompat.widget.AppCompatRatingBar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.shoppingpay.R;
+import com.example.shoppingpay.views.customview.CustomToastNotification;
 
 public class RateUsActivity extends AppCompatActivity {
 
@@ -88,13 +90,29 @@ public class RateUsActivity extends AppCompatActivity {
         switch (view.getId()){
             case R.id.btn_rate:
                 startActivity(intent);
-                Toast.makeText(this, "Thanks for your rate. Hope to see you soon.", Toast.LENGTH_SHORT).show();
+                showToast(0);
                 break;
             case R.id.btn_later:
                 startActivity(intent);
-                Toast.makeText(this, "See you agian!", Toast.LENGTH_SHORT).show();
+                showToast(1);
                 break;
         }
+    }
+
+    public void showToast(int i) {
+        CustomToastNotification customToastNotification = new CustomToastNotification(this);
+        switch (i) {
+            case 0:
+                customToastNotification.setMessage("Thanks for your rate. Hope to see you soon.");
+                break;
+            case 1:
+                customToastNotification.setMessage("See you again!");
+                break;
+        }
+        Toast toast = Toast.makeText(this, "", Toast.LENGTH_LONG);
+        toast.setGravity(Gravity.TOP | Gravity.FILL_HORIZONTAL, 0, 0);
+        toast.setView(customToastNotification);
+        toast.show();
     }
 
     private void anhxa() {
