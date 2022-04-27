@@ -1,4 +1,4 @@
-package com.example.shoppingpay.tagcastscan;
+package com.example.shoppingpay.views.customview;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -12,11 +12,11 @@ import android.widget.TextView;
 
 import com.example.shoppingpay.R;
 
-public class LoadingDialog {
+public class CustomLoadingDialog {
     public Activity activity;
     private AlertDialog dialog;
 
-    public LoadingDialog(Activity myActivity){
+    public CustomLoadingDialog(Activity myActivity){
         activity = myActivity;
     }
 

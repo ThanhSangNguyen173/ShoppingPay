@@ -3,12 +3,14 @@ package com.example.shoppingpay.views.activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.shoppingpay.R;
+import com.example.shoppingpay.views.customview.CustomToastNotification;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -78,7 +80,7 @@ public class OwnerActivity extends AppCompatActivity {
                 case "24":
                     mData.child("TB24").setValue("t");
                     break;
-                case "all" :
+                case "" :
                     mData.child("TB1").setValue("t");
                     mData.child("TB2").setValue("t");
                     mData.child("TB3").setValue("t");
@@ -91,10 +93,26 @@ public class OwnerActivity extends AppCompatActivity {
                     mData.child("TB24").setValue("t");
                     break;
             }
-            Toast.makeText(this, "Reset thành công!", Toast.LENGTH_SHORT).show();
+            showToast(0);
             edt_tablenumber.setText("");
         }else {
-            Toast.makeText(OwnerActivity.this, "Vui lòng nhập đúng keyword!", Toast.LENGTH_SHORT).show();
+            showToast(1);
         }
+    }
+    public void showToast(int i) {
+        CustomToastNotification customToastNotification = new CustomToastNotification(this);
+        customToastNotification.setBackground(R.color.DIVIDER_COLOR);
+        switch (i) {
+            case 0:
+                customToastNotification.setMessage("Reset thành công!");
+                break;
+            case 1:
+                customToastNotification.setMessage("Vui lòng nhập đúng keyword!");
+                break;
+        }
+        Toast toast = Toast.makeText(this, "", Toast.LENGTH_LONG);
+        toast.setGravity(Gravity.TOP | Gravity.FILL_HORIZONTAL, 0, 0);
+        toast.setView(customToastNotification);
+        toast.show();
     }
 }
