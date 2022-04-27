@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -17,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.shoppingpay.R;
 import com.example.shoppingpay.views.activity.choosetable.ChooseTableActivity;
+import com.example.shoppingpay.views.customview.CustomToastNotification;
 
 public class LoginRegisterActivity extends AppCompatActivity {
 
@@ -26,7 +28,7 @@ public class LoginRegisterActivity extends AppCompatActivity {
     EditText ho,ten,dob,pass,copass,id;
     CheckBox checkBox;
     RadioButton nam,nu;
-    String taikhoan,matkhau;
+    String taikhoan,matkhau,str1,str2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,38 @@ public class LoginRegisterActivity extends AppCompatActivity {
 
         anhxa();
         controlbutton();
+    }
+
+    public void showToast(int i) {
+        CustomToastNotification customToastNotification = new CustomToastNotification(this);
+        switch (i) {
+            case 0:
+                customToastNotification.setMessage("Vui lòng nhập đầy đủ thông tin và đồng ý điều khoản sử dụng!");
+                break;
+            case 1:
+                customToastNotification.setMessage("Đăng ký thành công!");
+                break;
+            case 2:
+                customToastNotification.setMessage("Welcome back "+str1);
+                break;
+            case 3:
+                customToastNotification.setMessage("Welcome back BOXYZVN");
+                break;
+            case 4:
+                customToastNotification.setMessage("Vui lòng kiểm tra lại ID/Password!");
+                break;
+            case 5:
+                customToastNotification.setMessage("Vui lòng nhập đầy đủ thông tin!");
+                break;
+        }
+        Toast toast = Toast.makeText(this, "", Toast.LENGTH_LONG);
+        if(i == 2 || i == 3){
+            toast.setGravity(Gravity.TOP | Gravity.FILL_HORIZONTAL, 0, 0);
+        } else {
+            toast.setGravity(Gravity.BOTTOM | Gravity.FILL_HORIZONTAL, 0, 0);
+        }
+        toast.setView(customToastNotification);
+        toast.show();
     }
 
     private void anhxa() {
@@ -104,12 +138,12 @@ public class LoginRegisterActivity extends AppCompatActivity {
                 taikhoan = id.getText().toString().trim();
                 matkhau = pass.getText().toString().trim();
                 if (dk1.isEmpty() || dk2.isEmpty() || dk3.isEmpty() || dk4.isEmpty() || taikhoan.isEmpty() ||matkhau.isEmpty() || b ) {
-                    Toast.makeText(LoginRegisterActivity.this, "Vui lòng nhập đầy đủ thông tin và đồng ý điều khoản sử dụng!", Toast.LENGTH_SHORT).show();
+                    showToast(0);
                 }else {
                     tk.setText(taikhoan);
                     mk.setText(matkhau);
                     dialog.cancel();
-                    Toast.makeText(LoginRegisterActivity.this, "Đăng ký thành công!", Toast.LENGTH_SHORT).show();
+                    showToast(1);
                 }
             }
         });
@@ -126,24 +160,24 @@ public class LoginRegisterActivity extends AppCompatActivity {
      * Login
      */
     private void clickLogin() {
-        String str1 = tk.getText().toString().trim();
-        String str2 = mk.getText().toString().trim();
+        str1 = tk.getText().toString().trim();
+        str2 = mk.getText().toString().trim();
         if (!str1.isEmpty() || !str2.isEmpty()) {
             if(str1.equals(taikhoan) && str2.equals(matkhau)){
+                showToast(2);
                 Intent intent1 = new Intent(LoginRegisterActivity.this, ChooseTableActivity.class);
                 startActivity(intent1);
                 overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_left);
-                Toast.makeText(LoginRegisterActivity.this, "Welcome back "+str1, Toast.LENGTH_SHORT).show();
             }else if(str1.equals("1") && str2.equals("1")){
+                showToast(3);
                 Intent intent2 = new Intent(LoginRegisterActivity.this, ChooseTableActivity.class);
                 startActivity(intent2);
                 overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_left);
-                Toast.makeText(LoginRegisterActivity.this, "Welcome back "+str1, Toast.LENGTH_SHORT).show();
             }else {
-                Toast.makeText(LoginRegisterActivity.this, "Vui lòng kiểm tra lại ID/Password!", Toast.LENGTH_SHORT).show();
+                showToast(4);
             }
         }else {
-            Toast.makeText(LoginRegisterActivity.this, "Vui lòng nhập đầy đủ thông tin!", Toast.LENGTH_SHORT).show();
+            showToast(5);
         }
     }
 
