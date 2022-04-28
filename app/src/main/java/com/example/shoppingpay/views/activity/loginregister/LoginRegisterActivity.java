@@ -50,7 +50,7 @@ public class LoginRegisterActivity extends AppCompatActivity {
                 customToastNotification.setMessage("Đăng ký thành công!");
                 break;
             case 2:
-                customToastNotification.setMessage("Welcome back "+str1);
+                customToastNotification.setMessage("Welcome back " + str1);
                 break;
             case 3:
                 customToastNotification.setMessage("Welcome back BOXYZVN");
@@ -60,6 +60,9 @@ public class LoginRegisterActivity extends AppCompatActivity {
                 break;
             case 5:
                 customToastNotification.setMessage("Vui lòng nhập đầy đủ thông tin!");
+                break;
+            case 6:
+                customToastNotification.setMessage("Mật khẩu và xác nhận không khớp!");
                 break;
         }
         Toast toast = Toast.makeText(this, "", Toast.LENGTH_LONG);
@@ -137,8 +140,11 @@ public class LoginRegisterActivity extends AppCompatActivity {
 
                 taikhoan = id.getText().toString().trim();
                 matkhau = pass.getText().toString().trim();
+
                 if (dk1.isEmpty() || dk2.isEmpty() || dk3.isEmpty() || dk4.isEmpty() || taikhoan.isEmpty() ||matkhau.isEmpty() || b ) {
                     showToast(0);
+                }else if (!matkhau.equals(dk4)){
+                    showToast(6);
                 }else {
                     tk.setText(taikhoan);
                     mk.setText(matkhau);
@@ -186,7 +192,7 @@ public class LoginRegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(LoginRegisterActivity.this, android.R.style.Theme_DeviceDefault_Light_Dialog);
-                builder.setTitle("BẠN ĐANG THOÁT KHỎI ỨNG DỤNG");
+                builder.setTitle("THOÁT KHỎI TRANG ĐĂNG NHẬP");
                 builder.setMessage("Bạn có chắc chắn muốn thoát?");
                 builder.setIcon(android.R.drawable.ic_dialog_alert);
                 builder.setPositiveButton("CÓ", new DialogInterface.OnClickListener() {
