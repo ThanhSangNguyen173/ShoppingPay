@@ -13,6 +13,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.example.shoppingpay.adapters.IntroViewAdapter;
 import com.example.shoppingpay.R;
 import com.example.shoppingpay.views.activity.loginregister.ScreenAdvertisement;
+import com.example.shoppingpay.views.fragment.ShopFragment;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
