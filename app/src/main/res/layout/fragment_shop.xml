@@ -15,12 +15,13 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/shopRecycleView"
             android:layout_width="wrap_content"
-            android:layout_height="500dp"
+            android:layout_height="600dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintBottom_toBottomOf="parent"
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/imageView"
             app:layout_constraintVertical_bias="0"
             app:layout_constraintWidth_percent=".9"
             tools:listitem="@layout/shop_item" />
@@ -162,14 +163,15 @@
         <View
             android:id="@+id/imageView"
             android:layout_width="wrap_content"
-            android:layout_height="50dp"
+            android:layout_height="55dp"
             android:background="@color/DARK_PRIMARY_COLOR"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/shopRecycleView" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
