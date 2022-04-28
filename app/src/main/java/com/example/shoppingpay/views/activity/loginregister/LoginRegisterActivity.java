@@ -62,7 +62,7 @@ public class LoginRegisterActivity extends AppCompatActivity {
                 customToastNotification.setMessage("Vui lòng nhập đầy đủ thông tin!");
                 break;
             case 6:
-                customToastNotification.setMessage("Mật khẩu và xác nhận không khớp!");
+                customToastNotification.setMessage("Mật khẩu và xác nhận không trùng khớp!");
                 break;
         }
         Toast toast = Toast.makeText(this, "", Toast.LENGTH_LONG);
