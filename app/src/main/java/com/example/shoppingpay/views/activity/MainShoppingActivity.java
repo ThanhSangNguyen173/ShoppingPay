@@ -26,7 +26,7 @@ public class MainShoppingActivity extends AppCompatActivity {
     ShopViewModel shopViewModel;
     private int cartQuantity = 0;
     TextView cartBadgeTextView;
-    private String serial, tablenumber, timein;
+    private String serial, tablenumber, timein, value;
 
 
 
@@ -39,7 +39,7 @@ public class MainShoppingActivity extends AppCompatActivity {
         serial = bundle.getString("seri");
         tablenumber = bundle.getString("table");
         timein = bundle.getString("timein");
-
+        value = bundle.getString("value");
 
         navController = Navigation.findNavController(MainShoppingActivity.this,R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(MainShoppingActivity.this,navController);
@@ -64,6 +64,7 @@ public class MainShoppingActivity extends AppCompatActivity {
     public String getSerial(){
         return serial;
     }
+    public String getValueRating(){ return value;}
 
     @Override
     public boolean onSupportNavigateUp() {

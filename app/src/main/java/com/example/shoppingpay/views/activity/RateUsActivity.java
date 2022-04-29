@@ -1,5 +1,6 @@
 package com.example.shoppingpay.views.activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatRatingBar;
 
@@ -16,7 +17,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.shoppingpay.R;
+import com.example.shoppingpay.views.activity.choosetable.ChooseTableActivity;
 import com.example.shoppingpay.views.customview.CustomToastNotification;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class RateUsActivity extends AppCompatActivity {
 
@@ -25,12 +32,16 @@ public class RateUsActivity extends AppCompatActivity {
     Button btn_rate,btn_later;
     AppCompatRatingBar rating_bar;
     String timein, timeout;
+    DatabaseReference mData;
+    Float rating, realtimedb, ratepush;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         super.getSupportActionBar().hide();
         setContentView(R.layout.activity_rate_us);
+
+        mData = FirebaseDatabase.getInstance().getReference();
 
         Bundle bundle = getIntent().getExtras();
         timein = bundle.getString("timein");
@@ -66,8 +77,25 @@ public class RateUsActivity extends AppCompatActivity {
                     rate_status.setBackground(getDrawable(R.drawable.five_star));
                 }
 
+                rating = v;
+                setRatingData();
                 animateImage(rate_status);
             }
+        });
+    }
+
+    private void setRatingData() {
+        mData.child("Rating").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String value = snapshot.getValue().toString();
+                realtimedb = Float.parseFloat(value);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(RateUsActivity.this, "Lỗi dữ liệu, vui lòng thử lại!", Toast.LENGTH_SHORT).show();
+            }
+
         });
     }
 
@@ -89,8 +117,13 @@ public class RateUsActivity extends AppCompatActivity {
         Intent intent = new Intent(RateUsActivity.this,DashboardActivity.class);
         switch (view.getId()){
             case R.id.btn_rate:
+                if(rating == null){
+                    showToast(2);
+                }else{
+                ratepush = (realtimedb + rating)/2;
+                mData.child("Rating").setValue(ratepush);
                 startActivity(intent);
-                showToast(0);
+                showToast(0);}
                 break;
             case R.id.btn_later:
                 startActivity(intent);
@@ -107,6 +140,9 @@ public class RateUsActivity extends AppCompatActivity {
                 break;
             case 1:
                 customToastNotification.setMessage("See you again!");
+                break;
+            case 2:
+                customToastNotification.setMessage("Please give your rating.");
                 break;
         }
         Toast toast = Toast.makeText(this, "", Toast.LENGTH_LONG);
