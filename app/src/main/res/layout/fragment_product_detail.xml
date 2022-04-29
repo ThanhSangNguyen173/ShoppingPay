@@ -16,7 +16,7 @@
         <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/PRIMARY_COLOR">
+            android:background="@color/DARK_PRIMARY_COLOR">
             <com.google.android.material.appbar.AppBarLayout
                 android:id="@+id/appBar"
                 android:layout_width="match_parent"
@@ -33,12 +33,11 @@
                     app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
                     app:expandedTitleTextAppearance="@style/Theme.ShoppingPay"
                     app:collapsedTitleTextAppearance="@style/Theme.ShoppingPay"
-                    android:background="@color/PRIMARY_COLOR"
+                    android:background="@drawable/food_1"
                     android:id="@+id/img_item">
 
                     <ImageView
                         android:id="@+id/productImageView"
-                        android:layout_margin="15dp"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/food_1"
@@ -54,37 +53,42 @@
 
             <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/LIGHT_PRIMARY_COLOR"
+                android:layout_height="690dp"
+                android:background="@drawable/bg_deatil"
+                android:translationY="-10dp"
                 app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
-                    android:padding="10dp"
-                    >
+                    android:padding="10dp">
+
                     <TextView
-                        android:layout_marginTop="5dp"
-                        android:layout_marginLeft="30dp"
                         android:id="@+id/productNameTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAllCaps="true"
-                        android:textStyle="bold"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginTop="5dp"
                         android:text="@{shopViewModel.product.name}"
-                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6" />
+                        android:textAllCaps="true"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                        android:textStyle="bold" />
+
                     <Space
                         android:layout_width="match_parent"
-                        android:layout_height="5dp"/>
+                        android:layout_height="5dp" />
+
                     <TextView
                         android:id="@+id/priceTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@{shopViewModel.product.price + `$` }"
                         android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1" />
+
                     <Space
                         android:layout_width="match_parent"
-                        android:layout_height="5dp"/>
+                        android:layout_height="5dp" />
 
                     <TextView
                         android:id="@+id/availableTextView"
@@ -93,18 +97,20 @@
                         android:text="@{shopViewModel.product.available ? `Available` : `Sold out`}"
                         android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
                         android:textColor="@{shopViewModel.product.available ? @color/PRIMARY_TEXT : @color/RED}" />
+
                     <Space
                         android:layout_width="match_parent"
-                        android:layout_height="5dp"/>
+                        android:layout_height="5dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Description"
                         android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
+
                     <Space
                         android:layout_width="match_parent"
-                        android:layout_height="5dp"/>
+                        android:layout_height="5dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -127,7 +133,7 @@
                 android:src="@drawable/carticon"
                 app:layout_anchor="@id/appBar"
                 app:layout_anchorGravity="end|bottom"
-                android:layout_marginRight="25dp"
+                android:layout_marginRight="45dp"
                 android:enabled="@{shopViewModel.product.available}"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
                 android:onClick="@{()->shopViewModel.addItemToCart(shopViewModel.product)}"
