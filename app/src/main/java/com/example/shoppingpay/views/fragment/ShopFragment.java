@@ -19,6 +19,7 @@ import com.example.shoppingpay.adapters.ShopListAdapter;
 import com.example.shoppingpay.databinding.FragmentShopBinding;
 import com.example.shoppingpay.models.Product;
 import com.example.shoppingpay.viewmodels.ShopViewModel;
+import com.example.shoppingpay.views.activity.MainShoppingActivity;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
@@ -29,6 +30,7 @@ public class ShopFragment extends Fragment implements ShopListAdapter.ShopInterf
     private ShopListAdapter shopListAdapter;
     private ShopViewModel shopViewModel;
     private NavController navController;
+    String value;
 
     public ShopFragment() {
         // Required empty public constructor
@@ -48,6 +50,9 @@ public class ShopFragment extends Fragment implements ShopListAdapter.ShopInterf
 
         shopListAdapter = new ShopListAdapter(this);
         fragmentShopBinding.shopRecycleView.setAdapter(shopListAdapter);
+        MainShoppingActivity activity = (MainShoppingActivity) getActivity();
+        value = activity.getValueRating();
+        fragmentShopBinding.tvRate.setText(value);
 
         shopViewModel = new ViewModelProvider(requireActivity()).get(ShopViewModel.class);
         shopViewModel.getProducts().observe(getViewLifecycleOwner(), new Observer<List<Product>>() {
