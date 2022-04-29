@@ -238,7 +238,7 @@ public class ChooseTableActivity extends AppCompatActivity {
                 item_note_status.setVisibility(View.VISIBLE);
                 break;
             case R.id.btn_table1:
-                pickserial = "1";
+                pickserial = "JPN-PPER-0086-3965-3189";
                 mData.child("TB1").setValue("f");
                 tablenumber = "table1";
                 GetDataTable();
@@ -292,7 +292,7 @@ public class ChooseTableActivity extends AppCompatActivity {
                 GetDataTable();
                 break;
             case R.id.btn_table24:
-                pickserial ="24";
+                pickserial ="JPN-PPER-0086-3965-3189";
                 mData.child("TB24").setValue("f");
                 tablenumber = "table24";
                 GetDataTable();
