@@ -63,7 +63,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:visibility="invisible">
+        android:visibility="visible">
 
         <TextView
             android:gravity="center"
@@ -73,7 +73,7 @@
             android:text="Available"
             android:textAllCaps="true"
             android:textStyle="bold"
-            android:drawableTop="@drawable/icon_table_64"
+            android:drawableTop="@drawable/icon_table_24"
             />
         <TextView
             android:gravity="center"
@@ -83,7 +83,7 @@
             android:text="Unavailable"
             android:textAllCaps="true"
             android:textStyle="bold"
-            android:drawableTop="@drawable/icon_using_table_64"
+            android:drawableTop="@drawable/icon_using_table_24"
             />
     </LinearLayout>
     <Button
