@@ -17,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.shoppingpay.R;
 import com.example.shoppingpay.tagcastscan.MainTagCastActivity;
 
+import com.example.shoppingpay.views.activity.RateUsActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -25,7 +26,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class ChooseTableActivity extends AppCompatActivity {
     DatabaseReference mData;
-    String pickserial, tablenumber;
+    String pickserial, tablenumber, valuerat, value;
     String tb1,tb2,tb3,tb4,tb5,tb6,tb21,tb22,tb23,tb24;
     TabHost tabHost;
     Button btn_checktable;
@@ -213,9 +214,23 @@ public class ChooseTableActivity extends AppCompatActivity {
         tabHost.setVisibility(View.INVISIBLE);
     }
 
+    private void setRatingData() {
+        mData.child("Rating").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                valuerat = snapshot.getValue().toString();
+                value = valuerat.substring(0,3);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+
+        });
+    }
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.checktable:
+                setRatingData();
                 getTableStatus();
                 tabHost.setVisibility(View.VISIBLE);
                 btn_checktable.clearAnimation();
@@ -290,6 +305,7 @@ public class ChooseTableActivity extends AppCompatActivity {
                 Bundle bundle = new Bundle();
                 bundle.putString("seri",pickserial);
                 bundle.putString("table",tablenumber);
+                bundle.putString("value",value);
                 intent.putExtras(bundle);
                 startActivity(intent);
     }

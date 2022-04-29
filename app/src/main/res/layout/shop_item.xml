@@ -82,10 +82,10 @@
             <Button
                 android:id="@+id/btn_add_to_cart"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="35dp"
                 android:layout_centerVertical="true"
                 android:layout_toEndOf="@+id/layout"
-                android:backgroundTint="@color/DARK_PRIMARY_COLOR"
+                android:background="@drawable/btn_add"
                 android:enabled="@{product.available}"
                 android:onClick="@{()->shopInterface.addItem(product)}"
                 android:text="add"

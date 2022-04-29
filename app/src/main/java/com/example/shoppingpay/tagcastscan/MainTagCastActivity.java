@@ -49,7 +49,7 @@ public class MainTagCastActivity extends AppCompatActivity implements ActivityCo
 
     public TGCAdapter tgcAdapter;
     private boolean flgBeacon = false;
-    private String serial, pickserial, tablenumber, timein;
+    private String serial, pickserial, tablenumber, timein, value;
     private Map<String,String> map;
     public int mErrorDialogType = ErrorFragment.TYPE_NO;
     DatabaseReference mData;
@@ -67,6 +67,7 @@ public class MainTagCastActivity extends AppCompatActivity implements ActivityCo
         Bundle bundle = getIntent().getExtras();
         pickserial = bundle.getString("seri");
         tablenumber = bundle.getString("table");
+        value = bundle.getString("value");
 
         anhxa();
         TagCastScan();
@@ -142,6 +143,7 @@ public class MainTagCastActivity extends AppCompatActivity implements ActivityCo
                 bundle.putString("seri",serial);
                 bundle.putString("table",tablenumber);
                 bundle.putString("timein",timein);
+                bundle.putString("value",value);
                 intent.putExtras(bundle);
                 startActivity(intent);
                 break;
