@@ -28,7 +28,7 @@ public class LoginRegisterActivity extends AppCompatActivity {
     EditText ho,ten,dob,pass,copass,id;
     CheckBox checkBox;
     RadioButton nam,nu;
-    String taikhoan,matkhau,str1,str2;
+    String taikhoan,matkhau,str1,str2,username,password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -185,7 +185,9 @@ public class LoginRegisterActivity extends AppCompatActivity {
         }else {
             showToast(5);
         }
+
     }
+
 
     private void controlbutton() {
         btnthoat.setOnClickListener(new View.OnClickListener() {
