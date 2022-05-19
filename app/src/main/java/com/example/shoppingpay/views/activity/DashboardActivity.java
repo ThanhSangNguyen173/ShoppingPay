@@ -13,7 +13,7 @@ import androidx.cardview.widget.CardView;
 
 import com.example.shoppingpay.R;
 import com.example.shoppingpay.views.activity.choosetable.ChooseTableActivity;
-import com.example.shoppingpay.views.activity.loginregister.LoginRegisterActivity;
+import com.example.shoppingpay.views.activity.loginregister.LoginActivity;
 
 public class DashboardActivity extends AppCompatActivity {
 
@@ -41,7 +41,7 @@ public class DashboardActivity extends AppCompatActivity {
     private void onClick(View view) {
         switch (view.getId()){
             case R.id.cv_member:
-                Intent intent = new Intent(DashboardActivity.this, LoginRegisterActivity.class);
+                Intent intent = new Intent(DashboardActivity.this, LoginActivity.class);
                 startActivity(intent);
             break;
             case R.id.cv_table:
