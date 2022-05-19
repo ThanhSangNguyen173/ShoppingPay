@@ -29,7 +29,7 @@ import retrofit2.http.Path;
 
 public interface TableApiService {
 
-    //Link API: http://127.0.0.1:8000/api/table/{id}
+    //Link API: http://192.168.1.23:8000/
     Gson gson = new GsonBuilder()
             .setDateFormat("yyyy-MM-dd HH:mm:ss")
             .create();
