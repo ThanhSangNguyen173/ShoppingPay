@@ -11,6 +11,10 @@ import android.widget.Toast;
 
 import com.example.shoppingpay.R;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class ResginsterssActivity extends AppCompatActivity {
 
     EditText edtfull_name, edtusername,edtpassword,edtemail,edtDOB,edtCfpassword;
@@ -62,6 +66,30 @@ public class ResginsterssActivity extends AppCompatActivity {
         
         }else if(!password.equals(cofpassword)){
             Toast.makeText(this, "Password Incorrect", Toast.LENGTH_SHORT).show();
+        }else {
+            Call<responseRegisterModel> call = controller
+                                                .getInstance()
+                                                .getapi()
+                                                .register(full_name,DOB,email,username,password);
+
+            call.enqueue(new Callback<responseRegisterModel>() {
+                @Override
+                public void onResponse(Call<responseRegisterModel> call, Response<responseRegisterModel> response) {
+                    responseRegisterModel objreg = response.body();
+                    String outputreg = objreg.getMessage();
+                    if (outputreg.equals("Resigen Success"))
+                    {
+                        Toast.makeText(ResginsterssActivity.this, "Resigen Success", Toast.LENGTH_SHORT).show();
+                        Intent intentlog = new Intent(ResginsterssActivity.this,LoginRegisterActivity.class);
+                        startActivity(intentlog);
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<responseRegisterModel> call, Throwable t) {
+                    Toast.makeText(ResginsterssActivity.this, "have this worong", Toast.LENGTH_SHORT).show();
+                }
+            });
         }
     }
 
