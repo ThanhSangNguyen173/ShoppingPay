@@ -108,8 +108,8 @@ public class LoginRegisterActivity extends AppCompatActivity {
      */
     private void clickDky() {
 
-        Intent intent = new Intent(LoginRegisterActivity.this,RegisterActivity.class);
-        startActivity(intent);
+        Intent intentreg = new Intent(LoginRegisterActivity.this,ResginsterssActivity.class);
+        startActivity(intentreg);
 
     }
 
