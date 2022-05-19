@@ -141,13 +141,14 @@ public class LoginRegisterActivity extends AppCompatActivity {
                         Toast.makeText(LoginRegisterActivity.this, "Invalid Username or Password", Toast.LENGTH_SHORT).show();
                     }
                     if (output.equals("Success")){
+                        // xu ly check login khi da dang nhap roi// tamthoi khong dung toi
                         SharedPreferences sp = getSharedPreferences("credentials",MODE_PRIVATE);
                         SharedPreferences.Editor editor=sp.edit();
                         editor.putString("username",tk.getText().toString());
                         editor.putString("password",mk.getText().toString());
                         editor.commit();
                         editor.apply();
-
+                        // de chuyen trang khi nhan gia tri success
                         Intent intentlog = new Intent(LoginRegisterActivity.this, DashboardActivity.class);
                         startActivity(intentlog);
                         finish();
