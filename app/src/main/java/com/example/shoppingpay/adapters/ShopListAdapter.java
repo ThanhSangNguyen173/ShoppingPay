@@ -53,3 +53,5 @@ public class ShopListAdapter extends ListAdapter<Product, ShopListAdapter.ShopVi
         void onItemClick(Product product);
     }
 }
+
+
