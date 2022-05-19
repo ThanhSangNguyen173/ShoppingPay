@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.shoppingpay.R;
 
@@ -44,7 +45,24 @@ public class ResginsterssActivity extends AppCompatActivity {
     }
 
     private void clickRegister() {
+        Toast.makeText(this, "send resigen", Toast.LENGTH_SHORT).show();
+        String full_name=edtfull_name.getText().toString();
+        String DOB=edtDOB.getText().toString();
+        String email=edtemail.getText().toString();
+        String username=edtusername.getText().toString();
+        String password=edtpassword.getText().toString();
+        String cofpassword=edtCfpassword.getText().toString();
 
+        if (username.isEmpty()
+                ||full_name.isEmpty()
+                ||DOB.isEmpty()
+                ||email.isEmpty()
+                ||password.isEmpty()){
+            Toast.makeText(this, "Please enter enough information", Toast.LENGTH_SHORT).show();
+        
+        }else if(!password.equals(cofpassword)){
+            Toast.makeText(this, "Password Incorrect", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void anhXa() {
@@ -53,7 +71,7 @@ public class ResginsterssActivity extends AppCompatActivity {
         edtemail=findViewById(R.id.editTextEmail);
         edtusername=findViewById(R.id.editTextUsername);
         edtpassword=findViewById(R.id.editTextPass);
-        edtpassword=findViewById(R.id.editTextCofPass);
+        edtCfpassword=findViewById(R.id.editTextCofPass);
 
         btnResigen=findViewById(R.id.btn_register);
         btnhuy=findViewById(R.id.btn_huy);
