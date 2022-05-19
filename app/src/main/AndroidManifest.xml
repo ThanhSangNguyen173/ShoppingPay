@@ -26,6 +26,9 @@
         android:roundIcon="@mipmap/logointro"
         android:supportsRtl="true"
         android:theme="@style/Theme.ShoppingPay">
+        <activity
+            android:name=".views.activity.loginregister.ResginsterssActivity"
+            android:exported="false" />
 
         <service
             android:name=".application.MyFirebaseMessagingService"
@@ -69,6 +72,8 @@
             android:exported="false"
             android:screenOrientation="portrait">
         </activity>
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".views.activity.loginregister.LoginRegisterActivity"
             android:exported="false"

@@ -87,7 +87,7 @@
         />
 
     <Button
-        android:id="@+id/btnhuy"
+        android:id="@+id/btn_huy"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:enabled="true"
