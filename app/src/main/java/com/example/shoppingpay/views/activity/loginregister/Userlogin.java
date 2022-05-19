@@ -1,2 +1,8 @@
-package com.example.shoppingpay.views.activity.loginregister;public class Userlogin {
+package com.example.shoppingpay.views.activity.loginregister;
+
+public class Userlogin {
+
+
+    public Userlogin() {
+    }
 }
