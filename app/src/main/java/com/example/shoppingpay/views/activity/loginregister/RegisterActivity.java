@@ -15,7 +15,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ResginsterssActivity extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity {
 
     EditText edtfull_name, edtusername,edtpassword,edtemail,edtDOB,edtCfpassword;
     Button btnResigen, btnhuy;
@@ -44,12 +44,11 @@ public class ResginsterssActivity extends AppCompatActivity {
     }
 
     private void clickHuy() {
-        Intent intentout = new Intent(ResginsterssActivity.this,LoginRegisterActivity.class);
+        Intent intentout = new Intent(RegisterActivity.this,LoginRegisterActivity.class);
         startActivity(intentout);
     }
 
     private void clickRegister() {
-        Toast.makeText(this, "send resigen", Toast.LENGTH_SHORT).show();
         String full_name=edtfull_name.getText().toString();
         String DOB=edtDOB.getText().toString();
         String email=edtemail.getText().toString();
@@ -67,27 +66,32 @@ public class ResginsterssActivity extends AppCompatActivity {
         }else if(!password.equals(cofpassword)){
             Toast.makeText(this, "Password Incorrect", Toast.LENGTH_SHORT).show();
         }else {
-            Call<responseRegisterModel> call = controller
+            Call<ResponseModelRegister> call = Controller
                                                 .getInstance()
                                                 .getapi()
                                                 .register(full_name,DOB,email,username,password);
 
-            call.enqueue(new Callback<responseRegisterModel>() {
+            call.enqueue(new Callback<ResponseModelRegister>() {
                 @Override
-                public void onResponse(Call<responseRegisterModel> call, Response<responseRegisterModel> response) {
-                    responseRegisterModel objreg = response.body();
-                    String outputreg = objreg.getMessage();
-                    if (outputreg.equals("Resigen Success"))
-                    {
-                        Toast.makeText(ResginsterssActivity.this, "Resigen Success", Toast.LENGTH_SHORT).show();
-                        Intent intentlog = new Intent(ResginsterssActivity.this,LoginRegisterActivity.class);
-                        startActivity(intentlog);
+                public void onResponse(Call<ResponseModelRegister> call, Response<ResponseModelRegister> response) {
+                    ResponseModelRegister objreg = response.body();
+                    if(objreg!=null){
+                        String outputreg = objreg.getMessage();
+
+                        if (outputreg.equals("Resigen Success"))
+                        {
+                            Toast.makeText(RegisterActivity.this, "Resigen Success", Toast.LENGTH_SHORT).show();
+                            Intent intentlog = new Intent(RegisterActivity.this,LoginRegisterActivity.class);
+                            startActivity(intentlog);
+                        }
+                    }else {
+                        Toast.makeText(RegisterActivity.this, "Tên dang nhập hoặc email bị trung", Toast.LENGTH_SHORT).show();
                     }
                 }
 
                 @Override
-                public void onFailure(Call<responseRegisterModel> call, Throwable t) {
-                    Toast.makeText(ResginsterssActivity.this, "have this worong", Toast.LENGTH_SHORT).show();
+                public void onFailure(Call<ResponseModelRegister> call, Throwable t) {
+                    Toast.makeText(RegisterActivity.this, "have this worong", Toast.LENGTH_SHORT).show();
                 }
             });
         }

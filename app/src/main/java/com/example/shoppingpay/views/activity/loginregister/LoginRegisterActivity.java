@@ -1,6 +1,5 @@
 package com.example.shoppingpay.views.activity.loginregister;
 
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -9,7 +8,6 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
@@ -19,9 +17,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.shoppingpay.R;
 import com.example.shoppingpay.views.activity.DashboardActivity;
-import com.example.shoppingpay.views.activity.LocationActivity;
-import com.example.shoppingpay.views.activity.RateUsActivity;
-import com.example.shoppingpay.views.activity.choosetable.ChooseTableActivity;
 import com.example.shoppingpay.views.customview.CustomToastNotification;
 
 import retrofit2.Call;
@@ -108,7 +103,7 @@ public class LoginRegisterActivity extends AppCompatActivity {
      */
     private void clickDky() {
 
-        Intent intentreg = new Intent(LoginRegisterActivity.this,ResginsterssActivity.class);
+        Intent intentreg = new Intent(LoginRegisterActivity.this, RegisterActivity.class);
         startActivity(intentreg);
 
     }
@@ -124,16 +119,16 @@ public class LoginRegisterActivity extends AppCompatActivity {
         String password = mk.getText().toString().trim();
         if (!username.isEmpty() || !password.isEmpty()) {
            //sendLogin();
-            Call<responsemodel> call=controller
+            Call<ResponseModelLogin> call= Controller
                     .getInstance()
                     .getapi()
                     .verifyuser(username,password);
             Toast.makeText(this, "send", Toast.LENGTH_SHORT).show();
 
-            call.enqueue(new Callback<responsemodel>() {
+            call.enqueue(new Callback<ResponseModelLogin>() {
                 @Override
-                public void onResponse(Call<responsemodel> call, Response<responsemodel> response) {
-                    responsemodel obj = response.body();
+                public void onResponse(Call<ResponseModelLogin> call, Response<ResponseModelLogin> response) {
+                    ResponseModelLogin obj = response.body();
                     String output = obj.getMessage();
                     if (output.equals("Failed")){
                         tk.setText("");
@@ -157,7 +152,7 @@ public class LoginRegisterActivity extends AppCompatActivity {
                 }
 
                 @Override
-                public void onFailure(Call<responsemodel> call, Throwable t) {
+                public void onFailure(Call<ResponseModelLogin> call, Throwable t) {
 
                 }
             });
