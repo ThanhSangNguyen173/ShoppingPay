@@ -12,4 +12,12 @@ public interface apiset {
     Call <responsemodel> verifyuser( @Field("username")String username,
                                      @Field("password")String password);
 
+    @FormUrlEncoded
+    @POST("users")
+    Call <responseRegisterModel> register ( @Field("full_name")String full_name,
+                                    @Field("DOB")String DOB,
+                                    @Field("email")String email,
+                                    @Field("username")String username,
+                                    @Field("password")String password);
+
 }
