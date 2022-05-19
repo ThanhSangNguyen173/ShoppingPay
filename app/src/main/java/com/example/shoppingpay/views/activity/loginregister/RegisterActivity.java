@@ -15,7 +15,7 @@ public class RegisterActivity extends AppCompatActivity {
 
 
 
-        //        Dialog dialog = new Dialog(LoginRegisterActivity.this);
+//        Dialog dialog = new Dialog(LoginRegisterActivity.this);
 //        dialog.setTitle("ĐĂNG KÝ TÀI KHOẢN");
 //        dialog.setCancelable(false);
 //        dialog.setContentView(R.layout.dky_page);
