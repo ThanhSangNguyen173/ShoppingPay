@@ -43,6 +43,15 @@
         android:inputType="date" />
 
     <EditText
+        android:id="@+id/editTextEmail"
+        android:maxLines="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Email"
+        android:inputType="textPersonName" />
+
+    <EditText
         android:id="@+id/editTextUsername"
         android:maxLines="1"
         android:layout_width="match_parent"
@@ -61,7 +70,7 @@
         android:inputType="textPassword" />
 
     <EditText
-        android:id="@+id/editTextCoPass"
+        android:id="@+id/editTextCofPass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -70,15 +79,15 @@
         android:inputType="textPassword" />
 
     <Button
-        android:id="@+id/dky2"
+        android:id="@+id/btn_register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:enabled="true"
-        android:text="đăng ký"
+        android:text="register"
         />
 
     <Button
-        android:id="@+id/huydk"
+        android:id="@+id/btnhuy"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:enabled="true"
