@@ -1,14 +1,14 @@
 package com.example.shoppingpay.views.activity.loginregister;
 
-public class responsemodel {
+public class ResponseModelLogin {
     Userlogin userlogin;
     String message;
 
-    public responsemodel(String message) {
+    public ResponseModelLogin(String message) {
         this.message = message;
     }
 
-    public responsemodel() {
+    public ResponseModelLogin() {
     }
 
     public String getMessage() {

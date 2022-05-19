@@ -1,16 +1,16 @@
 package com.example.shoppingpay.views.activity.loginregister;
 
-public class responseRegisterModel {
+public class ResponseModelRegister {
 
     String message;
     String error;
 
-    public responseRegisterModel(String message, String error) {
+    public ResponseModelRegister(String message, String error) {
         this.message = message;
         this.error = error;
     }
 
-    public responseRegisterModel() {
+    public ResponseModelRegister() {
     }
 
     public String getMessage() {
