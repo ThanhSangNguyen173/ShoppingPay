@@ -23,7 +23,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class LoginRegisterActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     Button bt1, bt2,btnthoat;
     EditText tk, mk;
@@ -103,7 +103,7 @@ public class LoginRegisterActivity extends AppCompatActivity {
      */
     private void clickDky() {
 
-        Intent intentreg = new Intent(LoginRegisterActivity.this, RegisterActivity.class);
+        Intent intentreg = new Intent(LoginActivity.this, RegisterActivity.class);
         startActivity(intentreg);
 
     }
@@ -128,12 +128,12 @@ public class LoginRegisterActivity extends AppCompatActivity {
             call.enqueue(new Callback<ResponseModelLogin>() {
                 @Override
                 public void onResponse(Call<ResponseModelLogin> call, Response<ResponseModelLogin> response) {
-                    ResponseModelLogin obj = response.body();
-                    String output = obj.getMessage();
+                    ResponseModelLogin objLogin = response.body();
+                    String output = objLogin.getMessage();
                     if (output.equals("Failed")){
                         tk.setText("");
                         mk.setText("");
-                        Toast.makeText(LoginRegisterActivity.this, "Invalid Username or Password", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, "Invalid Username or Password", Toast.LENGTH_SHORT).show();
                     }
                     if (output.equals("Success")){
                         // xu ly check login khi da dang nhap roi// tamthoi khong dung toi
@@ -144,8 +144,8 @@ public class LoginRegisterActivity extends AppCompatActivity {
                         editor.commit();
                         editor.apply();
                         // de chuyen trang khi nhan gia tri success
-                        Intent intentlog = new Intent(LoginRegisterActivity.this, DashboardActivity.class);
-                        startActivity(intentlog);
+                        Intent intentRegister= new Intent(LoginActivity.this, DashboardActivity.class);
+                        startActivity(intentRegister);
                         finish();
 
                     }
@@ -177,7 +177,7 @@ public class LoginRegisterActivity extends AppCompatActivity {
         btnthoat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(LoginRegisterActivity.this, android.R.style.Theme_DeviceDefault_Light_Dialog);
+                AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this, android.R.style.Theme_DeviceDefault_Light_Dialog);
                 builder.setTitle("THOÁT KHỎI TRANG ĐĂNG NHẬP");
                 builder.setMessage("Bạn có chắc chắn muốn thoát?");
                 builder.setIcon(android.R.drawable.ic_dialog_alert);

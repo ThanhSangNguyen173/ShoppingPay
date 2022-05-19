@@ -80,7 +80,7 @@
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".views.activity.loginregister.LoginRegisterActivity"
+            android:name=".views.activity.loginregister.LoginActivity"
             android:exported="false"
             android:screenOrientation="portrait"/>
         <activity

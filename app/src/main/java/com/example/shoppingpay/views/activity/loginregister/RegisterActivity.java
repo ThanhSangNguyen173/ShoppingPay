@@ -19,7 +19,6 @@ public class RegisterActivity extends AppCompatActivity {
 
     EditText edtfull_name, edtusername,edtpassword,edtemail,edtDOB,edtCfpassword;
     Button btnResigen, btnhuy;
-    String  full_name, username,password,email,DOB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +43,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void clickHuy() {
-        Intent intentout = new Intent(RegisterActivity.this,LoginRegisterActivity.class);
+        Intent intentout = new Intent(RegisterActivity.this, LoginActivity.class);
         startActivity(intentout);
     }
 
@@ -74,15 +73,15 @@ public class RegisterActivity extends AppCompatActivity {
             call.enqueue(new Callback<ResponseModelRegister>() {
                 @Override
                 public void onResponse(Call<ResponseModelRegister> call, Response<ResponseModelRegister> response) {
-                    ResponseModelRegister objreg = response.body();
-                    if(objreg!=null){
-                        String outputreg = objreg.getMessage();
+                    ResponseModelRegister objregister = response.body();
+                    if(objregister!=null){
+                        String outputreg = objregister.getMessage();
 
                         if (outputreg.equals("Resigen Success"))
                         {
                             Toast.makeText(RegisterActivity.this, "Resigen Success", Toast.LENGTH_SHORT).show();
-                            Intent intentlog = new Intent(RegisterActivity.this,LoginRegisterActivity.class);
-                            startActivity(intentlog);
+                            Intent intentLogin = new Intent(RegisterActivity.this, LoginActivity.class);
+                            startActivity(intentLogin);
                         }
                     }else {
                         Toast.makeText(RegisterActivity.this, "Tên dang nhập hoặc email bị trung", Toast.LENGTH_SHORT).show();
