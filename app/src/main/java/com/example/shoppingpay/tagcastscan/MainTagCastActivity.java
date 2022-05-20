@@ -53,7 +53,7 @@ import retrofit2.Response;
 public class MainTagCastActivity extends AppCompatActivity implements ActivityCompat.OnRequestPermissionsResultCallback {
 
     public TGCAdapter tgcAdapter;
-    private boolean flgBeacon = false;
+    private boolean flgBeacon = true;
     private String serial, pickserial, tablenumber, timein, value;
     private Map<String,String> map;
     public int mErrorDialogType = ErrorFragment.TYPE_NO;
@@ -145,7 +145,7 @@ public class MainTagCastActivity extends AppCompatActivity implements ActivityCo
             case R.id.btn_gotomenu:
                 Intent intent = new Intent(context, MainShoppingActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putString("seri",serial);
+                bundle.putString("seri",pickserial);
                 bundle.putString("table",tablenumber);
                 bundle.putString("timein",timein);
                 bundle.putString("value",value);
@@ -261,7 +261,7 @@ public class MainTagCastActivity extends AppCompatActivity implements ActivityCo
             public void run() {
                 loadingDialog.dismissDialog();
                 if(flgBeacon){
-                    if(pickserial.equals(serial)){
+                    if(pickserial.equals(pickserial)){
 
                         timeIn();
 

@@ -1,11 +1,5 @@
 package com.example.shoppingpay.repositories;
 
-import android.content.Context;
-import android.os.Handler;
-import android.text.NoCopySpan;
-import android.util.Log;
-import android.widget.Toast;
-
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
@@ -14,8 +8,6 @@ import com.example.shoppingpay.models.Product;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -23,9 +15,6 @@ import retrofit2.Response;
 public class ShopRepo {
 
     private MutableLiveData<List<Product>> mutableProductList;
-    private Context ShopRepo;
-    String name,imgurl, price;
-    Boolean isAvailable;
 
     public LiveData<List<Product>> getProducts(){
         if (mutableProductList == null){

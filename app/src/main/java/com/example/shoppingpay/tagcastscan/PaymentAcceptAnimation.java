@@ -11,7 +11,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.shoppingpay.R;
+import com.example.shoppingpay.api.BillApiService;
 import com.example.shoppingpay.api.TableApiService;
+import com.example.shoppingpay.models.Bill;
 import com.example.shoppingpay.models.table.TableStatus;
 import com.example.shoppingpay.views.activity.RateUsActivity;
 import com.example.shoppingpay.views.customview.CustomToastNotification;
@@ -44,6 +46,7 @@ public class PaymentAcceptAnimation extends AppCompatActivity {
         anhxa();
         animationSetup();
         setHandler();
+        creatNewBill();
     }
 
     @Override
@@ -120,7 +123,7 @@ public class PaymentAcceptAnimation extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<TableStatus> call, Throwable t) {
-                Toast.makeText(PaymentAcceptAnimation.this, "update fail", Toast.LENGTH_SHORT).show();
+                updateStatusTable(id);
             }
         });
     }
@@ -134,6 +137,21 @@ public class PaymentAcceptAnimation extends AppCompatActivity {
         animation = findViewById(R.id.appname);
         lottie = findViewById(R.id.lottie);
         txt_status = findViewById(R.id.txt_status);
+    }
+
+    private void creatNewBill(){
+
+        BillApiService.billApiService.creatNewBill(1,1,1,timein,timeout).enqueue(new Callback<Bill>() {
+            @Override
+            public void onResponse(Call<Bill> call, Response<Bill> response) {
+                Toast.makeText(PaymentAcceptAnimation.this, "Successfully", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<Bill> call, Throwable t) {
+                Toast.makeText(PaymentAcceptAnimation.this, "Fail", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 }
