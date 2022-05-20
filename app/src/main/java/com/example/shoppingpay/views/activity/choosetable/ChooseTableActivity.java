@@ -328,151 +328,22 @@ public class ChooseTableActivity extends AppCompatActivity {
         }
     }
 
+/**CALL API GET STATUS TABLE
+ */
     private void getTableApiService() {
-        TableApiService.tableApiService.getApiTable1().enqueue(new Callback<Table1>() {
-            @Override
-            public void onResponse(Call<Table1> call, Response<Table1> response) {
-                Table1 table1 = response.body();
-                if(table1 != null){
-                    int STATUS = table1.getStatus();
-                    if(STATUS==0){imgbtn1.setEnabled(false);}else {imgbtn1.setEnabled(true);}
-                    serial1 = table1.getSerial_tagcast_id();
-                }
-            }
+            getAPITable1();
+            getAPITable2();
+            getAPITable3();
+            getAPITable4();
+            getAPITable5();
+            getAPITable6();
+            getAPITable21();
+            getAPITable22();
+            getAPITable23();
+            getAPITable24();
+    }
 
-            @Override
-            public void onFailure(Call<Table1> call, Throwable t) {
-                Toast.makeText(ChooseTableActivity.this, "Call API Table Error 1", Toast.LENGTH_SHORT).show();
-            }
-        });
-        TableApiService.tableApiService.getApiTable2().enqueue(new Callback<Table2>() {
-            @Override
-            public void onResponse(Call<Table2> call, Response<Table2> response) {
-                Table2 table2 = response.body();
-                if(table2 != null){
-                    int STATUS = table2.getStatus();
-                    if(STATUS==0){imgbtn2.setEnabled(false);}else {imgbtn2.setEnabled(true);}
-                    serial2 = table2.getSerial_tagcast_id();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Table2> call, Throwable t) {
-                Toast.makeText(ChooseTableActivity.this, "Call API Table Error 2", Toast.LENGTH_SHORT).show();
-            }
-        });
-        TableApiService.tableApiService.getApiTable3().enqueue(new Callback<Table3>() {
-            @Override
-            public void onResponse(Call<Table3> call, Response<Table3> response) {
-                Table3 table3 = response.body();
-                if(table3 != null){
-                    int STATUS = table3.getStatus();
-                    if(STATUS==0){imgbtn3.setEnabled(false);}else {imgbtn3.setEnabled(true);}
-                    serial3 = table3.getSerial_tagcast_id();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Table3> call, Throwable t) {
-                Toast.makeText(ChooseTableActivity.this, "Call API Table Error 3", Toast.LENGTH_SHORT).show();
-            }
-        });
-        TableApiService.tableApiService.getApiTable4().enqueue(new Callback<Table4>() {
-            @Override
-            public void onResponse(Call<Table4> call, Response<Table4> response) {
-                Table4 table4 = response.body();
-                if(table4 != null){
-                    int STATUS = table4.getStatus();
-                    if(STATUS==0){imgbtn4.setEnabled(false);}else {imgbtn4.setEnabled(true);}
-                    serial4 = table4.getSerial_tagcast_id();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Table4> call, Throwable t) {
-                Toast.makeText(ChooseTableActivity.this, "Call API Table Error 4", Toast.LENGTH_SHORT).show();
-            }
-        });
-        TableApiService.tableApiService.getApiTable5().enqueue(new Callback<Table5>() {
-            @Override
-            public void onResponse(Call<Table5> call, Response<Table5> response) {
-                Table5 table5 = response.body();
-                if(table5 != null){
-                    int STATUS = table5.getStatus();
-                    if(STATUS==0){imgbtn5.setEnabled(false);}else {imgbtn5.setEnabled(true);}
-                    serial5 = table5.getSerial_tagcast_id();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Table5> call, Throwable t) {
-                Toast.makeText(ChooseTableActivity.this, "Call API Table Error 5", Toast.LENGTH_SHORT).show();
-            }
-        });
-        TableApiService.tableApiService.getApiTable6().enqueue(new Callback<Table6>() {
-            @Override
-            public void onResponse(Call<Table6> call, Response<Table6> response) {
-                Table6 table6 = response.body();
-                if(table6 != null){
-                    int STATUS = table6.getStatus();
-                    if(STATUS==0){imgbtn6.setEnabled(false);}else {imgbtn6.setEnabled(true);}
-                    serial6 = table6.getSerial_tagcast_id();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Table6> call, Throwable t) {
-                Toast.makeText(ChooseTableActivity.this, "Call API Table Error 6", Toast.LENGTH_SHORT).show();
-            }
-        });
-        TableApiService.tableApiService.getApiTable21().enqueue(new Callback<Table21>() {
-            @Override
-            public void onResponse(Call<Table21> call, Response<Table21> response) {
-                Table21 table21 = response.body();
-                if(table21 != null){
-                    int STATUS = table21.getStatus();
-                    if(STATUS==0){imgbtn21.setEnabled(false);}else {imgbtn21.setEnabled(true);}
-                    serial21 = table21.getSerial_tagcast_id();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Table21> call, Throwable t) {
-                Toast.makeText(ChooseTableActivity.this, "Call API Table Error 7", Toast.LENGTH_SHORT).show();
-            }
-        });
-        TableApiService.tableApiService.getApiTable22().enqueue(new Callback<Table22>() {
-            @Override
-            public void onResponse(Call<Table22> call, Response<Table22> response) {
-                Table22 table22 = response.body();
-                if(table22 != null){
-                    int STATUS = table22.getStatus();
-                    if(STATUS==0){imgbtn22.setEnabled(false);}else {imgbtn22.setEnabled(true);}
-                    serial22 = table22.getSerial_tagcast_id();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Table22> call, Throwable t) {
-                Toast.makeText(ChooseTableActivity.this, "Call API Table Error 8", Toast.LENGTH_SHORT).show();
-            }
-        });
-        TableApiService.tableApiService.getApiTable23().enqueue(new Callback<Table23>() {
-            @Override
-            public void onResponse(Call<Table23> call, Response<Table23> response) {
-                Table23 table23 = response.body();
-                if(table23 != null){
-                    int STATUS = table23.getStatus();
-                    if(STATUS==0){imgbtn23.setEnabled(false);}else {imgbtn23.setEnabled(true);}
-                    serial23 = table23.getSerial_tagcast_id();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Table23> call, Throwable t) {
-                Toast.makeText(ChooseTableActivity.this, "Call API Table Error 9", Toast.LENGTH_SHORT).show();
-            }
-        });
+    private void getAPITable24() {
         TableApiService.tableApiService.getApiTable24().enqueue(new Callback<Table24>() {
             @Override
             public void onResponse(Call<Table24> call, Response<Table24> response) {
@@ -486,7 +357,169 @@ public class ChooseTableActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Table24> call, Throwable t) {
-                Toast.makeText(ChooseTableActivity.this, "Call API Table Error 10", Toast.LENGTH_SHORT).show();
+                getAPITable24();
+            }
+        });
+    }
+    private void getAPITable23() {
+        TableApiService.tableApiService.getApiTable23().enqueue(new Callback<Table23>() {
+            @Override
+            public void onResponse(Call<Table23> call, Response<Table23> response) {
+                Table23 table23 = response.body();
+                if(table23 != null){
+                    int STATUS = table23.getStatus();
+                    if(STATUS==0){imgbtn23.setEnabled(false);}else {imgbtn23.setEnabled(true);}
+                    serial23 = table23.getSerial_tagcast_id();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Table23> call, Throwable t) {
+                getAPITable23();
+            }
+        });
+    }
+    private void getAPITable22() {
+        TableApiService.tableApiService.getApiTable22().enqueue(new Callback<Table22>() {
+            @Override
+            public void onResponse(Call<Table22> call, Response<Table22> response) {
+                Table22 table22 = response.body();
+                if(table22 != null){
+                    int STATUS = table22.getStatus();
+                    if(STATUS==0){imgbtn22.setEnabled(false);}else {imgbtn22.setEnabled(true);}
+                    serial22 = table22.getSerial_tagcast_id();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Table22> call, Throwable t) {
+                getAPITable22();
+            }
+        });
+    }
+    private void getAPITable21() {
+        TableApiService.tableApiService.getApiTable21().enqueue(new Callback<Table21>() {
+            @Override
+            public void onResponse(Call<Table21> call, Response<Table21> response) {
+                Table21 table21 = response.body();
+                if(table21 != null){
+                    int STATUS = table21.getStatus();
+                    if(STATUS==0){imgbtn21.setEnabled(false);}else {imgbtn21.setEnabled(true);}
+                    serial21 = table21.getSerial_tagcast_id();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Table21> call, Throwable t) {
+                getAPITable21();
+            }
+        });
+    }
+    private void getAPITable6() {
+        TableApiService.tableApiService.getApiTable6().enqueue(new Callback<Table6>() {
+            @Override
+            public void onResponse(Call<Table6> call, Response<Table6> response) {
+                Table6 table6 = response.body();
+                if(table6 != null){
+                    int STATUS = table6.getStatus();
+                    if(STATUS==0){imgbtn6.setEnabled(false);}else {imgbtn6.setEnabled(true);}
+                    serial6 = table6.getSerial_tagcast_id();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Table6> call, Throwable t) {
+                getAPITable6();
+            }
+        });
+    }
+    private void getAPITable5() {
+        TableApiService.tableApiService.getApiTable5().enqueue(new Callback<Table5>() {
+            @Override
+            public void onResponse(Call<Table5> call, Response<Table5> response) {
+                Table5 table5 = response.body();
+                if(table5 != null){
+                    int STATUS = table5.getStatus();
+                    if(STATUS==0){imgbtn5.setEnabled(false);}else {imgbtn5.setEnabled(true);}
+                    serial5 = table5.getSerial_tagcast_id();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Table5> call, Throwable t) {
+                getAPITable5();
+            }
+        });
+    }
+    private void getAPITable4() {
+        TableApiService.tableApiService.getApiTable4().enqueue(new Callback<Table4>() {
+            @Override
+            public void onResponse(Call<Table4> call, Response<Table4> response) {
+                Table4 table4 = response.body();
+                if(table4 != null){
+                    int STATUS = table4.getStatus();
+                    if(STATUS==0){imgbtn4.setEnabled(false);}else {imgbtn4.setEnabled(true);}
+                    serial4 = table4.getSerial_tagcast_id();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Table4> call, Throwable t) {
+                getAPITable4();
+            }
+        });
+    }
+    private void getAPITable3() {
+        TableApiService.tableApiService.getApiTable3().enqueue(new Callback<Table3>() {
+            @Override
+            public void onResponse(Call<Table3> call, Response<Table3> response) {
+                Table3 table3 = response.body();
+                if(table3 != null){
+                    int STATUS = table3.getStatus();
+                    if(STATUS==0){imgbtn3.setEnabled(false);}else {imgbtn3.setEnabled(true);}
+                    serial3 = table3.getSerial_tagcast_id();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Table3> call, Throwable t) {
+                getAPITable3();
+            }
+        });
+    }
+    private void getAPITable1(){
+        TableApiService.tableApiService.getApiTable1().enqueue(new Callback<Table1>() {
+            @Override
+            public void onResponse(Call<Table1> call, Response<Table1> response) {
+                Table1 table1 = response.body();
+                if(table1 != null){
+                    int STATUS = table1.getStatus();
+                    if(STATUS==0){imgbtn1.setEnabled(false);}else {imgbtn1.setEnabled(true);}
+                    serial1 = table1.getSerial_tagcast_id();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Table1> call, Throwable t) {
+                getAPITable1();
+            }
+        });
+    }
+    private void getAPITable2() {
+        TableApiService.tableApiService.getApiTable2().enqueue(new Callback<Table2>() {
+            @Override
+            public void onResponse(Call<Table2> call, Response<Table2> response) {
+                Table2 table2 = response.body();
+                if(table2 != null){
+                    int STATUS = table2.getStatus();
+                    if(STATUS==0){imgbtn2.setEnabled(false);}else {imgbtn2.setEnabled(true);}
+                    serial2 = table2.getSerial_tagcast_id();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Table2> call, Throwable t) {
+                getAPITable2();
             }
         });
     }
