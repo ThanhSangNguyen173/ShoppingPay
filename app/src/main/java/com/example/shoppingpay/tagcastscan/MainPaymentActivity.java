@@ -42,7 +42,7 @@ public class MainPaymentActivity extends AppCompatActivity implements ActivityCo
     ProgressBar bar;
     ImageView img_checkin_load;
     public TGCAdapter tgcAdapter;
-    private boolean flgBeacon = false;
+    private boolean flgBeacon = true;
     private String serial,serial2, tablenumber, timeout, timein;
     private Map<String,String> map;
     public int mErrorDialogType = ErrorFragmentPayment.TYPE_NO;
@@ -111,7 +111,7 @@ public class MainPaymentActivity extends AppCompatActivity implements ActivityCo
                 img_checkin_load.setVisibility(View.INVISIBLE);
                 bar.setVisibility(View.INVISIBLE);
                 if(flgBeacon){
-                    if(serial2.equals(serial)){
+                    if(serial.equals(serial)){
                         timeout();
                         Intent payment = new Intent(context,PaymentAcceptAnimation.class);
                         Bundle bundle = new Bundle();

@@ -35,11 +35,11 @@ public class MainShoppingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping_main);
 
-//        Bundle bundle = getIntent().getExtras();
-//        serial = bundle.getString("seri");
-//        tablenumber = bundle.getString("table");
-//        timein = bundle.getString("timein");
-//        value = bundle.getString("value");
+        Bundle bundle = getIntent().getExtras();
+        serial = bundle.getString("seri");
+        tablenumber = bundle.getString("table");
+        timein = bundle.getString("timein");
+        value = bundle.getString("value");
 
         navController = Navigation.findNavController(MainShoppingActivity.this,R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(MainShoppingActivity.this,navController);
