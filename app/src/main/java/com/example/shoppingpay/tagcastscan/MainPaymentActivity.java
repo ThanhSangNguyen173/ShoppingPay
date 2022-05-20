@@ -113,7 +113,6 @@ public class MainPaymentActivity extends AppCompatActivity implements ActivityCo
                 if(flgBeacon){
                     if(serial2.equals(serial)){
                         timeout();
-
                         Intent payment = new Intent(context,PaymentAcceptAnimation.class);
                         Bundle bundle = new Bundle();
                         bundle.putString("table",tablenumber);

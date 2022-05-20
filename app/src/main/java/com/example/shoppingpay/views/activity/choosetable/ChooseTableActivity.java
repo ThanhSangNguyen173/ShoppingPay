@@ -544,7 +544,7 @@ public class ChooseTableActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<TableStatus> call, Throwable t) {
-                Toast.makeText(ChooseTableActivity.this, "update fail", Toast.LENGTH_SHORT).show();
+                updateStatusTable(id);
             }
         });
     }
