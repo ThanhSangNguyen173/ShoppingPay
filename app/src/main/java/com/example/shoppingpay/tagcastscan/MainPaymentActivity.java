@@ -45,6 +45,7 @@ public class MainPaymentActivity extends AppCompatActivity implements ActivityCo
     private boolean flgBeacon = true;
     private String serial,serial2, tablenumber, timeout, timein;
     private Map<String,String> map;
+    int bill_id;
     public int mErrorDialogType = ErrorFragmentPayment.TYPE_NO;
 
     @Override
@@ -58,6 +59,7 @@ public class MainPaymentActivity extends AppCompatActivity implements ActivityCo
         serial = bundle.getString("seri");
         tablenumber = bundle.getString("table");
         timein = bundle.getString("timein");
+        bill_id = bundle.getInt("bill_id");
 
         anhxa();
         TagCastScan();
@@ -118,6 +120,7 @@ public class MainPaymentActivity extends AppCompatActivity implements ActivityCo
                         bundle.putString("table",tablenumber);
                         bundle.putString("timeout",timeout);
                         bundle.putString("timein",timein);
+                        bundle.putInt("bill_id",bill_id);
                         payment.putExtras(bundle);
                         startActivity(payment);
                     }else{

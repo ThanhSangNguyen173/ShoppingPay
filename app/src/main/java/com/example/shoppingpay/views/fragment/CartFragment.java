@@ -19,6 +19,7 @@ import com.example.shoppingpay.adapters.CartListAdapter;
 import com.example.shoppingpay.databinding.FragmentCartBinding;
 import com.example.shoppingpay.models.CartItem;
 import com.example.shoppingpay.viewmodels.ShopViewModel;
+import com.example.shoppingpay.views.activity.MainShoppingActivity;
 
 import java.util.List;
 
@@ -27,6 +28,7 @@ public class CartFragment extends Fragment implements CartListAdapter.CartInterf
     ShopViewModel shopViewModel;
     FragmentCartBinding fragmentCartBinding;
     NavController navController;
+    int bill_id;
 
     public CartFragment() {
         // Required empty public constructor
@@ -45,6 +47,8 @@ public class CartFragment extends Fragment implements CartListAdapter.CartInterf
         super.onViewCreated(view, savedInstanceState);
 
         navController = Navigation.findNavController(view);
+        MainShoppingActivity activity = (MainShoppingActivity) getActivity();
+        bill_id = activity.getBillID();
 
         CartListAdapter cartListAdapter = new CartListAdapter(this);
         fragmentCartBinding.cartRecycleView.setAdapter(cartListAdapter);
@@ -67,7 +71,7 @@ public class CartFragment extends Fragment implements CartListAdapter.CartInterf
         fragmentCartBinding.placeOrderButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                shopViewModel.callApiCreateOrderItems();
+                shopViewModel.callApiCreateOrderItems(bill_id);
                 shopViewModel.resetCart();
                 navController.navigate(R.id.action_cartFragment_to_orderFragment);
             }
