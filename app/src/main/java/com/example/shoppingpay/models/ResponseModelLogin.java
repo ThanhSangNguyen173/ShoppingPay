@@ -24,12 +24,12 @@ public class ResponseModelLogin {
         this.message = message;
     }
 
-//
-//    public Userlogin getUser() {
-//        return user;
-//    }
-//
-//    public void setUser(Userlogin user) {
-//        this.user = user;
-//    }
+
+    public Userlogin getUser() {
+        return user;
+    }
+
+    public void setUser(Userlogin user) {
+        this.user = user;
+    }
 }

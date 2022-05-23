@@ -146,12 +146,11 @@ public class LoginActivity extends AppCompatActivity {
                         editor.commit();
                         editor.apply();
                         //get info user
-//                        id_info         = response.body().getUser().getId();
-//                        DOB_info        = response.body().getUser().getDOB();
-//                        full_name_info  = response.body().getUser().getFull_name();
-//                        username_info   = response.body().getUser().getUsername();
-//                        email_info      = response.body().getUser().getEmail();
-
+                        id_info         = response.body().getUser().getId();
+                        DOB_info        = response.body().getUser().getDOB();
+                        full_name_info  = response.body().getUser().getFull_name();
+                        username_info   = response.body().getUser().getUsername();
+                        email_info      = response.body().getUser().getEmail();
                         // de chuyen trang khi nhan gia tri success
                         Intent intentRegister= new Intent(LoginActivity.this, DashboardActivity.class);
                         startActivity(intentRegister);
