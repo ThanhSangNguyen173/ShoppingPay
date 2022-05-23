@@ -114,8 +114,6 @@ public class LoginActivity extends AppCompatActivity {
      */
     private void clickLogin() {
 
-
-
         String username = tk.getText().toString().trim();
         String password = mk.getText().toString().trim();
         if (!username.isEmpty() || !password.isEmpty()) {
