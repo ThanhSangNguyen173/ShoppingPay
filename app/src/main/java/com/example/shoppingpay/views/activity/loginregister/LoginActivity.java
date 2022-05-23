@@ -17,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.shoppingpay.R;
 import com.example.shoppingpay.models.ResponseModelLogin;
+import com.example.shoppingpay.models.Userlogin;
 import com.example.shoppingpay.views.activity.DashboardActivity;
 import com.example.shoppingpay.views.customview.CustomToastNotification;
 
@@ -33,6 +34,10 @@ public class LoginActivity extends AppCompatActivity {
     CheckBox checkBox;
     RadioButton nam,nu;
     String taikhoan,matkhau,str1,str2;//username,password
+    // login funtion
+    int id_info;
+    String full_name_info,DOB_info,username_info,email_info;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,18 +119,14 @@ public class LoginActivity extends AppCompatActivity {
      */
     private void clickLogin() {
 
-
-
         String username = tk.getText().toString().trim();
         String password = mk.getText().toString().trim();
         if (!username.isEmpty() || !password.isEmpty()) {
-           //sendLogin();
             Call<ResponseModelLogin> call= Controller
                     .getInstance()
                     .getapi()
                     .verifyuser(username,password);
             Toast.makeText(this, "send", Toast.LENGTH_SHORT).show();
-
             call.enqueue(new Callback<ResponseModelLogin>() {
                 @Override
                 public void onResponse(Call<ResponseModelLogin> call, Response<ResponseModelLogin> response) {
@@ -144,9 +145,16 @@ public class LoginActivity extends AppCompatActivity {
                         editor.putString("password",mk.getText().toString());
                         editor.commit();
                         editor.apply();
+                        //get info user
+                        id_info         = response.body().getUser().getId();
+                        DOB_info        = response.body().getUser().getDOB();
+                        full_name_info  = response.body().getUser().getFull_name();
+                        username_info   = response.body().getUser().getUsername();
+                        email_info      = response.body().getUser().getEmail();
                         // de chuyen trang khi nhan gia tri success
                         Intent intentRegister= new Intent(LoginActivity.this, DashboardActivity.class);
                         startActivity(intentRegister);
+
                         finish();
 
                     }
@@ -154,7 +162,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Call<ResponseModelLogin> call, Throwable t) {
-
+                    Toast.makeText(LoginActivity.this, "Erro call api", Toast.LENGTH_SHORT).show();
                 }
             });
 
@@ -163,16 +171,6 @@ public class LoginActivity extends AppCompatActivity {
         }
 
     }
-
-//    private void sendLogin() {
-//
-//        Call<responsemodel> call=controller
-//                .getInstance()
-//                .getapi()
-//                .verifyuser()
-//        Toast.makeText(this, "send", Toast.LENGTH_SHORT).show();
-//    }
-
 
     private void controlbutton() {
         btnthoat.setOnClickListener(new View.OnClickListener() {
