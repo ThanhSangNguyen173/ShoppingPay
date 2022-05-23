@@ -1,14 +1,13 @@
 package com.example.shoppingpay.views.activity.loginregister;
 
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
@@ -17,10 +16,14 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.shoppingpay.R;
-import com.example.shoppingpay.views.activity.choosetable.ChooseTableActivity;
+import com.example.shoppingpay.views.activity.DashboardActivity;
 import com.example.shoppingpay.views.customview.CustomToastNotification;
 
-public class LoginRegisterActivity extends AppCompatActivity {
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class LoginActivity extends AppCompatActivity {
 
     Button bt1, bt2,btnthoat;
     EditText tk, mk;
@@ -28,7 +31,7 @@ public class LoginRegisterActivity extends AppCompatActivity {
     EditText ho,ten,dob,pass,copass,id;
     CheckBox checkBox;
     RadioButton nam,nu;
-    String taikhoan,matkhau,str1,str2;
+    String taikhoan,matkhau,str1,str2;//username,password
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,99 +102,82 @@ public class LoginRegisterActivity extends AppCompatActivity {
      * Register
      */
     private void clickDky() {
-        Dialog dialog = new Dialog(LoginRegisterActivity.this);
-        dialog.setTitle("ĐĂNG KÝ TÀI KHOẢN");
-        dialog.setCancelable(false);
-        dialog.setContentView(R.layout.dky_page);
-        dky2 = dialog.findViewById(R.id.dky2);
-        ho = dialog.findViewById(R.id.editTextHo);
-        ten = dialog.findViewById(R.id.editTextTen);
-        dob = dialog.findViewById(R.id.editTextDOB);
-        pass = dialog.findViewById(R.id.editTextPass);
-        copass = dialog.findViewById(R.id.editTextCoPass);
-        checkBox = dialog.findViewById(R.id.checkBox);
-        nam = dialog.findViewById(R.id.nam);
-        nu = dialog.findViewById(R.id.nu);
-        id = dialog.findViewById(R.id.editTextID);
-        huydk = dialog.findViewById(R.id.huydk);
 
-        nam.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                dky2.setEnabled(true);
-            }
-        });
-        nu.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                dky2.setEnabled(true);
-            }
-        });
+        Intent intentreg = new Intent(LoginActivity.this, RegisterActivity.class);
+        startActivity(intentreg);
 
-        dky2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                String dk1 = ho.getText().toString().trim();
-                String dk2 = ten.getText().toString().trim();
-                String dk3 = dob.getText().toString().trim();
-                String dk4 = copass.getText().toString().trim();
-                Boolean b = !checkBox.isChecked();
-
-                taikhoan = id.getText().toString().trim();
-                matkhau = pass.getText().toString().trim();
-
-                if (dk1.isEmpty() || dk2.isEmpty() || dk3.isEmpty() || dk4.isEmpty() || taikhoan.isEmpty() ||matkhau.isEmpty() || b ) {
-                    showToast(0);
-                }else if (!matkhau.equals(dk4)){
-                    showToast(6);
-                }else {
-                    tk.setText(taikhoan);
-                    mk.setText(matkhau);
-                    dialog.cancel();
-                    showToast(1);
-                }
-            }
-        });
-        huydk.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dialog.cancel();
-            }
-        });
-        dialog.show();
     }
 
     /**
      * Login
      */
     private void clickLogin() {
-        str1 = tk.getText().toString().trim();
-        str2 = mk.getText().toString().trim();
-        if (!str1.isEmpty() || !str2.isEmpty()) {
-            if(str1.equals(taikhoan) && str2.equals(matkhau)){
-                showToast(2);
-                Intent intent1 = new Intent(LoginRegisterActivity.this, ChooseTableActivity.class);
-                startActivity(intent1);
-                overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_left);
-            }else if(str1.equals("1") && str2.equals("1")){
-                showToast(3);
-                Intent intent2 = new Intent(LoginRegisterActivity.this, ChooseTableActivity.class);
-                startActivity(intent2);
-                overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_left);
-            }else {
-                showToast(4);
-            }
+
+
+
+        String username = tk.getText().toString().trim();
+        String password = mk.getText().toString().trim();
+        if (!username.isEmpty() || !password.isEmpty()) {
+           //sendLogin();
+            Call<ResponseModelLogin> call= Controller
+                    .getInstance()
+                    .getapi()
+                    .verifyuser(username,password);
+            Toast.makeText(this, "send", Toast.LENGTH_SHORT).show();
+
+            call.enqueue(new Callback<ResponseModelLogin>() {
+                @Override
+                public void onResponse(Call<ResponseModelLogin> call, Response<ResponseModelLogin> response) {
+                    ResponseModelLogin objLogin = response.body();
+                    String output = objLogin.getMessage();
+                    if (output.equals("Failed")){
+                        tk.setText("");
+                        mk.setText("");
+                        Toast.makeText(LoginActivity.this, "Invalid Username or Password", Toast.LENGTH_SHORT).show();
+                    }
+                    if (output.equals("Success")){
+                        // xu ly check login khi da dang nhap roi// tamthoi khong dung toi
+                        SharedPreferences sp = getSharedPreferences("credentials",MODE_PRIVATE);
+                        SharedPreferences.Editor editor=sp.edit();
+                        editor.putString("username",tk.getText().toString());
+                        editor.putString("password",mk.getText().toString());
+                        editor.commit();
+                        editor.apply();
+                        // de chuyen trang khi nhan gia tri success
+                        Intent intentRegister= new Intent(LoginActivity.this, DashboardActivity.class);
+                        startActivity(intentRegister);
+                        finish();
+
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<ResponseModelLogin> call, Throwable t) {
+
+                }
+            });
+
         }else {
             showToast(5);
         }
+
     }
+
+//    private void sendLogin() {
+//
+//        Call<responsemodel> call=controller
+//                .getInstance()
+//                .getapi()
+//                .verifyuser()
+//        Toast.makeText(this, "send", Toast.LENGTH_SHORT).show();
+//    }
+
 
     private void controlbutton() {
         btnthoat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(LoginRegisterActivity.this, android.R.style.Theme_DeviceDefault_Light_Dialog);
+                AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this, android.R.style.Theme_DeviceDefault_Light_Dialog);
                 builder.setTitle("THOÁT KHỎI TRANG ĐĂNG NHẬP");
                 builder.setMessage("Bạn có chắc chắn muốn thoát?");
                 builder.setIcon(android.R.drawable.ic_dialog_alert);
