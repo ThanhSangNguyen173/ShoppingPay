@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.shoppingpay.R;
+import com.example.shoppingpay.models.ResponseModelRegister;
 
 import retrofit2.Call;
 import retrofit2.Callback;

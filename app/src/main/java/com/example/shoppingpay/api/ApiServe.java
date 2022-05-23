@@ -1,4 +1,7 @@
-package com.example.shoppingpay.views.activity.loginregister;
+package com.example.shoppingpay.api;
+
+import com.example.shoppingpay.models.ResponseModelLogin;
+import com.example.shoppingpay.models.ResponseModelRegister;
 
 import retrofit2.Call;
 import retrofit2.http.Field;

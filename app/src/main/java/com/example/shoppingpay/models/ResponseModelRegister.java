@@ -1,4 +1,4 @@
-package com.example.shoppingpay.views.activity.loginregister;
+package com.example.shoppingpay.models;
 
 public class ResponseModelRegister {
 
