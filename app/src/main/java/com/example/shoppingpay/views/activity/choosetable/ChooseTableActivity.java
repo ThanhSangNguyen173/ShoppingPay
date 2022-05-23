@@ -47,6 +47,7 @@ public class ChooseTableActivity extends AppCompatActivity {
     DatabaseReference mData;
     String pickserial, tablenumber, valuerat, value, serial1,serial2,serial3,serial4,serial5,serial6,serial21,serial22,serial23,serial24;
     String tb1,tb2,tb3,tb4,tb5,tb6,tb21,tb22,tb23,tb24;
+    int user_id;
     TabHost tabHost;
     LinearLayout item_note_status;
     ImageButton imgbtn1,imgbtn2,imgbtn3,imgbtn4,imgbtn5,imgbtn6,imgbtn21,imgbtn22,imgbtn23,imgbtn24;
@@ -58,6 +59,8 @@ public class ChooseTableActivity extends AppCompatActivity {
         super.getSupportActionBar().hide();
         setContentView(R.layout.activity_table);
         mData = FirebaseDatabase.getInstance().getReference();
+        Bundle bundle = getIntent().getExtras();
+        user_id = bundle.getInt("user_id");
 
         final CustomLoadingDialog loadingDialog = new CustomLoadingDialog(ChooseTableActivity.this);
 
@@ -527,6 +530,7 @@ public class ChooseTableActivity extends AppCompatActivity {
     private void GetDataTable() {
                 Intent intent = new Intent(ChooseTableActivity.this, MainTagCastActivity.class);
                 Bundle bundle = new Bundle();
+                bundle.putInt("user_id",user_id);
                 bundle.putString("seri",pickserial);
                 bundle.putString("table",tablenumber);
                 bundle.putString("value",value);

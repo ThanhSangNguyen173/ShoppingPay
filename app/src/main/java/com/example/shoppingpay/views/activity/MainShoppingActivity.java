@@ -35,7 +35,7 @@ public class MainShoppingActivity extends AppCompatActivity {
     ShopViewModel shopViewModel;
     private int cartQuantity = 0;
     TextView cartBadgeTextView;
-    int bill_id, table_id;;
+    int bill_id, table_id, user_id;
     private String serial, tablenumber, timein, value;
 
 
@@ -50,6 +50,7 @@ public class MainShoppingActivity extends AppCompatActivity {
         tablenumber = bundle.getString("table");
         timein = bundle.getString("timein");
         value = bundle.getString("value");
+        user_id = bundle.getInt("user_id");
 
         createNewBill();
 
@@ -102,7 +103,7 @@ public class MainShoppingActivity extends AppCompatActivity {
                 table_id = 10;
                 break;
         }
-        BillApiService.billApiService.creatNewBill(table_id,1,timein,"null").enqueue(new Callback<Bill>() {
+        BillApiService.billApiService.creatNewBill(table_id,user_id,timein,"null").enqueue(new Callback<Bill>() {
             @Override
             public void onResponse(Call<Bill> call, Response<Bill> response) {
                 Bill bill = response.body();
