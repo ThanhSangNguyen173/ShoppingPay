@@ -17,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.shoppingpay.R;
 import com.example.shoppingpay.models.ResponseModelLogin;
+import com.example.shoppingpay.models.Userlogin;
 import com.example.shoppingpay.views.activity.DashboardActivity;
 import com.example.shoppingpay.views.customview.CustomToastNotification;
 
@@ -33,6 +34,10 @@ public class LoginActivity extends AppCompatActivity {
     CheckBox checkBox;
     RadioButton nam,nu;
     String taikhoan,matkhau,str1,str2;//username,password
+    // login funtion
+    int id_info;
+    String full_name_info,DOB_info,username_info,email_info;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -142,9 +147,17 @@ public class LoginActivity extends AppCompatActivity {
                         editor.putString("password",mk.getText().toString());
                         editor.commit();
                         editor.apply();
+                        //get info user
+                        id_info         = response.body().getUser().getId();
+                        DOB_info        = response.body().getUser().getDOB();
+                        full_name_info  = response.body().getUser().getFull_name();
+                        username_info   = response.body().getUser().getUsername();
+                        email_info      = response.body().getUser().getEmail();
+
                         // de chuyen trang khi nhan gia tri success
                         Intent intentRegister= new Intent(LoginActivity.this, DashboardActivity.class);
                         startActivity(intentRegister);
+
                         finish();
 
                     }

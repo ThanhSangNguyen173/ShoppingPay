@@ -1,11 +1,11 @@
 package com.example.shoppingpay.models;
 
 public class ResponseModelLogin {
-    Userlogin userlogin;
+    Userlogin user;
     String message;
 
-    public ResponseModelLogin(Userlogin userlogin, String message) {
-        this.userlogin = userlogin;
+    public ResponseModelLogin(Userlogin user, String message) {
+        this.user = user;
         this.message = message;
     }
 
@@ -24,11 +24,12 @@ public class ResponseModelLogin {
         this.message = message;
     }
 
-    public Userlogin getUserlogin() {
-        return userlogin;
+
+    public Userlogin getUser() {
+        return user;
     }
 
-    public void setUserlogin(Userlogin userlogin) {
-        this.userlogin = userlogin;
+    public void setUser(Userlogin user) {
+        this.user = user;
     }
 }
