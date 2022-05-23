@@ -9,8 +9,7 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.http.GET;
-import retrofit2.http.Headers;
+import retrofit2.http.POST;
 
 public interface ApiProductService {
 
@@ -19,12 +18,12 @@ public interface ApiProductService {
             .create();
 
     ApiProductService apiproducts = new Retrofit.Builder()
-            .baseUrl("http://192.168.1.30:8000/api/")
+            .baseUrl("http://192.168.1.23:8000/api/")
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
             .create(ApiProductService.class);
 
 
-    @GET("products")
+    @POST("products_list")
     Call<List<Product>> getListProduct();
 }
