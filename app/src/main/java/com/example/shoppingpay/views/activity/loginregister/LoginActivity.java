@@ -19,6 +19,7 @@ import com.example.shoppingpay.R;
 import com.example.shoppingpay.models.ResponseModelLogin;
 import com.example.shoppingpay.models.Userlogin;
 import com.example.shoppingpay.views.activity.DashboardActivity;
+import com.example.shoppingpay.views.activity.choosetable.ChooseTableActivity;
 import com.example.shoppingpay.views.customview.CustomToastNotification;
 
 import retrofit2.Call;
@@ -152,7 +153,10 @@ public class LoginActivity extends AppCompatActivity {
                         username_info   = response.body().getUser().getUsername();
                         email_info      = response.body().getUser().getEmail();
                         // de chuyen trang khi nhan gia tri success
-                        Intent intentRegister= new Intent(LoginActivity.this, DashboardActivity.class);
+                        Intent intentRegister= new Intent(LoginActivity.this, ChooseTableActivity.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putInt("user_id",id_info);
+                        intentRegister.putExtras(bundle);
                         startActivity(intentRegister);
 
                         finish();

@@ -45,7 +45,11 @@ public class DashboardActivity extends AppCompatActivity {
                 startActivity(intent);
             break;
             case R.id.cv_table:
+                int user_id = 1;
                 Intent intent2 = new Intent(DashboardActivity.this, ChooseTableActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putInt("user_id",user_id);
+                intent2.putExtras(bundle);
                 startActivity(intent2);
             break;
             case R.id.cv_owner:

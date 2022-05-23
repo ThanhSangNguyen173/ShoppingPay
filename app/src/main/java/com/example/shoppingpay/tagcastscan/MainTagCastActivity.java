@@ -61,6 +61,7 @@ public class MainTagCastActivity extends AppCompatActivity implements ActivityCo
     Button btn_scan, btn_changeTable, btn_goToMenu;
     TextView txt_tablenumber;
     ImageView img_table;
+    int user_id;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -73,6 +74,7 @@ public class MainTagCastActivity extends AppCompatActivity implements ActivityCo
         pickserial = bundle.getString("seri");
         tablenumber = bundle.getString("table");
         value = bundle.getString("value");
+        user_id = bundle.getInt("user_id");
 
         anhxa();
         TagCastScan();
@@ -149,6 +151,7 @@ public class MainTagCastActivity extends AppCompatActivity implements ActivityCo
                 bundle.putString("table",tablenumber);
                 bundle.putString("timein",timein);
                 bundle.putString("value",value);
+                bundle.putInt("user_id",user_id);
                 intent.putExtras(bundle);
                 startActivity(intent);
                 break;
