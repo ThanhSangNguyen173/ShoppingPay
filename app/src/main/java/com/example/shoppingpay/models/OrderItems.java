@@ -2,12 +2,14 @@ package com.example.shoppingpay.models;
 
 public class OrderItems {
     int id;
+    int bill_id;
     int products_id;
     int quantity;
     int total;
 
-    public OrderItems(int id, int products_id, int quantity, int total) {
+    public OrderItems(int id, int bill_id, int products_id, int quantity, int total) {
         this.id = id;
+        this.bill_id = bill_id;
         this.products_id = products_id;
         this.quantity = quantity;
         this.total = total;
@@ -19,6 +21,14 @@ public class OrderItems {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getBill_id() {
+        return bill_id;
+    }
+
+    public void setBill_id(int bill_id) {
+        this.bill_id = bill_id;
     }
 
     public int getProducts_id() {

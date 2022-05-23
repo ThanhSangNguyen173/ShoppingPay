@@ -27,6 +27,7 @@ public class OrderFragment extends Fragment {
     FragmentOrderBinding fragmentOrderBinding;
     ShopViewModel shopViewModel;
     String serial, tablenumber, timein;
+    int bill_id;
 
 
     public OrderFragment() {
@@ -49,6 +50,7 @@ public class OrderFragment extends Fragment {
         serial = activity.getSerial();
         tablenumber = activity.getTableNumer();
         timein = activity.getTimeIn();
+        bill_id = activity.getBillID();
 
         navController = Navigation.findNavController(view);
         Context context = getActivity().getApplicationContext();
@@ -68,6 +70,7 @@ public class OrderFragment extends Fragment {
                 bundle.putString("seri",serial);
                 bundle.putString("table",tablenumber);
                 bundle.putString("timein",timein);
+                bundle.putInt("bill_id", bill_id);
                 intent.putExtras(bundle);
                 startActivity(intent);
             }

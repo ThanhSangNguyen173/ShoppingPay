@@ -11,6 +11,7 @@ import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 public interface BillApiService {
 
@@ -26,5 +27,8 @@ public interface BillApiService {
 
     @FormUrlEncoded
     @POST("api/bill/")
-    Call<Bill> creatNewBill(@Field("order_id")int order_id,@Field("desk_id")int desk_id,@Field("user_id")int user_id, @Field("time_in")String time_in,@Field("time_out")String time_out);
+    Call<Bill> creatNewBill(@Field("desk_id")int desk_id,@Field("user_id")int user_id, @Field("time_in")String time_in,@Field("time_out")String time_out);
+    @FormUrlEncoded
+    @POST("api/bill_edit/{id}")
+    Call<Bill> updateTimeOut(@Path("id") int bill_id,@Field("time_out")String time_out);
 }

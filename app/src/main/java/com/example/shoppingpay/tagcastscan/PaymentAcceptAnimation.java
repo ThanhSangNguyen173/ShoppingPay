@@ -29,6 +29,7 @@ public class PaymentAcceptAnimation extends AppCompatActivity {
     DatabaseReference mData;
     LottieAnimationView lottie;
     String tablenumber, timein, timeout;
+    int bill_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,12 +42,13 @@ public class PaymentAcceptAnimation extends AppCompatActivity {
         tablenumber = bundle.getString("table");
         timein = bundle.getString("timein");
         timeout = bundle.getString("timeout");
+        bill_id = bundle.getInt("bill_id");
 
         setDataTable();
         anhxa();
         animationSetup();
         setHandler();
-        creatNewBill();
+        editDetailBill();
     }
 
     @Override
@@ -139,17 +141,17 @@ public class PaymentAcceptAnimation extends AppCompatActivity {
         txt_status = findViewById(R.id.txt_status);
     }
 
-    private void creatNewBill(){
+    private void editDetailBill(){
 
-        BillApiService.billApiService.creatNewBill(1,1,1,timein,timeout).enqueue(new Callback<Bill>() {
+        BillApiService.billApiService.updateTimeOut(bill_id,timeout).enqueue(new Callback<Bill>() {
             @Override
             public void onResponse(Call<Bill> call, Response<Bill> response) {
-                Toast.makeText(PaymentAcceptAnimation.this, "Successfully", Toast.LENGTH_SHORT).show();
+                Log.d("API", response.body().toString());
             }
 
             @Override
             public void onFailure(Call<Bill> call, Throwable t) {
-                Toast.makeText(PaymentAcceptAnimation.this, "Fail", Toast.LENGTH_SHORT).show();
+                Log.d("API", t.toString());
             }
         });
     }

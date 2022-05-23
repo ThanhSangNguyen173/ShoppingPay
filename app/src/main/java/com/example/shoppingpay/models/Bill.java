@@ -2,15 +2,13 @@ package com.example.shoppingpay.models;
 
 public class Bill {
     int id;
-    int order_id;
     int desk_id;
     int user_id;
     String time_in;
     String time_out;
 
-    public Bill(int id, int order_id, int desk_id, int user_id, String time_in, String time_out) {
+    public Bill(int id, int desk_id, int user_id, String time_in, String time_out) {
         this.id = id;
-        this.order_id = order_id;
         this.desk_id = desk_id;
         this.user_id = user_id;
         this.time_in = time_in;
@@ -23,14 +21,6 @@ public class Bill {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getOrder_id() {
-        return order_id;
-    }
-
-    public void setOrder_id(int order_id) {
-        this.order_id = order_id;
     }
 
     public int getDesk_id() {
