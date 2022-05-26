@@ -2,9 +2,11 @@ package com.example.shoppingpay.views.activity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -12,12 +14,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import com.example.shoppingpay.R;
+import com.example.shoppingpay.models.ResponseModelLogin;
 import com.example.shoppingpay.views.activity.choosetable.ChooseTableActivity;
+import com.example.shoppingpay.views.activity.loginregister.Controller;
 import com.example.shoppingpay.views.activity.loginregister.LoginActivity;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class DashboardActivity extends AppCompatActivity {
 
     CardView cv_member, cv_table, cv_location, cv_support, cv_contact, cv_owner;
+    int user_id;
+    String token_user;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -27,7 +37,34 @@ public class DashboardActivity extends AppCompatActivity {
 
         anhxa();
         clickListener();
+        loginAdmin();
     }
+
+    private void loginAdmin() {
+
+        String username = "admin";
+        String password = "admin";
+        Call<ResponseModelLogin> call= Controller
+                    .getInstance()
+                    .getapi()
+                    .verifyuser(username,password);
+        call.enqueue(new Callback<ResponseModelLogin>() {
+                @Override
+                public void onResponse(Call<ResponseModelLogin> call, Response<ResponseModelLogin> response) {
+                    ResponseModelLogin objLogin = response.body();
+                    String output = objLogin.getMessage();
+                    if (output.equals("Success")){
+                        user_id         = response.body().getUser().getId();
+                        token_user      = response.body().getToken();
+                    }
+                }
+                @Override
+                public void onFailure(Call<ResponseModelLogin> call, Throwable t) {
+                    Toast.makeText(DashboardActivity.this, "Call API failed", Toast.LENGTH_SHORT).show();
+                }
+        });
+    }
+
 
     private void clickListener() {
         cv_member.setOnClickListener(this::onClick);
@@ -45,10 +82,10 @@ public class DashboardActivity extends AppCompatActivity {
                 startActivity(intent);
             break;
             case R.id.cv_table:
-                int user_id = 1;
                 Intent intent2 = new Intent(DashboardActivity.this, ChooseTableActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putInt("user_id",user_id);
+                bundle.putString("token_user", token_user);
                 intent2.putExtras(bundle);
                 startActivity(intent2);
             break;

@@ -23,7 +23,7 @@ public class Controller {
             return clienobject;
         }
 
-        ApiServe getapi(){
+        public ApiServe getapi(){
             return retrofit.create(ApiServe.class);
         }
 }

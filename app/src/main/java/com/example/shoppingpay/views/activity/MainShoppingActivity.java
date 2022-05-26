@@ -9,6 +9,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,6 +23,8 @@ import com.example.shoppingpay.models.Bill;
 import com.example.shoppingpay.models.CartItem;
 import com.example.shoppingpay.tagcastscan.PaymentAcceptAnimation;
 import com.example.shoppingpay.viewmodels.ShopViewModel;
+import com.example.shoppingpay.views.activity.choosetable.ChooseTableActivity;
+import com.example.shoppingpay.views.customview.CustomLoadingDialog;
 
 import java.util.List;
 
@@ -36,7 +39,7 @@ public class MainShoppingActivity extends AppCompatActivity {
     private int cartQuantity = 0;
     TextView cartBadgeTextView;
     int bill_id, table_id, user_id;
-    private String serial, tablenumber, timein, value;
+    String serial, tablenumber, timein, value, token_user;
 
 
 
@@ -45,11 +48,23 @@ public class MainShoppingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping_main);
 
+        final CustomLoadingDialog loadingDialog = new CustomLoadingDialog(MainShoppingActivity.this);
+
+        loadingDialog.startLoadingDialog();
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                loadingDialog.dismissDialog();
+            }
+        },2500);
+
         Bundle bundle = getIntent().getExtras();
         serial = bundle.getString("seri");
         tablenumber = bundle.getString("table");
         timein = bundle.getString("timein");
         value = bundle.getString("value");
+        token_user = bundle.getString("token_user");
         user_id = bundle.getInt("user_id");
 
         createNewBill();
@@ -103,7 +118,7 @@ public class MainShoppingActivity extends AppCompatActivity {
                 table_id = 10;
                 break;
         }
-        BillApiService.billApiService.creatNewBill(table_id,user_id,timein,"null").enqueue(new Callback<Bill>() {
+        BillApiService.billApiService.creatNewBill(token_user,table_id,user_id,timein,"null").enqueue(new Callback<Bill>() {
             @Override
             public void onResponse(Call<Bill> call, Response<Bill> response) {
                 Bill bill = response.body();
@@ -127,6 +142,7 @@ public class MainShoppingActivity extends AppCompatActivity {
         return serial;
     }
     public String getValueRating(){ return value;}
+    public String getTokenUser(){return token_user;}
     public int getBillID(){return bill_id;}
 
 

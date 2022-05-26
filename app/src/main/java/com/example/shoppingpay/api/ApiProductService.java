@@ -9,6 +9,8 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
 
 public interface ApiProductService {
@@ -23,7 +25,7 @@ public interface ApiProductService {
             .build()
             .create(ApiProductService.class);
 
-
+    @FormUrlEncoded
     @POST("products_list")
-    Call<List<Product>> getListProduct();
+    Call<List<Product>> getListProduct(@Field("token")String token_user);
 }

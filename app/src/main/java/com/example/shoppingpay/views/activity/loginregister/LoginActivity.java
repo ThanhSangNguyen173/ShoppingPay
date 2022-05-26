@@ -127,13 +127,12 @@ public class LoginActivity extends AppCompatActivity {
                     .getInstance()
                     .getapi()
                     .verifyuser(username,password);
-            Toast.makeText(this, "send", Toast.LENGTH_SHORT).show();
             call.enqueue(new Callback<ResponseModelLogin>() {
                 @Override
                 public void onResponse(Call<ResponseModelLogin> call, Response<ResponseModelLogin> response) {
                     ResponseModelLogin objLogin = response.body();
                     String output = objLogin.getMessage();
-                    if (output.equals("Failed")){
+                    if (objLogin==null){
                         tk.setText("");
                         mk.setText("");
                         Toast.makeText(LoginActivity.this, "Invalid Username or Password", Toast.LENGTH_SHORT).show();
@@ -158,6 +157,7 @@ public class LoginActivity extends AppCompatActivity {
                         Intent intentRegister= new Intent(LoginActivity.this, ChooseTableActivity.class);
                         Bundle bundle = new Bundle();
                         bundle.putInt("user_id",id_info);
+                        bundle.putString("token_user", token_user);
                         intentRegister.putExtras(bundle);
                         startActivity(intentRegister);
 
@@ -168,7 +168,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Call<ResponseModelLogin> call, Throwable t) {
-                    Toast.makeText(LoginActivity.this, "Erro call api", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Call API failed", Toast.LENGTH_SHORT).show();
                 }
             });
 

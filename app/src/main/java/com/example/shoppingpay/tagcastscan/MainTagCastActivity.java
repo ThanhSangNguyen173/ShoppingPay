@@ -62,6 +62,7 @@ public class MainTagCastActivity extends AppCompatActivity implements ActivityCo
     TextView txt_tablenumber;
     ImageView img_table;
     int user_id;
+    String token_user;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -75,6 +76,7 @@ public class MainTagCastActivity extends AppCompatActivity implements ActivityCo
         tablenumber = bundle.getString("table");
         value = bundle.getString("value");
         user_id = bundle.getInt("user_id");
+        token_user = bundle.getString("token_user");
 
         anhxa();
         TagCastScan();
@@ -151,6 +153,7 @@ public class MainTagCastActivity extends AppCompatActivity implements ActivityCo
                 bundle.putString("table",tablenumber);
                 bundle.putString("timein",timein);
                 bundle.putString("value",value);
+                bundle.putString("token_user", token_user);
                 bundle.putInt("user_id",user_id);
                 intent.putExtras(bundle);
                 startActivity(intent);
@@ -205,7 +208,7 @@ public class MainTagCastActivity extends AppCompatActivity implements ActivityCo
 
     private void updateStatusTable(int id){
 
-        TableApiService.tableApiService.updateTable(id,1).enqueue(new Callback<TableStatus>() {
+        TableApiService.tableApiService.updateTable(id,token_user,1).enqueue(new Callback<TableStatus>() {
             @Override
             public void onResponse(Call<TableStatus> call, Response<TableStatus> response) {
                 Log.d("API", response.toString());

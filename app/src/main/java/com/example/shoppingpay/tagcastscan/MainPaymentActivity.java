@@ -43,7 +43,7 @@ public class MainPaymentActivity extends AppCompatActivity implements ActivityCo
     ImageView img_checkin_load;
     public TGCAdapter tgcAdapter;
     private boolean flgBeacon = true;
-    private String serial,serial2, tablenumber, timeout, timein;
+    private String serial,serial2, tablenumber, timeout, timein, token_user;
     private Map<String,String> map;
     int bill_id;
     public int mErrorDialogType = ErrorFragmentPayment.TYPE_NO;
@@ -60,6 +60,7 @@ public class MainPaymentActivity extends AppCompatActivity implements ActivityCo
         tablenumber = bundle.getString("table");
         timein = bundle.getString("timein");
         bill_id = bundle.getInt("bill_id");
+        token_user = bundle.getString("token_user");
 
         anhxa();
         TagCastScan();
@@ -120,6 +121,7 @@ public class MainPaymentActivity extends AppCompatActivity implements ActivityCo
                         bundle.putString("table",tablenumber);
                         bundle.putString("timeout",timeout);
                         bundle.putString("timein",timein);
+                        bundle.putString("token_user",token_user);
                         bundle.putInt("bill_id",bill_id);
                         payment.putExtras(bundle);
                         startActivity(payment);

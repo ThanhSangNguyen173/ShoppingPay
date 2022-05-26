@@ -99,7 +99,7 @@ public class CartRepo {
         return mutableTotalPrice;
     }
 
-    public void callApiCreateOrderItems(int bill_id) {
+    public void callApiCreateOrderItems(int bill_id, String token) {
         if (mutableCart.getValue() == null) return;
         List<CartItem> cartItemList = mutableCart.getValue();
         int limit = cartItemList.size();
@@ -107,7 +107,7 @@ public class CartRepo {
             CartItem cartItem = cartItemList.get(i);
             int id = Integer.parseInt(cartItem.getProduct().getId());
             int quantity = cartItem.getQuantity();
-            OrderItemsApiService.orderItemApiService.createOrderItems(id, quantity, bill_id).enqueue(new Callback<OrderItems>() {
+            OrderItemsApiService.orderItemApiService.createOrderItems(token,id, quantity, bill_id).enqueue(new Callback<OrderItems>() {
                 @Override
                 public void onResponse(Call<OrderItems> call, Response<OrderItems> response) {
                     Log.d("API", response.body().toString());

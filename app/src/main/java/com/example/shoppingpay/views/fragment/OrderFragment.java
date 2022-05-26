@@ -26,7 +26,7 @@ public class OrderFragment extends Fragment {
     NavController navController;
     FragmentOrderBinding fragmentOrderBinding;
     ShopViewModel shopViewModel;
-    String serial, tablenumber, timein;
+    String serial, tablenumber, timein, token_user;
     int bill_id;
 
 
@@ -51,6 +51,7 @@ public class OrderFragment extends Fragment {
         tablenumber = activity.getTableNumer();
         timein = activity.getTimeIn();
         bill_id = activity.getBillID();
+        token_user = activity.getTokenUser();
 
         navController = Navigation.findNavController(view);
         Context context = getActivity().getApplicationContext();
@@ -70,6 +71,7 @@ public class OrderFragment extends Fragment {
                 bundle.putString("seri",serial);
                 bundle.putString("table",tablenumber);
                 bundle.putString("timein",timein);
+                bundle.putString("token_user",token_user);
                 bundle.putInt("bill_id", bill_id);
                 intent.putExtras(bundle);
                 startActivity(intent);

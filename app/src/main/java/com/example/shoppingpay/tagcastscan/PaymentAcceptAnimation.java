@@ -28,7 +28,7 @@ public class PaymentAcceptAnimation extends AppCompatActivity {
     TextView animation, txt_status;
     DatabaseReference mData;
     LottieAnimationView lottie;
-    String tablenumber, timein, timeout;
+    String tablenumber, timein, timeout, token_user;
     int bill_id;
 
     @Override
@@ -43,6 +43,7 @@ public class PaymentAcceptAnimation extends AppCompatActivity {
         timein = bundle.getString("timein");
         timeout = bundle.getString("timeout");
         bill_id = bundle.getInt("bill_id");
+        token_user = bundle.getString("token_user");
 
         setDataTable();
         anhxa();
@@ -117,7 +118,7 @@ public class PaymentAcceptAnimation extends AppCompatActivity {
 
     private void updateStatusTable(int id){
 
-        TableApiService.tableApiService.updateTable(id,1).enqueue(new Callback<TableStatus>() {
+        TableApiService.tableApiService.updateTable(id,token_user,1).enqueue(new Callback<TableStatus>() {
             @Override
             public void onResponse(Call<TableStatus> call, Response<TableStatus> response) {
                 Log.d("API", response.toString());
@@ -143,7 +144,7 @@ public class PaymentAcceptAnimation extends AppCompatActivity {
 
     private void editDetailBill(){
 
-        BillApiService.billApiService.updateTimeOut(bill_id,timeout).enqueue(new Callback<Bill>() {
+        BillApiService.billApiService.updateTimeOut(bill_id,token_user,timeout).enqueue(new Callback<Bill>() {
             @Override
             public void onResponse(Call<Bill> call, Response<Bill> response) {
                 Log.d("API", response.body().toString());
