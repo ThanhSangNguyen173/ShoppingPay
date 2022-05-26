@@ -37,7 +37,7 @@ public class LoginActivity extends AppCompatActivity {
     String taikhoan,matkhau,str1,str2;//username,password
     // login funtion
     int id_info;
-    String full_name_info,DOB_info,username_info,email_info;
+    String full_name_info,DOB_info,username_info,email_info,token_user;
 
 
     @Override
@@ -139,20 +139,22 @@ public class LoginActivity extends AppCompatActivity {
                         Toast.makeText(LoginActivity.this, "Invalid Username or Password", Toast.LENGTH_SHORT).show();
                     }
                     if (output.equals("Success")){
-                        // xu ly check login khi da dang nhap roi// tamthoi khong dung toi
+
                         SharedPreferences sp = getSharedPreferences("credentials",MODE_PRIVATE);
                         SharedPreferences.Editor editor=sp.edit();
                         editor.putString("username",tk.getText().toString());
                         editor.putString("password",mk.getText().toString());
                         editor.commit();
                         editor.apply();
-                        //get info user
+
                         id_info         = response.body().getUser().getId();
                         DOB_info        = response.body().getUser().getDOB();
                         full_name_info  = response.body().getUser().getFull_name();
                         username_info   = response.body().getUser().getUsername();
                         email_info      = response.body().getUser().getEmail();
-                        // de chuyen trang khi nhan gia tri success
+
+                        token_user      = response.body().getToken();
+
                         Intent intentRegister= new Intent(LoginActivity.this, ChooseTableActivity.class);
                         Bundle bundle = new Bundle();
                         bundle.putInt("user_id",id_info);
