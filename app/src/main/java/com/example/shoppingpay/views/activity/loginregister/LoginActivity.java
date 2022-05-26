@@ -37,7 +37,7 @@ public class LoginActivity extends AppCompatActivity {
     String taikhoan,matkhau,str1,str2;//username,password
     // login funtion
     int id_info;
-    String full_name_info,DOB_info,username_info,email_info;
+    String full_name_info,DOB_info,username_info,email_info,token_user;
 
 
     @Override
@@ -152,6 +152,8 @@ public class LoginActivity extends AppCompatActivity {
                         full_name_info  = response.body().getUser().getFull_name();
                         username_info   = response.body().getUser().getUsername();
                         email_info      = response.body().getUser().getEmail();
+                        //get token
+                        token_user      = response.body().getToken();
                         // de chuyen trang khi nhan gia tri success
                         Intent intentRegister= new Intent(LoginActivity.this, ChooseTableActivity.class);
                         Bundle bundle = new Bundle();
