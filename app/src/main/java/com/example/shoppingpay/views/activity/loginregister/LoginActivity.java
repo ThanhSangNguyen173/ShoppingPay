@@ -131,12 +131,8 @@ public class LoginActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<ResponseModelLogin> call, Response<ResponseModelLogin> response) {
                     ResponseModelLogin objLogin = response.body();
-                    String output = objLogin.getMessage();
-                    if (objLogin==null){
-                        tk.setText("");
-                        mk.setText("");
-                        Toast.makeText(LoginActivity.this, "Invalid Username or Password", Toast.LENGTH_SHORT).show();
-                    }
+                    if (!(objLogin == null)){
+                        String output = objLogin.getMessage();
                     if (output.equals("Success")){
 
                         SharedPreferences sp = getSharedPreferences("credentials",MODE_PRIVATE);
@@ -164,7 +160,11 @@ public class LoginActivity extends AppCompatActivity {
                         finish();
 
                     }
-                }
+                    }else {
+                        tk.setText("");
+                        mk.setText("");
+                        showToast(4);
+                }}
 
                 @Override
                 public void onFailure(Call<ResponseModelLogin> call, Throwable t) {
