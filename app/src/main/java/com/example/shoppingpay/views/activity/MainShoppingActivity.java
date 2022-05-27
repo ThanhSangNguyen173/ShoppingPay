@@ -118,7 +118,7 @@ public class MainShoppingActivity extends AppCompatActivity {
                 table_id = 10;
                 break;
         }
-        BillApiService.billApiService.creatNewBill(token_user,table_id,user_id,timein,"-").enqueue(new Callback<Bill>() {
+        BillApiService.billApiService.creatNewBill(token_user,table_id,user_id,timein,"").enqueue(new Callback<Bill>() {
             @Override
             public void onResponse(Call<Bill> call, Response<Bill> response) {
                 Bill bill = response.body();
