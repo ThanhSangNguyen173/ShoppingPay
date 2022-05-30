@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".views.activity.choosetable.ChooseTableActivity"
     android:orientation="vertical"
-    android:background="@drawable/bgtable"
+    android:background="@color/LIGHT_PRIMARY_COLOR"
     android:weightSum="22"
     >
 
@@ -86,12 +86,4 @@
             android:drawableTop="@drawable/icon_using_table_24"
             />
     </LinearLayout>
-    <Button
-        android:layout_marginTop="-35dp"
-        android:id="@+id/checktable"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:visibility="invisible"
-        android:text="Check available table..."
-        android:background="@color/PRIMARY_COLOR" />
 </LinearLayout>

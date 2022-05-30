@@ -10,6 +10,7 @@
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/BoxyzVN/app/src/main/res/drawable/ic_star.xml" value="0.124" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/BoxyzVN/app/src/main/res/layout/activity_rate_us.xml" value="0.1" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/BoxyzVN/app/src/main/res/layout/activity_table.xml" value="0.1796875" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/BoxyzVN/app/src/main/res/layout/activtity_dashboard.xml" value="0.1" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/BoxyzVN/app/src/main/res/layout/cart_item.xml" value="0.1796875" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/BoxyzVN/app/src/main/res/layout/custom_toast_notification.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/BoxyzVN/app/src/main/res/layout/fragment_order.xml" value="0.1796875" />
@@ -47,6 +48,14 @@
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/ShoppingPay/app/src/main/res/layout/payment_accept.xml" value="0.1796875" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/ShoppingPay/app/src/main/res/layout/shop_item.xml" value="0.22" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/ShoppingPay/app/src/main/res/menu/main_menu.xml" value="0.1796875" />
+        <entry key="..\:/Users/SONTIEN/Desktop/ShoppingPay/app/src/main/res/drawable/failed_login.xml" value="0.1205" />
+        <entry key="..\:/Users/SONTIEN/Desktop/ShoppingPay/app/src/main/res/layout/activity_location.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/SONTIEN/Desktop/ShoppingPay/app/src/main/res/layout/activity_owner.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/SONTIEN/Desktop/ShoppingPay/app/src/main/res/layout/activity_payment_main.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/SONTIEN/Desktop/ShoppingPay/app/src/main/res/layout/activity_register.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/SONTIEN/Desktop/ShoppingPay/app/src/main/res/layout/activity_resginsterss.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/SONTIEN/Desktop/ShoppingPay/app/src/main/res/layout/dky_page.xml" value="0.1" />
+        <entry key="..\:/Users/SONTIEN/Desktop/ShoppingPay/app/src/main/res/layout/login_page.xml" value="0.20416666666666666" />
       </map>
     </option>
   </component>

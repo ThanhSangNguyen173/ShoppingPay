@@ -1,13 +1,22 @@
 package com.example.shoppingpay.repositories;
 
+import android.util.Log;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.shoppingpay.api.OrderItemsApiService;
+import com.example.shoppingpay.models.Bill;
 import com.example.shoppingpay.models.CartItem;
+import com.example.shoppingpay.models.OrderItems;
 import com.example.shoppingpay.models.Product;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class CartRepo {
 
@@ -89,4 +98,28 @@ public class CartRepo {
         }
         return mutableTotalPrice;
     }
+
+    public void callApiCreateOrderItems(int bill_id, String token) {
+        if (mutableCart.getValue() == null) return;
+        List<CartItem> cartItemList = mutableCart.getValue();
+        int limit = cartItemList.size();
+        for (int i = 0; i < limit; i++) {
+            CartItem cartItem = cartItemList.get(i);
+            int id = Integer.parseInt(cartItem.getProduct().getId());
+            int quantity = cartItem.getQuantity();
+            OrderItemsApiService.orderItemApiService.createOrderItems(token,id, quantity, bill_id).enqueue(new Callback<OrderItems>() {
+                @Override
+                public void onResponse(Call<OrderItems> call, Response<OrderItems> response) {
+                    Log.d("API", response.body().toString());
+                }
+
+                @Override
+                public void onFailure(Call<OrderItems> call, Throwable t) {
+                    Log.d("API", t.toString());
+                }
+            });
+        }
+    }
 }
+
+

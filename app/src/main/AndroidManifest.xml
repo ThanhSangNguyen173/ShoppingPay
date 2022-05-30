@@ -20,11 +20,15 @@
     <application
         android:name=".application.AppInfo"
         android:allowBackup="true"
+        android:usesCleartextTraffic="true"
         android:icon="@mipmap/logointro"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/logointro"
         android:supportsRtl="true"
         android:theme="@style/Theme.ShoppingPay">
+        <activity
+            android:name=".views.activity.loginregister.RegisterActivity"
+            android:exported="false" />
 
         <service
             android:name=".application.MyFirebaseMessagingService"
@@ -66,9 +70,12 @@
         <activity
             android:name=".views.activity.MainShoppingActivity"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait">
+        </activity>
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
-            android:name=".views.activity.loginregister.LoginRegisterActivity"
+            android:name=".views.activity.loginregister.LoginActivity"
             android:exported="false"
             android:screenOrientation="portrait"/>
         <activity

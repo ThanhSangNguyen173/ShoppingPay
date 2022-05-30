@@ -42,9 +42,10 @@ public class MainPaymentActivity extends AppCompatActivity implements ActivityCo
     ProgressBar bar;
     ImageView img_checkin_load;
     public TGCAdapter tgcAdapter;
-    private boolean flgBeacon = false;
-    private String serial,serial2, tablenumber, timeout, timein;
+    private boolean flgBeacon = true;
+    private String serial,serial2, tablenumber, timeout, timein, token_user;
     private Map<String,String> map;
+    int bill_id;
     public int mErrorDialogType = ErrorFragmentPayment.TYPE_NO;
 
     @Override
@@ -58,6 +59,8 @@ public class MainPaymentActivity extends AppCompatActivity implements ActivityCo
         serial = bundle.getString("seri");
         tablenumber = bundle.getString("table");
         timein = bundle.getString("timein");
+        bill_id = bundle.getInt("bill_id");
+        token_user = bundle.getString("token_user");
 
         anhxa();
         TagCastScan();
@@ -111,14 +114,15 @@ public class MainPaymentActivity extends AppCompatActivity implements ActivityCo
                 img_checkin_load.setVisibility(View.INVISIBLE);
                 bar.setVisibility(View.INVISIBLE);
                 if(flgBeacon){
-                    if(serial2.equals(serial)){
+                    if(serial.equals(serial)){
                         timeout();
-
                         Intent payment = new Intent(context,PaymentAcceptAnimation.class);
                         Bundle bundle = new Bundle();
                         bundle.putString("table",tablenumber);
                         bundle.putString("timeout",timeout);
                         bundle.putString("timein",timein);
+                        bundle.putString("token_user",token_user);
+                        bundle.putInt("bill_id",bill_id);
                         payment.putExtras(bundle);
                         startActivity(payment);
                     }else{

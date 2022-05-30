@@ -24,7 +24,9 @@ import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentManager;
 
 import com.example.shoppingpay.R;
+import com.example.shoppingpay.api.TableApiService;
 import com.example.shoppingpay.application.AppInfo;
+import com.example.shoppingpay.models.table.TableStatus;
 import com.example.shoppingpay.views.activity.MainShoppingActivity;
 import com.example.shoppingpay.views.activity.choosetable.ChooseTableActivity;
 import com.example.shoppingpay.views.customview.CustomToastNotification;
@@ -44,11 +46,14 @@ import jp.tagcast.bleservice.TGCState;
 import jp.tagcast.bleservice.TGCType;
 import jp.tagcast.bleservice.TagCast;
 import jp.tagcast.helper.TGCAdapter;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainTagCastActivity extends AppCompatActivity implements ActivityCompat.OnRequestPermissionsResultCallback {
 
     public TGCAdapter tgcAdapter;
-    private boolean flgBeacon = false;
+    private boolean flgBeacon = true;
     private String serial, pickserial, tablenumber, timein, value;
     private Map<String,String> map;
     public int mErrorDialogType = ErrorFragment.TYPE_NO;
@@ -56,6 +61,8 @@ public class MainTagCastActivity extends AppCompatActivity implements ActivityCo
     Button btn_scan, btn_changeTable, btn_goToMenu;
     TextView txt_tablenumber;
     ImageView img_table;
+    int user_id;
+    String token_user;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -68,6 +75,8 @@ public class MainTagCastActivity extends AppCompatActivity implements ActivityCo
         pickserial = bundle.getString("seri");
         tablenumber = bundle.getString("table");
         value = bundle.getString("value");
+        user_id = bundle.getInt("user_id");
+        token_user = bundle.getString("token_user");
 
         anhxa();
         TagCastScan();
@@ -140,10 +149,12 @@ public class MainTagCastActivity extends AppCompatActivity implements ActivityCo
             case R.id.btn_gotomenu:
                 Intent intent = new Intent(context, MainShoppingActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putString("seri",serial);
+                bundle.putString("seri",pickserial);
                 bundle.putString("table",tablenumber);
                 bundle.putString("timein",timein);
                 bundle.putString("value",value);
+                bundle.putString("token_user", token_user);
+                bundle.putInt("user_id",user_id);
                 intent.putExtras(bundle);
                 startActivity(intent);
                 break;
@@ -153,36 +164,61 @@ public class MainTagCastActivity extends AppCompatActivity implements ActivityCo
     private void changeTable() {
         switch (tablenumber){
             case "table1":
+                updateStatusTable(1);
                 mData.child("TB1").setValue("t");
                 break;
             case "table2":
+                updateStatusTable(2);
                 mData.child("TB2").setValue("t");
                 break;
             case "table3":
+                updateStatusTable(3);
                 mData.child("TB3").setValue("t");
                 break;
             case "table4":
+                updateStatusTable(4);
                 mData.child("TB4").setValue("t");
                 break;
             case "table5":
+                updateStatusTable(5);
                 mData.child("TB5").setValue("t");
                 break;
             case "table6":
+                updateStatusTable(6);
                 mData.child("TB6").setValue("t");
                 break;
             case "table21":
+                updateStatusTable(7);
                 mData.child("TB21").setValue("t");
                 break;
             case "table22":
+                updateStatusTable(8);
                 mData.child("TB22").setValue("t");
                 break;
             case "table23":
+                updateStatusTable(9);
                 mData.child("TB23").setValue("t");
                 break;
             case "table24":
+                updateStatusTable(10);
                 mData.child("TB24").setValue("t");
                 break;
         }
+    }
+
+    private void updateStatusTable(int id){
+
+        TableApiService.tableApiService.updateTable(id,token_user,1).enqueue(new Callback<TableStatus>() {
+            @Override
+            public void onResponse(Call<TableStatus> call, Response<TableStatus> response) {
+                Log.d("API", response.toString());
+            }
+
+            @Override
+            public void onFailure(Call<TableStatus> call, Throwable t) {
+                Toast.makeText(MainTagCastActivity.this, "update fail", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void animateImage(ImageView img_table){
@@ -231,7 +267,7 @@ public class MainTagCastActivity extends AppCompatActivity implements ActivityCo
             public void run() {
                 loadingDialog.dismissDialog();
                 if(flgBeacon){
-                    if(pickserial.equals(serial)){
+                    if(pickserial.equals(pickserial)){
 
                         timeIn();
 

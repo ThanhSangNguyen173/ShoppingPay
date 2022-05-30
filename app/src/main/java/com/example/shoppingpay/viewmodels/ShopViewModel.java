@@ -54,4 +54,6 @@ public class ShopViewModel extends ViewModel {
     public void resetCart (){
         cartRepo.initcart();
     }
+
+    public void callApiCreateOrderItems(int bill_id, String token){cartRepo.callApiCreateOrderItems(bill_id, token);}
 }
