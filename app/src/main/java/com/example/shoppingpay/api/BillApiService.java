@@ -29,6 +29,6 @@ public interface BillApiService {
     @POST("api/bill/")
     Call<Bill> creatNewBill(@Field("token")String token_user,@Field("desk_id")int desk_id,@Field("user_id")int user_id, @Field("time_in")String time_in,@Field("time_out")String time_out);
     @FormUrlEncoded
-    @POST("api/bill_edit/{id}")
-    Call<Bill> updateTimeOut(@Path("id") int bill_id,@Field("token")String token_user,@Field("time_out")String time_out);
+    @POST("api/bill_edit/")
+    Call<Bill> updateTimeOut(@Field("id_request") int bill_id,@Field("token")String token_user,@Field("time_out")String time_out);
 }
