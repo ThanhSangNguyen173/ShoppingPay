@@ -36,37 +36,37 @@ public interface TableApiService {
             .create(TableApiService.class);
 
     @FormUrlEncoded
-    @POST("api/table/1")
-    Call<Table1> getApiTable1 (@Field("token")String token_user);
+    @POST("api/table_id/")
+    Call<Table1> getApiTable1 (@Field("token")String token_user, @Field("id_request") int tableId);
     @FormUrlEncoded
-    @POST("api/table/2")
-    Call<Table2> getApiTable2 (@Field("token")String token_user);
+    @POST("api/table_id/")
+    Call<Table2> getApiTable2 (@Field("token")String token_user, @Field("id_request") int tableId);
     @FormUrlEncoded
-    @POST("api/table/3")
-    Call<Table3> getApiTable3 (@Field("token")String token_user);
+    @POST("api/table_id/")
+    Call<Table3> getApiTable3 (@Field("token")String token_user, @Field("id_request") int tableId);
     @FormUrlEncoded
-    @POST("api/table/4")
-    Call<Table4> getApiTable4 (@Field("token")String token_user);
+    @POST("api/table_id/")
+    Call<Table4> getApiTable4 (@Field("token")String token_user, @Field("id_request") int tableId);
     @FormUrlEncoded
-    @POST("api/table/5")
-    Call<Table5> getApiTable5 (@Field("token")String token_user);
+    @POST("api/table_id/")
+    Call<Table5> getApiTable5 (@Field("token")String token_user, @Field("id_request") int tableId);
     @FormUrlEncoded
-    @POST("api/table/6")
-    Call<Table6> getApiTable6 (@Field("token")String token_user);
+    @POST("api/table_id/")
+    Call<Table6> getApiTable6 (@Field("token")String token_user, @Field("id_request") int tableId);
     @FormUrlEncoded
-    @POST("api/table/7")
-    Call<Table21> getApiTable21 (@Field("token")String token_user);
+    @POST("api/table_id/")
+    Call<Table21> getApiTable21 (@Field("token")String token_user, @Field("id_request") int tableId);
     @FormUrlEncoded
-    @POST("api/table/8")
-    Call<Table22> getApiTable22 (@Field("token")String token_user);
+    @POST("api/table_id/")
+    Call<Table22> getApiTable22 (@Field("token")String token_user, @Field("id_request") int tableId);
     @FormUrlEncoded
-    @POST("api/table/9")
-    Call<Table23> getApiTable23 (@Field("token")String token_user);
+    @POST("api/table_id/")
+    Call<Table23> getApiTable23 (@Field("token")String token_user, @Field("id_request") int tableId);
     @FormUrlEncoded
-    @POST("api/table/10")
-    Call<Table24> getApiTable24 (@Field("token")String token_user);
+    @POST("api/table_id/")
+    Call<Table24> getApiTable24 (@Field("token")String token_user, @Field("id_request") int tableId);
 
     @FormUrlEncoded
-    @POST("api/table_edit/{id}")
-    Call<TableStatus> updateTable(@Path ("id") int tableId,@Field("token")String token_user, @Field("status") int status);
+    @POST("api/table_edit/")
+    Call<TableStatus> updateTable(@Field("id_request") int tableId,@Field("token")String token_user, @Field("status") int status);
 }
