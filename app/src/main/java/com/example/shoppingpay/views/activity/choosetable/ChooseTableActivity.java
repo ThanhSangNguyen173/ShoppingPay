@@ -348,7 +348,7 @@ public class ChooseTableActivity extends AppCompatActivity {
     }
 
     private void getAPITable24() {
-        TableApiService.tableApiService.getApiTable24(token_user).enqueue(new Callback<Table24>() {
+        TableApiService.tableApiService.getApiTable24(token_user,11).enqueue(new Callback<Table24>() {
             @Override
             public void onResponse(Call<Table24> call, Response<Table24> response) {
                 Table24 table24 = response.body();
@@ -366,7 +366,7 @@ public class ChooseTableActivity extends AppCompatActivity {
         });
     }
     private void getAPITable23() {
-        TableApiService.tableApiService.getApiTable23(token_user).enqueue(new Callback<Table23>() {
+        TableApiService.tableApiService.getApiTable23(token_user,9).enqueue(new Callback<Table23>() {
             @Override
             public void onResponse(Call<Table23> call, Response<Table23> response) {
                 Table23 table23 = response.body();
@@ -384,7 +384,7 @@ public class ChooseTableActivity extends AppCompatActivity {
         });
     }
     private void getAPITable22() {
-        TableApiService.tableApiService.getApiTable22(token_user).enqueue(new Callback<Table22>() {
+        TableApiService.tableApiService.getApiTable22(token_user,8).enqueue(new Callback<Table22>() {
             @Override
             public void onResponse(Call<Table22> call, Response<Table22> response) {
                 Table22 table22 = response.body();
@@ -402,7 +402,7 @@ public class ChooseTableActivity extends AppCompatActivity {
         });
     }
     private void getAPITable21() {
-        TableApiService.tableApiService.getApiTable21(token_user).enqueue(new Callback<Table21>() {
+        TableApiService.tableApiService.getApiTable21(token_user,7).enqueue(new Callback<Table21>() {
             @Override
             public void onResponse(Call<Table21> call, Response<Table21> response) {
                 Table21 table21 = response.body();
@@ -420,7 +420,7 @@ public class ChooseTableActivity extends AppCompatActivity {
         });
     }
     private void getAPITable6() {
-        TableApiService.tableApiService.getApiTable6(token_user).enqueue(new Callback<Table6>() {
+        TableApiService.tableApiService.getApiTable6(token_user,6).enqueue(new Callback<Table6>() {
             @Override
             public void onResponse(Call<Table6> call, Response<Table6> response) {
                 Table6 table6 = response.body();
@@ -438,7 +438,7 @@ public class ChooseTableActivity extends AppCompatActivity {
         });
     }
     private void getAPITable5() {
-        TableApiService.tableApiService.getApiTable5(token_user).enqueue(new Callback<Table5>() {
+        TableApiService.tableApiService.getApiTable5(token_user,5).enqueue(new Callback<Table5>() {
             @Override
             public void onResponse(Call<Table5> call, Response<Table5> response) {
                 Table5 table5 = response.body();
@@ -456,7 +456,7 @@ public class ChooseTableActivity extends AppCompatActivity {
         });
     }
     private void getAPITable4() {
-        TableApiService.tableApiService.getApiTable4(token_user).enqueue(new Callback<Table4>() {
+        TableApiService.tableApiService.getApiTable4(token_user,4).enqueue(new Callback<Table4>() {
             @Override
             public void onResponse(Call<Table4> call, Response<Table4> response) {
                 Table4 table4 = response.body();
@@ -474,7 +474,7 @@ public class ChooseTableActivity extends AppCompatActivity {
         });
     }
     private void getAPITable3() {
-        TableApiService.tableApiService.getApiTable3(token_user).enqueue(new Callback<Table3>() {
+        TableApiService.tableApiService.getApiTable3(token_user,3).enqueue(new Callback<Table3>() {
             @Override
             public void onResponse(Call<Table3> call, Response<Table3> response) {
                 Table3 table3 = response.body();
@@ -492,7 +492,7 @@ public class ChooseTableActivity extends AppCompatActivity {
         });
     }
     private void getAPITable1(){
-        TableApiService.tableApiService.getApiTable1(token_user).enqueue(new Callback<Table1>() {
+        TableApiService.tableApiService.getApiTable1(token_user,1).enqueue(new Callback<Table1>() {
             @Override
             public void onResponse(Call<Table1> call, Response<Table1> response) {
                 Table1 table1 = response.body();
@@ -510,7 +510,7 @@ public class ChooseTableActivity extends AppCompatActivity {
         });
     }
     private void getAPITable2() {
-        TableApiService.tableApiService.getApiTable2(token_user).enqueue(new Callback<Table2>() {
+        TableApiService.tableApiService.getApiTable2(token_user,2).enqueue(new Callback<Table2>() {
             @Override
             public void onResponse(Call<Table2> call, Response<Table2> response) {
                 Table2 table2 = response.body();
